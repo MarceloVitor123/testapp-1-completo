@@ -1,0 +1,18 @@
+import { Audio } from "expo-av";
+
+let sound: Audio.Sound | null = null;
+
+export async function playClickSound() {
+  try {
+    if (!sound) {
+      const result = await Audio.Sound.createAsync(
+        require("../ux/click.mp3")
+      );
+      sound = result.sound;
+    }
+
+    await sound.replayAsync();
+  } catch (error) {
+    console.log("Erro ao tocar som:", error);
+  }
+}
