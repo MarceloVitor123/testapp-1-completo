@@ -9,12 +9,12 @@ export default function ModalVerbActivityScreen() {
       targetImage={require("../../../assets/images/óculos2.png")}
       // Lista de botões da coluna esquerda
       options={[
-        { label: "CARREGADOR", value: "lapis" },
-        { label: "ÓCULOS", value: "mesa" },
-        { label: "CARAMELO", value: "chinelo" },
-        { label: "MAÇA", value: "banana" },
+        { label: "CARREGADOR", value: "carregador" },
+        { label: "ÓCULOS", value: "oculos" },
+        { label: "CARAMELO", value: "caramelo" },
+        { label: "MAÇA", value: "maça" },
       ]}
-      correctAnswer="mesa"
+      correctAnswer="oculos"
       // Rotas de destino (acerto ou erro)
       nextRoute="/fases/fase2/atividade4"
       wrongRoute="/fases/fase2/atividade4"

@@ -20,8 +20,8 @@ export default function Atividade1() {
           value: "PORCO",
         },
       ]}
-      nextRoute="/fases/fase2/atividade3"
-      wrongRoute="/fases/fase2/atividade3"
+      nextRoute="/fases/fase2/atividade4"
+      wrongRoute="/fases/fase2/atividade4"
       audio={require("../../../components/audios/o_pai_de_marcos.mp3")}
       progress={0.2}
     />
