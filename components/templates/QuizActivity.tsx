@@ -178,29 +178,34 @@ export default function QuizActivity({
         {feedback === "wrong" && (
           <Text style={styles.wrongMessage}>Resposta errada.</Text>
         )}
-<Pressable
+
+  {feedback === null && (
+  <Pressable
     onPress={handleVerify}
-    disabled={verifyDisabled || feedback !== null}
+    disabled={verifyDisabled}
     style={({ pressed }) => [
       styles.verifyButton,
       verifyDisabled && styles.verifyButtonDisabled,
-      pressed && !verifyDisabled && feedback === null && styles.verifyButtonPressed,
+      pressed &&
+        !verifyDisabled &&
+        styles.verifyButtonPressed,
     ]}
   >
     <Text style={styles.verifyText}>VERIFICAR</Text>
   </Pressable>
+)}
 
-  {feedback !== null && (
-    <Pressable
-      onPress={handleNext}
-      style={({ pressed }) => [
-        styles.nextButton,
-        pressed && styles.nextButtonPressed,
-      ]}
-    >
-      <Text style={styles.nextText}>PRÓXIMO</Text>
-    </Pressable>
-  )}
+{feedback !== null && (
+  <Pressable
+    onPress={handleNext}
+    style={({ pressed }) => [
+      styles.nextButton,
+      pressed && styles.nextButtonPressed,
+    ]}
+  >
+    <Text style={styles.nextText}>PRÓXIMO</Text>
+  </Pressable>
+)}
 </View>
     </SafeAreaView>
   );

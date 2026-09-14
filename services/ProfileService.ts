@@ -65,37 +65,31 @@ export async function updatePhaseProgress(
   progress: Profile["phases"][keyof Profile["phases"]]
 ) {
   try {
-    const profile = await loadProfile();
+    const profile = await loadProfile(); //busca o perfil salvo no AsyncStorage
 
-    if (!profile) {
+    if (!profile) { // o ! significa não
       console.log("ERRO: perfil não encontrado.");
       return;
     }
 
-    const previousProgress = profile.phases[phase];
-
-    // Atualiza o XP apenas pela diferença.
-    profile.xp += Math.max(
-      0,
-      progress.xp - previousProgress.xp
-    );
-
-    // Atualiza os dados da fase.
+    // Atualiza o XP e progresso da fase
     profile.phases[phase] = progress;
 
-    // Calcula o tempo total estudado somando todas as fases.
-    let totalTime = 0;
+    // Recalcula o XP total somando todas as fases
+    profile.xp = Object.values(profile.phases).reduce(
+      (total, fase) => total + fase.xp,
+      0
+    );
 
-    for (const fase of Object.values(profile.phases)) {
-      totalTime += fase.time;
-    }
+    // Recalcula o tempo total
+    profile.studyTime = Object.values(profile.phases).reduce(
+      (total, fase) => total + fase.time,
+      0
+    );
 
-    profile.studyTime = totalTime;
-
-    // Calcula a precisão média das fases concluídas.
-    const fasesComProgresso = Object.values(
-      profile.phases
-    ).filter((fase) => fase.completed);
+    // Calcula a precisão média das fases concluídas
+    const fasesComProgresso = Object.values(profile.phases)
+      .filter((fase) => fase.completed);
 
     if (fasesComProgresso.length > 0) {
       const somaPrecisao = fasesComProgresso.reduce(
@@ -109,13 +103,13 @@ export async function updatePhaseProgress(
       profile.accuracy = 0;
     }
 
-    // Salva tudo no AsyncStorage.
     await saveProfile(profile);
 
-    console.log("Perfil atualizado:");
-    console.log("XP:", profile.xp);
+    console.log("========== PERFIL ATUALIZADO ==========");
+    console.log("XP total:", profile.xp);
     console.log("Precisão:", profile.accuracy);
     console.log("Tempo estudado:", profile.studyTime);
+
   } catch (error) {
     console.log(
       "Erro ao atualizar progresso da fase:",

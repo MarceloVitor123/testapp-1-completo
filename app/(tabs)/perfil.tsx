@@ -1,12 +1,12 @@
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
   ActivityIndicator,
-  Pressable
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View
 } from "react-native";
 
 import { Profile } from "../../models/Profile";
