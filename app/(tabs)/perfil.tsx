@@ -11,9 +11,44 @@ import {
 
 import { Profile } from "../../models/Profile";
 import { deleteProfile, loadProfile } from "../../services/ProfileService";
+import { useRouter } from "expo-router";
+import * as ImagePicker from "expo-image-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+
 
 export default function ProfileScreen() {
+
+  const escolherFoto = async () => {
+  if (!profile) return;
+
+  const resultado = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ["images"],
+    allowsEditing: true,
+    aspect: [1, 1],
+    quality: 0.8,
+  });
+
+  if (!resultado.canceled) {
+    const foto = resultado.assets[0].uri;
+
+    const novoProfile = {
+      ...profile,
+      photo: foto,
+    };
+
+    setProfile(novoProfile);
+
+    await AsyncStorage.setItem(
+      "@alfatech/profile",
+      JSON.stringify(novoProfile)
+    );
+  }
+};
+
+
   const [profile, setProfile] = useState<Profile | null>(null);
+  const router = useRouter();
 
   useFocusEffect(
     useCallback(() => {
@@ -38,9 +73,18 @@ export default function ProfileScreen() {
     <View style={styles.container}>
 
       <Image
-        source={require("../../assets/icons/user.png")}
-        style={styles.avatar}
-      />
+  source={
+    profile.photo
+      ? { uri: profile.photo }
+      : require("../../assets/icons/user.png")
+  }
+  style={styles.avatar}
+/>
+      <View style={{ position: "absolute", top: 150, right: 100 }}>
+      <Pressable onPress={escolherFoto} style={styles.fotoButton}>
+        <Text style={styles.textocamera}>📷</Text>
+      </Pressable>
+      </View>
 
       <Text style={styles.name}>{profile.name}</Text>
 
@@ -67,6 +111,7 @@ export default function ProfileScreen() {
           onPress={() => {
            deleteProfile();
           console.log("profile deletado");
+          router.push("/criarPerfil");
           }}
         >
           <Text style={styles.delete}>
@@ -131,5 +176,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     textAlign: "center",
     marginTop: 20,
+  },
+  fotoButton: {
+    backgroundColor: "#a1a2a2",
+    paddingHorizontal: 9,
+    paddingVertical: 7,
+    borderRadius: 100,
+    marginBottom: 10,
+  },
+  textocamera: {
+    color: "white",
+    fontSize: 30,
+    marginBottom: 15,
   },
 });
