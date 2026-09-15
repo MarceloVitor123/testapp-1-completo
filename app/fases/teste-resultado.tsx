@@ -14,9 +14,13 @@ import { useWorld } from "../../context/WorldContext";
 import { updatePhaseProgress } from "../../services/ProfileService";
 import { Profile } from "@/models/Profile";
 import ResultCard from "../../components/ResultCard";
+import { useStreak } from "../../context/StreakContext";
+
 
 export default function TesteResultadoScreen() {
   const router = useRouter();
+  const { registerStudy } = useStreak();
+
 
   const {
     currentWorld,
@@ -49,9 +53,10 @@ export default function TesteResultadoScreen() {
           time: totalTimeSeconds,
           completed: true,
         }
+        
       );
     }
-
+    registerStudy()
     resetWorld();
     router.push("/trilha");
   }
