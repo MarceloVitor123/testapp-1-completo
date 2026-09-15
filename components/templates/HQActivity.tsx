@@ -1,3 +1,4 @@
+import { Audio } from "expo-av";
 import { useRouter, type Href } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
@@ -8,7 +9,6 @@ import {
   TextInput,
   View,
 } from "react-native";
-import {Audio} from "expo-av";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useWorld } from "../../context/WorldContext";
 
@@ -26,13 +26,20 @@ type QuizActivityProps = {
   // Texto principal da atividade
   question: string;
 
+  // Texto secundário da atividade
+  subQuestion: string;
+
   // Imagem do personagem
   characterImage?: any;
 
   // Imagem opcional para a questão
   questionImage?: any;
 
-   audio?: any;
+  // Audio principal da atividade
+  audio?: any;
+
+  // Audio secundário da atividade
+  subAudio?: any;
 
   // Alternativas
   options?: Option[];
@@ -57,9 +64,11 @@ type QuizActivityProps = {
 export default function QuizActivity({
   mode,
   question,
+  subQuestion,
   characterImage,
   questionImage,
   audio,
+  subAudio,
 
   options = [],
   correctAnswer,
@@ -116,10 +125,10 @@ export default function QuizActivity({
 // =========================
 // TOCAR ÁUDIO
 // =========================
-  const playAudio = async () => {
-  if (!audio) return;
+  const playAudio = async (audioFile: any) => {
+  if (!audioFile) return;
 
-  const { sound } = await Audio.Sound.createAsync(audio);
+  const { sound } = await Audio.Sound.createAsync(audioFile);
 
   await sound.playAsync();
 
@@ -235,7 +244,7 @@ export default function QuizActivity({
             {showAudio && (
               <Pressable
                 style={styles.audioButton}
-                onPress={playAudio}
+                onPress={() => playAudio(audio)}
               >
                 <Text style={styles.audioIcon}>
                   🔊
@@ -252,8 +261,7 @@ export default function QuizActivity({
         {/* ================================= */}
 
         <Text style={styles.questionText}>
-          Qual dos animais a seguir o pai
-          do Marcos não tem?
+          {subQuestion}
         </Text>
 
         {/* ================================= */}

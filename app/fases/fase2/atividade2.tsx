@@ -5,6 +5,7 @@ export default function Atividade1() {
     <QuizActivity
       mode="text"
       question="O pai do Marcos tem 4 galinhas e 2 bois."
+      subQuestion="Qual dos animais a seguir o pai do Marcos não tem?"
       correctAnswer="PORCO"
       options={[
         {
