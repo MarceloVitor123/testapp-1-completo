@@ -17,9 +17,9 @@ export default function IndexScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View>
-        <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 10, left: -170 }}>
-          <Text style={{ color: "#FFFFFF", fontSize: 20, marginBottom: 10 }}>
+      <View style={styles.botaoX}>
+        <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 60, left: 100 }}>
+          <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600", position: "absolute", top: -55, left: -76 }}>
             x
           </Text>
         </Pressable>
@@ -95,5 +95,14 @@ const styles = StyleSheet.create({
     color: "#111",
     fontSize: 18,
     fontWeight: "600",
+  },
+  botaoX: {
+   backgroundColor: "#757575",
+   paddingHorizontal: 28,
+   paddingVertical: 16,
+   position: "absolute",
+   top: 60,
+   left: 100,
+   borderRadius: 24,
   },
 });

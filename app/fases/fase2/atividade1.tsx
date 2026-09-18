@@ -19,7 +19,7 @@ export default function ModalVerbActivityScreen() {
       nextRoute="/fases/fase2/atividade2"
       wrongRoute="/fases/fase2/atividade2"
       // Progresso da barra superior (0.0 a 1.0)
-      progress={0.25}
+      progress={0.2}
     />
   );
 }
