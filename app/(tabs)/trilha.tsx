@@ -67,6 +67,8 @@ async function carregarXP() {
     console.log("Erro ao carregar XP:", error);
   }
 }
+
+
   return (
     <ScrollView
       style={styles.container}
@@ -192,4 +194,5 @@ bloqueio: {
 cadeado: {
   fontSize: 35,
 },
+
 });
