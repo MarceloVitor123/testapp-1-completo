@@ -125,18 +125,48 @@ export default function QuizActivity({
 // =========================
 // TOCAR ÁUDIO
 // =========================
+
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
   const playAudio = async (audioFile: any) => {
   if (!audioFile) return;
 
-  const { sound } = await Audio.Sound.createAsync(audioFile);
+  // Se já existe um áudio tocando, não faz nada
+  if (audioPlaying) return;
 
-  await sound.playAsync();
+  try {
+    // Bloqueia novos cliques
+    setAudioPlaying(true);
 
-  sound.setOnPlaybackStatusUpdate((status) => {
-    if (status.isLoaded && status.didJustFinish) {
-      sound.unloadAsync();
-    }
-  });
+    const { sound } =
+      await Audio.Sound.createAsync(audioFile);
+
+    // Detecta quando o áudio terminar
+    sound.setOnPlaybackStatusUpdate((status) => {
+      if (
+        status.isLoaded &&
+        status.didJustFinish
+      ) {
+        // Libera o botão novamente
+        setAudioPlaying(false);
+
+        // Libera o áudio da memória
+        sound.unloadAsync();
+      }
+    });
+
+    // Começa a reprodução
+    await sound.playAsync();
+
+  } catch (error) {
+    console.log(
+      "Erro ao reproduzir áudio:",
+      error
+    );
+
+    // Se der erro, libera o botão
+    setAudioPlaying(false);
+  }
 };
 
   // =========================
@@ -251,6 +281,19 @@ export default function QuizActivity({
                 </Text>
               </Pressable>
             )}
+
+            {/* Áudio secundário */}
+            <View style={styles.audioButton2}>
+            {showAudio && (
+            <Pressable
+                onPress={() => playAudio(subAudio)}
+              >
+                <Text style={styles.audioIcon}>
+                  🔊
+                </Text>
+                </Pressable>
+            )}
+            </View>
 
           </View>
 
@@ -598,6 +641,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  audioButton2: {
+    position: "absolute",
+    left: -18,
+    top: "131%",
+    marginTop: -18,
+
+    width: 36,
+    height: 36,
+
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   audioIcon: {
     fontSize: 25,
@@ -618,6 +673,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
 
     marginBottom: 20,
+    right: -35
+  
   },
 
   // --------------------------------------
@@ -642,7 +699,7 @@ const styles = StyleSheet.create({
   },
 
   optionButton: {
-    width: 120,
+    width: 220,
     height: 40,
 
     backgroundColor: "#D9D9D9",
