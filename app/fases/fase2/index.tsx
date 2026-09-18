@@ -1,6 +1,6 @@
-import React from "react";
-import { ScrollView, View, Text, StyleSheet,Image, Pressable } from "react-native";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
 
 export default function IndexScreen() {
@@ -10,7 +10,7 @@ export default function IndexScreen() {
 
   const handleStart = () => {
   resetWorld();
-  setCurrentWorld(1);
+  setCurrentWorld(2);
   setWorldStartTime(Date.now());
   router.push("/fases/fase2/atividade1");
 };
