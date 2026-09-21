@@ -4,16 +4,17 @@ import {
   ActivityIndicator,
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View
 } from "react-native";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as ImagePicker from "expo-image-picker";
+import { useRouter } from "expo-router";
 import { Profile } from "../../models/Profile";
 import { deleteProfile, loadProfile } from "../../services/ProfileService";
-import { useRouter } from "expo-router";
-import * as ImagePicker from "expo-image-picker";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
@@ -70,7 +71,7 @@ export default function ProfileScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
 
       <Image
   source={
@@ -121,7 +122,7 @@ export default function ProfileScreen() {
          
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
