@@ -1,6 +1,6 @@
-import { useRouter } from "expo-router";
 import React from "react";
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, View, Text, StyleSheet,Image, Pressable } from "react-native";
+import { useRouter } from "expo-router";
 import { useWorld } from "../../../context/WorldContext";
 
 export default function IndexScreen() {
@@ -10,16 +10,16 @@ export default function IndexScreen() {
 
   const handleStart = () => {
   resetWorld();
-  setCurrentWorld(2);
+  setCurrentWorld(1);
   setWorldStartTime(Date.now());
   router.push("/fases/fase2/atividade1");
 };
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View>
-        <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 10, left: -170 }}>
-          <Text style={{ color: "#FFFFFF", fontSize: 20, marginBottom: 10 }}>
+      <View style={styles.botaoX}>
+        <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 60, left: 100 }}>
+          <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600", position: "absolute", top: -55, left: -76 }}>
             x
           </Text>
         </Pressable>
@@ -29,7 +29,7 @@ export default function IndexScreen() {
      style={{ width: 400, height: 200, marginBottom: 0 }}>
       </Image>
       </View>
-      <Text style={styles.title}>ATIVIDADE 1</Text>
+      <Text style={styles.title}>ATIVIDADE 2</Text>
       <Text style={styles.subtitle}>
         VOGAIS E CONSOANTES
       </Text>
@@ -95,5 +95,14 @@ const styles = StyleSheet.create({
     color: "#111",
     fontSize: 18,
     fontWeight: "600",
+  },
+  botaoX: {
+   backgroundColor: "#757575",
+   paddingHorizontal: 28,
+   paddingVertical: 16,
+   position: "absolute",
+   top: 60,
+   left: 100,
+   borderRadius: 24,
   },
 });

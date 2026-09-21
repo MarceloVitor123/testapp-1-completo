@@ -1,9 +1,21 @@
 
 import { ScrollView ,View, Text, StyleSheet } from "react-native";
-import { useStreak } from "../../context/StreakContext";
+import { useStreak} from "../../context/StreakContext";
+
+
+const formatarData = (data: string | null) => {
+  if (!data) return "Nenhum registro";
+
+  const [ano, mes, dia] = data.split("-");
+  return `${dia}/${mes}/${ano}`;
+};
 
 export default function Progresso() {
   const { streak } = useStreak();
+
+  
+
+  var time = formatarData(streak.lastStudyDate)
 
   return (
     <View style={styles.container}>
@@ -40,9 +52,7 @@ export default function Progresso() {
 
       <View style={styles.infoCard}>
         <Text style={styles.infoTitle}>Último estudo</Text>
-        <Text style={styles.infoDate}>
-          {streak.lastStudyDate || "Ainda não estudou"}
-        </Text>
+        <Text style={styles.infoDate}>{time}</Text>
       </View>
     </ScrollView>
     </View>

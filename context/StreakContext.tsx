@@ -46,6 +46,8 @@ export function StreakProvider({
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayString = yesterday.toISOString().split("T")[0];
 
+   
+
     // Se estudou ontem, continua a ofensiva
     const newStreak =
       prev.lastStudyDate === yesterdayString
