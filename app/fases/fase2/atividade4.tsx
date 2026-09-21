@@ -14,7 +14,7 @@ export default function Atividade4Screen() {
             correctAnswer="bolo"
             nextRoute="/fases/fase2/atividade5"
             wrongRoute="/fases/fase2/atividade5"
-            progress={0.2}
+            progress={0.6}
             />
     );
 }

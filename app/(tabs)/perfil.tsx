@@ -71,7 +71,10 @@ export default function ProfileScreen() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}
+    
+    showsVerticalScrollIndicator={false}
+    >
 
       <Image
   source={
@@ -189,5 +192,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     marginBottom: 15,
+  },
+  content: {
+    padding: 80,
+    gap: 0,
   },
 });
