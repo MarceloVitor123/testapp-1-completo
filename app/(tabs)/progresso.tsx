@@ -1,5 +1,5 @@
 
-import { View, Text, StyleSheet } from "react-native";
+import { ScrollView ,View, Text, StyleSheet } from "react-native";
 import { useStreak } from "../../context/StreakContext";
 
 export default function Progresso() {
@@ -7,6 +7,9 @@ export default function Progresso() {
 
   return (
     <View style={styles.container}>
+      <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={styles.content}>
       <Text style={styles.titulo}>Seu progresso</Text>
 
       <View style={styles.streakCard}>
@@ -41,6 +44,7 @@ export default function Progresso() {
           {streak.lastStudyDate || "Ainda não estudou"}
         </Text>
       </View>
+    </ScrollView>
     </View>
   );
 }
@@ -162,5 +166,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "800",
     color: "#080a0f",
+  },
+  content: {
+    padding: 80,
+    gap: 0,
   },
 });
