@@ -1,6 +1,6 @@
-import React from "react";
-import { ScrollView, View, Text, StyleSheet,Image, Pressable } from "react-native";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
 
 export default function IndexScreen() {
@@ -34,21 +34,44 @@ export default function IndexScreen() {
         VOGAIS E CONSOANTES
       </Text>
       <Text style={styles.subtitle}> 
+   <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
+    VOGAIS E CONSOANTES.</Text>
       </Text>
-      <Text style={styles.subtitle}>
-        Todas as palavras são formadas por letras. Essas letras podem ser divididas em dois grupos: vogais e consoantes.
+      <Text>
+  {/* Tópico 1 */}
+  <Text style={styles.titulo}>1. VOGAIS</Text>
+  {"\n\n"}
 
-As vogais são as letras A, E, I, O e U. Elas podem ser pronunciadas sozinhas, sem a ajuda de outras letras.
+  <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U. 
+      ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. </Text>
+  <Text style={styles.subtitulo}>EXEMPLO:</Text>
+  {"\n\n"}
+  <Text style={styles.subtitulo}> - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".</Text>
 
-Já as consoantes são todas as outras letras do alfabeto. Na maioria das vezes, elas precisam estar junto de uma vogal para formar sílabas e palavras.
+  {"\n\n"}
 
-Exemplos:
+  {/* Tópico 2 */}
+  <Text style={styles.titulo}>2. CONSOANTES</Text>
+  {"\n\n"}
+  <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
+    {"\n"} 
+    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
+  <Text style={styles.subtitulo}>EXEMPLO:</Text>
+  {"\n"}
+  {"\n"}
+  <Text style={styles.subtitulo}> -NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L"</Text>
 
-Na palavra CASA, as vogais são A e A, e as consoantes são C e S.
-Na palavra BOLA, as vogais são O e A, e as consoantes são B e L.
+  {"\n\n"}
 
-Aprender a identificar vogais e consoantes é um passo importante para começar a ler e escrever. Agora é a sua vez de praticar! 🚀
-      </Text>
+  {/* Tópico 3 */}
+  <Text style={styles.titulo}>3.VAMOS PRATICAR!</Text>
+  {"\n"}
+  <Text style={styles.subtitulo}>APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É 
+  UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
+
+  {"\n\n"}
+  <Text style={styles.subtitulo}>AGORA É A SUA VEZ DE PRATICAR!</Text>
+</Text>
 
       <Pressable
         onPress={handleStart}
@@ -74,14 +97,14 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
   },
   title: {
-    color: "#fff",
+    color: "#35c0f7",
     fontSize: 34,
     fontWeight: "700",
     marginBottom: 12,
   },
   subtitle: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
     marginBottom: 32,
   },
@@ -92,17 +115,29 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   buttonText: {
-    color: "#111",
+    color: "#0e0c0c",
     fontSize: 18,
     fontWeight: "600",
   },
   botaoX: {
-   backgroundColor: "#757575",
+   backgroundColor: "#fffdfdee",
    paddingHorizontal: 28,
    paddingVertical: 16,
    position: "absolute",
    top: 60,
    left: 100,
    borderRadius: 24,
+
+  },
+   titulo: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#0ec0ec"
+  },
+
+  subtitulo: {
+  fontWeight: "bold",
+  fontSize: 17,
+  color: "#fdfdfd"
   },
 });
