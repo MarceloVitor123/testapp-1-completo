@@ -17,7 +17,7 @@ export default function IndexScreen() {
 
   const handleStart = () => {
     resetWorld();
-    setCurrentWorld(1);
+    setCurrentWorld(2);
     setWorldStartTime(Date.now());
     router.push("/fases/fase2/atividade1");
   };
@@ -53,16 +53,15 @@ export default function IndexScreen() {
       <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
       <Text style={styles.subtitle}></Text>
       <Text style={styles.subtitle}>
-        Todas as palavras são formadas por letras. Essas letras podem ser
-        divididas em dois grupos: vogais e consoantes. As vogais são as letras
-        A, E, I, O e U. Elas podem ser pronunciadas sozinhas, sem a ajuda de
-        outras letras. Já as consoantes são todas as outras letras do alfabeto.
-        Na maioria das vezes, elas precisam estar junto de uma vogal para formar
-        sílabas e palavras. Exemplos: Na palavra CASA, as vogais são A e A, e as
-        consoantes são C e S. Na palavra BOLA, as vogais são O e A, e as
-        consoantes são B e L. Aprender a identificar vogais e consoantes é um
-        passo importante para começar a ler e escrever. Agora é a sua vez de
-        praticar! 🚀
+        Todas as palavras são formadas por partes menores chamadas sílabas. 
+        As sílabas são grupos de letras que pronunciamos juntos em uma palavra. 
+        Cada palavra pode ter uma ou mais sílabas. 
+        Por exemplo: a palavra CASA pode ser dividida em CA e SA. 
+        A palavra BOLA pode ser dividida em BO e LA. 
+        Já a palavra PÉ possui apenas uma sílaba. 
+        Aprender a identificar e separar as sílabas é um passo importante para começar a ler e escrever. 
+        Agora é a sua vez de praticar! 🚀
+
       </Text>
 
       <Pressable onPress={handleStart} style={styles.button}>
