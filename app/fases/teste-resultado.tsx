@@ -52,6 +52,7 @@ export default function TesteResultadoScreen() {
           accuracy: accuracyPercent,
           time: totalTimeSeconds,
           completed: true,
+          
         }
         
       );

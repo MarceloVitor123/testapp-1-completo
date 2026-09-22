@@ -748,4 +748,4 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "500",
   },
-});
+}); 
