@@ -1,22 +1,22 @@
 import QuizActivity from "@/components/templates/HQActivity";
 
 export default function Atividade5Screen() {
-    return (
+  return (
     <QuizActivity
-        mode="text"
-        question="Jéssica ama ler livros. Nesse mês, ela já leu 5!"
-        subQuestion="A Jéssica: "
-        options={[
-            {label: "Odeia livros", value: "Odeia livros"},
-            {label: "Gosta de literatura", value: "Gosta de literatura"},
-            {label: "Não lê muito", value: "Nao le muito"},
-        ]}
-        correctAnswer="Gosta de literatura"
-        nextRoute="/fases/teste-resultado"
-        wrongRoute="/fases/teste-resultado"
-        audio={require("@/components/audios/A_Jessica.mp3")}
-        subAudio={require("@/components/audios/A_Jessica_1.mp3")}
-        progress={0.8}
+      mode="text"
+      question="JÉSSICA AMA LER LIVROS. NESSE MÊS, ELA JÁ LEU 5 !"
+      subQuestion="A JÉSSICA: "
+      options={[
+        { label: "ODEIA LIVROS", value: "Odeia livros" },
+        { label: "GOSTA DE LITERATURA", value: "Gosta de literatura" },
+        { label: "NÃO LÊ MUITO", value: "Nao le muito" },
+      ]}
+      correctAnswer="Gosta de literatura"
+      nextRoute="/fases/teste-resultado"
+      wrongRoute="/fases/teste-resultado"
+      audio={require("@/components/audios/A_Jessica.mp3")}
+      subAudio={require("@/components/audios/A_Jessica_1.mp3")}
+      progress={0.8}
     />
-    );
+  );
 }

@@ -5,7 +5,7 @@ export default function Atividade1Screen() {
   return (
    <QuizActivity
   mode="text"
-  question="identifique qual é vogal"
+  question="IDENIFIQUE QUA É A VOGAL"
   options={[
     { label: "A", value: "a" },
     { label: "B", value: "b" },

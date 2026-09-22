@@ -4,7 +4,7 @@ import MarkActivity from "../../../components/templates/MarkActivity";
 export default function Atividade2Screen() {
   return (
    <MarkActivity
-  question="marque apenas as vogais"
+  question="MARQUE SOMENTE AS VOGAIS"
   options={[
     { label: "U", value: "u" },
     { label: "E", value: "e" },
