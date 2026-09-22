@@ -1,7 +1,7 @@
-import { ScrollView, View, Pressable, Image, StyleSheet, Text } from "react-native";
-import { router, Href } from "expo-router";
-import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Href, router } from "expo-router";
+import { useEffect, useState } from "react";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 type Fase = {
   id: number;
@@ -42,7 +42,7 @@ const fases: Fase[] = [
   },
   {
 	id: 5,
-	rota: "/fases/fase4",
+	rota: "/fases/fase5",
 	lado: "center",
   requiredXP: 80,
   }
