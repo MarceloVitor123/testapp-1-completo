@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     color: "#080a0f",
   },
   content: {
-    padding: 80,
+    padding: 0,
     gap: 0,
   },
 });

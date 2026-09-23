@@ -10,7 +10,7 @@ export default function MesesActivityScreen() {
       correctAnswer=""
       nextRoute="/fases/fase3/atividade2"
       wrongRoute="/fases/fase3/atividade2"
-      progress={1.0}
+      progress={0}
       writingItems={[
         {
           id: "janeiro",
