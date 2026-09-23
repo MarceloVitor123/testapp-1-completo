@@ -29,6 +29,7 @@ type WritingItem = {
 
   // Exemplo: "JANEIRO"
   answer: string;
+    options?: string[];
 };
 
 type QuizActivityProps = {
