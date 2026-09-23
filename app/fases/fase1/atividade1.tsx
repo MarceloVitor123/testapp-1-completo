@@ -16,6 +16,6 @@ export default function Atividade1Screen() {
   nextRoute="/fases/fase1/atividade2"
   wrongRoute="/fases/fase1/atividade2"
   audio={require("@/components/audios/Identifique_a_vogal.mp3")}
-/>
+   />
   );
 }
