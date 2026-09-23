@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   buttonText: {
-    color: "#0e0c0c",
+    color: "#0c0c0c",
     fontSize: 18,
     fontWeight: "600",
   },
@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
   subtitulo: {
   fontWeight: "bold",
   fontSize: 17,
-  color: "#fdfdfd"
+  color: "rgb(250, 252, 244)"
   },
 });
