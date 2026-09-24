@@ -16,6 +16,7 @@ export default function Atividade2Screen() {
   correctAnswers={["a","k"]}
   nextRoute="/fases/fase2/atividade2"
   wrongRoute="/fases/fase2/atividade2"
+  audio={require("@/components/audios/Silabas_casa.mp3")}
   progress={0}
 />
   );

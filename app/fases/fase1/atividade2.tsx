@@ -15,6 +15,7 @@ export default function Atividade2Screen() {
   correctAnswer="b"
   nextRoute="/fases/fase1/atividade3"
   wrongRoute="/fases/fase1/atividade3"
+  audio={require("@/components/audios/Identifique_a_cons.mp3")}
   progress={0.2}
 />
   );

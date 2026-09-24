@@ -1,14 +1,14 @@
-import { useMemo, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { Audio } from "expo-av";
 import { useRouter, type Href } from "expo-router";
+import { useMemo, useState } from "react";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useWorld } from "../../context/WorldContext";
-import { Audio } from "expo-av"
 
 type Option = {
   label: string;
@@ -22,6 +22,7 @@ type MarkActivityProps = {
   nextRoute: string;
   wrongRoute: string;
   progress?: number;
+  audio?: any
 };
 
 export default function MarkActivity({
@@ -30,6 +31,7 @@ export default function MarkActivity({
   correctAnswers,
   nextRoute,
   wrongRoute,
+  audio,
   progress = 0,
 }: MarkActivityProps) {
   const router = useRouter();
@@ -118,7 +120,7 @@ const playAudio = async (audioFile: any) => {
           <Text style={styles.closeIcon}>×</Text>
         </Pressable>
 
-        <Pressable onPress={() => playAudio(Audio)}>
+        <Pressable onPress={() => playAudio(audio)}>
       <Text style={styles.audioIcon}>🔊</Text>
       </Pressable>
 
