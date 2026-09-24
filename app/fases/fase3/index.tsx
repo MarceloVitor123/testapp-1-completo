@@ -49,7 +49,7 @@ export default function IndexScreen() {
           style={{ width: 400, height: 200, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.title}>ATIVIDADE 2</Text>
+      <Text style={styles.title}>ATIVIDADE 3</Text>
       <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
       <Text style={styles.subtitle}></Text>
       <Text style={styles.subtitle}>

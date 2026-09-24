@@ -5,7 +5,7 @@ export default function Atividade1Screen() {
   return (
    <QuizActivity
   mode="text"
-  question='QUANTAS SILABAS TEM A PALAVRA "MAR"'
+  question='QUANTAS SÍLABAS TÊM A PALAVRA "MAR"'
   options={[
     { label: "1", value: "a" },
     { label: "2", value: "b" },

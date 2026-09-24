@@ -19,7 +19,7 @@ export default function IndexScreen() {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.botaoX}>
         <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 60, left: 100 }}>
-          <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "600", position: "absolute", top: -55, left: -76 }}>
+          <Text style={{ color: "#080808", fontSize: 40, fontWeight: "600", position: "absolute", top: -76, left: -82 }}>
             x
           </Text>
         </Pressable>
@@ -30,10 +30,11 @@ export default function IndexScreen() {
       </Image>
       </View>
       <Text style={styles.title}>ATIVIDADE 1</Text>
-      <Text style={styles.subtitle}>
+      <Text style={styles.subtitulo}>
         VOGAIS E CONSOANTES
       </Text>
       <Text style={styles.subtitle}> 
+        {"\n"}
    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
     VOGAIS E CONSOANTES.</Text>
       </Text>
@@ -41,7 +42,6 @@ export default function IndexScreen() {
   {/* Tópico 1 */}
   <Text style={styles.titulo}>1. VOGAIS</Text>
   {"\n\n"}
-
   <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U. 
       ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. </Text>
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
@@ -56,6 +56,7 @@ export default function IndexScreen() {
   <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
     {"\n"} 
     NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
+    {"\n\n"}
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
   {"\n"}
   {"\n"}
@@ -65,7 +66,7 @@ export default function IndexScreen() {
 
   {/* Tópico 3 */}
   <Text style={styles.titulo}>3.VAMOS PRATICAR!</Text>
-  {"\n"}
+  {"\n\n"}
   <Text style={styles.subtitulo}>APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É 
   UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
 
