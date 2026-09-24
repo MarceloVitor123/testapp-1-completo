@@ -31,12 +31,12 @@ export default function IndexScreen() {
         >
           <Text
             style={{
-              color: "#FFFFFF",
-              fontSize: 18,
+              color: "#030303",
+              fontSize: 40,
               fontWeight: "600",
               position: "absolute",
-              top: -55,
-              left: -76,
+              top: -76,
+              left: -82,
             }}
           >
             x
@@ -50,20 +50,44 @@ export default function IndexScreen() {
         ></Image>
       </View>
       <Text style={styles.title}>ATIVIDADE 3</Text>
-      <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
-      <Text style={styles.subtitle}></Text>
+        {"\n\n"}
+      <Text style={styles.subtitle}>SÍLABAS</Text>
+      
       <Text style={styles.subtitle}>
-        Todas as palavras são formadas por partes menores chamadas sílabas. 
-        As sílabas são grupos de letras que pronunciamos juntos em uma palavra. 
-        Cada palavra pode ter uma ou mais sílabas. 
-        Por exemplo: a palavra CASA pode ser dividida em CA e SA. 
-        A palavra BOLA pode ser dividida em BO e LA. 
-        Já a palavra PÉ possui apenas uma sílaba. 
-        Aprender a identificar e separar as sílabas é um passo importante para começar a ler e escrever. 
-        Agora é a sua vez de praticar! 🚀
+      <Text>
+  {/* Tópico 1 */}
+  <Text style={styles.titulo}>1. SÍLABAS</Text>
+  {"\n\n"}
+   <Text style={styles.subtitulo}>
+  NAS FASES 1 E 2, VOCÊ APRENDEU A RECONHECER LETRAS, SONS E SÍLABAS. AGORA, NA FASE 3, 
+  VAMOS USAR ESSES CONHECIMENTOS PARA DAR UM NOVO PASSO:
+  {"\n"}
+  COMEÇAR A ESCREVER PALAVRAS.
+  {"\n\n\n"}
+NESTA FASE, AS ATIVIDADES FICARÃO UM POUCO MAIS DESAFIADORAS. VOCÊ VAI PRATICAR 
+COMPLETANDO PALAVRAS E FRASES E, AOS POUCOS, APRENDERÁ A ESCREVER PALAVRAS SOZINHO.
+  {"\n\n"}
+</Text>
+  {/* Tópico 2 */}
+     <Text style={styles.subtitulo}>
+  O OBJETIVO É AUMENTAR O NÍVEL DE DIFICULDADE DE FORMA GRADUAL, UTILIZANDO O QUE VOCÊ JÁ 
+  APRENDEU PARA DESENVOLVER SUAS HABILIDADES DE LEITURA E ESCRITA.
+  {"\n\n"}
+APRENDER A IDENTIFICAR, SEPARAR E ESCREVER AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A 
+FORMAR PALAVRAS E FRASES.
+  {"\n"}
+</Text>
 
+  {"\n"}
+  {/* Tópico 3 */}
+  <Text style={styles.titulo2}>2. VAMOS PRATICAR !</Text>
+  {"\n\n"}
+    <Text style={styles.subtitulo}>
+
+AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA! 
+</Text>
+  </Text>
       </Text>
-
       <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
       </Pressable>
@@ -84,15 +108,17 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
   },
   title: {
-    color: "#fff",
+    color: "#0ec0ec",
     fontSize: 34,
     fontWeight: "700",
     marginBottom: 12,
   },
   subtitle: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "center",
+    fontWeight: "bold",
+
     marginBottom: 32,
   },
   button: {
@@ -115,4 +141,28 @@ const styles = StyleSheet.create({
     left: 100,
     borderRadius: 24,
   },
-});
+  titulo: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color : "#0ec0ec",
+    position: "absolute",
+    top: 70,
+    left: -600,
+  },
+  titulo2: {
+    fontSize: 25,
+    fontWeight: "bold",
+    color : "#0ec0ec",
+    position: "absolute",
+    top: 320,
+    left: -600,
+  },
+   subtitulo: {
+  fontWeight: "bold",
+  fontSize: 18,
+  color: "#fff",
+  top: -60,
+  left: 0,
+  marginBottom: 20,
+},
+})

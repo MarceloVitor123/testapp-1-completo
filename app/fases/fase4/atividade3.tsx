@@ -4,7 +4,7 @@ import ImageMatchActivity from "../../../components/templates/TESTE";
 export default function ModalVerbActivityScreen() {
   return (
     <ImageMatchActivity
-      question="Selecione o nome do item com a imagem."
+      question="SELECIONE O NOME DO ITÉM COM A IMAGEM:"
       // Imagem exibida no card à direita
       targetImage={require("../../../assets/images/óculos2.png")}
       // Lista de botões da coluna esquerda
