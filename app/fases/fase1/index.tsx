@@ -37,41 +37,58 @@ export default function IndexScreen() {
    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
     VOGAIS E CONSOANTES.</Text>
       </Text>
-      <Text>
+    <View style={{ width: "100%" }}>
+
   {/* Tópico 1 */}
   <Text style={styles.titulo}>1. VOGAIS</Text>
-  {"\n\n"}
 
-  <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U. 
-      ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. </Text>
+  <Text style={styles.subtitulo}>
+    AS VOGAIS SÃO AS LETRAS A, E, I, O, U.
+    ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS.
+  </Text>
+
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
-  {"\n\n"}
-  <Text style={styles.subtitulo}> - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".</Text>
+
+  <Text style={styles.subtitulo}>
+    - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".
+  </Text>
 
   {"\n\n"}
 
   {/* Tópico 2 */}
   <Text style={styles.titulo}>2. CONSOANTES</Text>
-  {"\n\n"}
-  <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
-    {"\n"} 
-    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
+
+  <Text style={styles.subtitulo}>
+    JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO,
+    EXCETO AS LETRAS "A, E, I, O, U".
+  </Text>
+
+  <Text style={styles.subtitulo}>
+    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL
+    PARA FORMAR SÍLABAS E PALAVRAS.
+  </Text>
+
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
-  {"\n"}
-  {"\n"}
-  <Text style={styles.subtitulo}> -NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L"</Text>
+
+  <Text style={styles.subtitulo}>
+    - NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L".
+  </Text>
 
   {"\n\n"}
 
   {/* Tópico 3 */}
-  <Text style={styles.titulo}>3.VAMOS PRATICAR!</Text>
-  {"\n"}
-  <Text style={styles.subtitulo}>APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É 
-  UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
+  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
 
-  {"\n\n"}
-  <Text style={styles.subtitulo}>AGORA É A SUA VEZ DE PRATICAR!</Text>
+  <Text style={styles.subtitulo}>
+    APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É UM PASSO IMPORTANTE
+    PARA COMEÇAR A LER E ESCREVER.
+  </Text>
+
+  <Text style={styles.subtitulo}>
+    AGORA É A SUA VEZ DE PRATICAR!
 </Text>
+
+</View>
 
       <Pressable
         onPress={handleStart}
