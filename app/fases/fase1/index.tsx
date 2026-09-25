@@ -86,7 +86,7 @@ export default function IndexScreen() {
 
   <Text style={styles.subtitulo}>
     AGORA É A SUA VEZ DE PRATICAR!
-</Text>
+  </Text>
 
 </View>
 
