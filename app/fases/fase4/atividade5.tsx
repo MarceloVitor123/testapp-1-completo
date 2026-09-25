@@ -10,6 +10,8 @@ export default function Atividade5Screen() {
         { label: "ODEIA LIVROS", value: "Odeia livros" },
         { label: "GOSTA DE LITERATURA", value: "Gosta de literatura" },
         { label: "NÃO LÊ MUITO", value: "Nao le muito" },
+        { label: "NÃO POSSUI LIVROS ", value: "Nao possui livros" },
+
       ]}
       correctAnswer="Gosta de literatura"
       nextRoute="/fases/teste-resultado"

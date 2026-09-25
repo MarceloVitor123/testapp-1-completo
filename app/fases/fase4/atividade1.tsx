@@ -9,7 +9,7 @@ export default function ModalVerbActivityScreen() {
       targetImage={require("@/assets/images/chinelo.jpeg")}
       // Lista de botões da coluna esquerda
       options={[
-        { label: "LÁPIS", value: "lapis" },
+        { label: "LÁPIS", value: "lápis" },
         { label: "MESA", value: "mesa" },
         { label: "CHINELO", value: "chinelo" },
         { label: "BANANA", value: "banana" },
