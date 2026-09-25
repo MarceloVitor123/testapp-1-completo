@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useWorld } from "../../context/WorldContext";
+import { Audio } from "expo-av";
 
 type QuizMode = "text" | "image" | "writing" | "writingMultiple";
 
@@ -28,6 +29,7 @@ type WritingItem = {
 
   // Exemplo: "JANEIRO"
   answer: string;
+    options?: string[];
 };
 
 type QuizActivityProps = {
@@ -38,6 +40,8 @@ type QuizActivityProps = {
   questionImage?: any;
 
   options?: Option[];
+
+  audio?:any; //Utilizamos o "?" porque nem toda atividade terá áudio 
 
   // Usado em text, image e writing
   correctAnswer: string;
@@ -58,6 +62,7 @@ export default function QuizActivity({
   question,
   questionImage,
   options = [],
+  audio,
   correctAnswer,
   nextRoute,
   wrongRoute,
@@ -94,6 +99,48 @@ export default function QuizActivity({
 
   // Guarda se a atividade inteira está correta
   const [isCorrect, setIsCorrect] = useState(false);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
+  const playAudio = async (audioFile: any) => {
+    if (!audioFile) return;
+  
+    // Se já existe um áudio tocando, não faz nada
+    if (audioPlaying) return;
+  
+    try {
+      // Bloqueia novos cliques
+      setAudioPlaying(true);
+  
+      const { sound } =
+        await Audio.Sound.createAsync(audioFile);
+  
+      // Detecta quando o áudio terminar
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (
+          status.isLoaded &&
+          status.didJustFinish
+        ) {
+          // Libera o botão novamente
+          setAudioPlaying(false);
+  
+          // Libera o áudio da memória
+          sound.unloadAsync();
+        }
+      });
+  
+      // Começa a reprodução
+      await sound.playAsync();
+  
+    } catch (error) {
+      console.log(
+        "Erro ao reproduzir áudio:",
+        error
+      );
+  
+      // Se der erro, libera o botão
+      setAudioPlaying(false);
+    }
+  };
 
   /*
    * Remove acentos e transforma tudo em minúsculo.
@@ -369,6 +416,7 @@ export default function QuizActivity({
     <SafeAreaView style={styles.container}>
       
       <View style={styles.topBar}>
+       
         <Pressable onPress={() => router.back()} hitSlop={12}>
           <Text style={styles.closeIcon}>×</Text>
         </Pressable>
@@ -384,6 +432,12 @@ export default function QuizActivity({
           />
         </View>
       </View>
+      <View style={styles.audioposition}>
+       <Pressable onPress={() => playAudio(audio)}>
+          <Text style={styles.audioIcon}>🔊
+          </Text>
+          </Pressable>
+          </View>
 
       <View style={styles.content}>
         {renderQuestion()}
@@ -748,4 +802,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "500",
   },
+
+  audioIcon: {
+    fontSize: 25,
+  },
+  audioposition: {
+    marginTop: 14,
+    width: 21,
+    height: 41,
+  }
 }); 

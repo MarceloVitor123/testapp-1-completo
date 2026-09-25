@@ -1,12 +1,12 @@
 import { useRouter } from "expo-router";
 import React from "react";
 import {
-    Image,
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
 
@@ -31,12 +31,12 @@ export default function IndexScreen() {
         >
           <Text
             style={{
-              color: "#FFFFFF",
-              fontSize: 18,
+              color: "#080101",
+              fontSize: 40,
               fontWeight: "600",
               position: "absolute",
-              top: -55,
-              left: -76,
+              top: -76,
+              left: -82,
             }}
           >
             x
@@ -49,20 +49,53 @@ export default function IndexScreen() {
           style={{ width: 400, height: 200, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.title}>ATIVIDADE 2</Text>
-      <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
+      <Text style={styles.titulo}>ATIVIDADE 2</Text>
+      {"\n\n"}
+      <Text style={styles.subtitulo}>VOGAIS E CONSOANTES</Text>
       <Text style={styles.subtitle}></Text>
-      <Text style={styles.subtitle}>
-        Todas as palavras são formadas por partes menores chamadas sílabas. 
-        As sílabas são grupos de letras que pronunciamos juntos em uma palavra. 
-        Cada palavra pode ter uma ou mais sílabas. 
-        Por exemplo: a palavra CASA pode ser dividida em CA e SA. 
-        A palavra BOLA pode ser dividida em BO e LA. 
-        Já a palavra PÉ possui apenas uma sílaba. 
-        Aprender a identificar e separar as sílabas é um passo importante para começar a ler e escrever. 
-        Agora é a sua vez de praticar! 🚀
+      
+<Text>
+  {/* Tópico 1 */}
+  <Text style={styles.titulo}>1. O QUE SÃO SÍLABAS?</Text>
+  {"\n\n"}
+<text style={styles.subtitulo}>
+  TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.
+</text>
+  {"\n\n"}
+<text style={styles.subtitulo}>
+  AS SÍLABAS SÃO GRUPOS DE LETRAS QUE PRONUNCIAMOS JUNTOS EM UMA PALAVRA.
+</text>
+  {"\n\n"}
 
-      </Text>
+  {/* Tópico 2 */}
+  <Text style={styles.titulo}>2. EXEMPLOS DE SÍLABAS</Text>
+  {"\n\n"}
+<text style={styles.subtitulo}>
+  CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.
+</text>,
+  {"\n\n"}
+<text style={styles.subtitulo}>
+POR EXEMPLO:
+  {"\n\n"}
+  2.1- A PALAVRA CASA PODE SER DIVIDIDA EM CA E SA.
+  {"\n"}
+  2.2- A PALAVRA BOLA PODE SER DIVIDIDA EM BO E LA.
+  {"\n"}
+  2.3- JÁ A PALAVRA PÉ POSSUI APENAS UMA SÍLABA.
+</text>,
+  {"\n\n"}
+
+  {/* Tópico 3 */}
+  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
+  {"\n\n"}
+<text style={styles.subtitulo}>
+  APRENDER A IDENTIFICAR E SEPARAR AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.
+
+  {"\n\n"}
+
+  AGORA É A SUA VEZ DE PRATICAR! 
+  </text>
+  </Text>
 
       <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
@@ -90,7 +123,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   subtitle: {
-    color: "#fff",
+    color: "#ffffff",
     fontSize: 18,
     textAlign: "center",
     marginBottom: 32,
@@ -114,5 +147,15 @@ const styles = StyleSheet.create({
     top: 60,
     left: 100,
     borderRadius: 24,
+  },
+  titulo: { 
+  fontSize: 28, 
+  fontWeight: "bold",
+  color: "#0ec0ec",
+  },
+  subtitulo: {
+  fontWeight: "bold",
+  fontSize: 17,
+  color: "rgb(250, 252, 244)"
   },
 });
