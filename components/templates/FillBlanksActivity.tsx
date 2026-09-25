@@ -3,6 +3,7 @@ import { useMemo, useState } from "react"
 import { useWorld } from "@/context/WorldContext"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native"
+import { Audio } from "expo-av"
 
 type Blank = {
   before: string; //frases antes do espaço
@@ -63,6 +64,28 @@ export default function DigiteActivity({
   router.push(href);
 };
 
+const [audioPlaying, setAudioPlaying] = useState(false);
+
+const playAudio = async (audioFile: any) => {
+  if (!audioFile) return;           // sem áudio, não faz nada
+  if (audioPlaying) return;         // já tá tocando, ignora clique duplo
+
+  try {
+    setAudioPlaying(true);
+    const { sound } = await Audio.Sound.createAsync(audioFile); // carrega o arquivo
+    sound.setOnPlaybackStatusUpdate((status) => {
+      if (status.isLoaded && status.didJustFinish) {
+        setAudioPlaying(false);
+        sound.unloadAsync();        // libera da memória quando termina
+      }
+    });
+    await sound.playAsync();        // toca
+  } catch (error) {
+    console.log("Erro ao reproduzir áudio:", error);
+    setAudioPlaying(false);
+  }
+};
+
 return (
   <SafeAreaView style={styles.container}>
 
@@ -84,6 +107,9 @@ return (
         />
       </View>
     </View>
+<Text style={styles.question}>
+  {title}
+</Text>
 
     {/* Conteúdo da atividade */}
     <View style={styles.content}>
@@ -355,4 +381,14 @@ inputInline: {
   paddingHorizontal: 5,
   marginHorizontal: 5,
 },
+
+ audioIcon: {
+    fontSize: 25,
+  },
+
+  audioposition: {
+    marginTop: 14,
+    width: 21,
+    height: 41,
+  },
 });

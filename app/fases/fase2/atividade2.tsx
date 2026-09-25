@@ -16,6 +16,7 @@ export default function Atividade2Screen() {
   correctAnswers={["a","u"]}
   nextRoute="/fases/fase2/atividade3"
   wrongRoute="/fases/fase2/atividade3"
+  audio={require("@/components/audios/Silabas_gato.mp3")}
   progress={0.2}
 />
   );

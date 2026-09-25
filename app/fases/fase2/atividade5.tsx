@@ -15,7 +15,8 @@ export default function Atividade1Screen() {
   correctAnswer="a"
   nextRoute="/fases/teste-resultado"
   wrongRoute="/fases/teste-resultado"
+  audio={require("@/components/audios/Silabas_mar.mp3")}
   progress={1.0}
 />
-  );
+  ); 
 }

@@ -5,7 +5,7 @@ export default function MesesActivityScreen() {
   return (
     <QuizActivity
       mode="writingMultiple"
-      question="COMPLETE OS NOMES DOS MESES ABAIXO :"
+      question="COMPLETE OS NOMES DOS MESES ABAIXO COM CONSOANTES E VOGAIS :"
       correctAnswer=""
       nextRoute="/fases/fase3/atividade3"
       wrongRoute="/fases/fase3/atividade3"

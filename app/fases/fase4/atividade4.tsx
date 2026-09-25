@@ -4,7 +4,7 @@ import React from "react";
 export default function Atividade4Screen() {
     return (
         <ImageMatchActivity
-            question="QUAL É O NOME DESSE DOCE?"
+            question="QUAL É NOME DESSE DOCE??"
             targetImage={require("../../../assets/images/Bolo.jpeg")}
             options={[
                 {label: "BALA", value: "bala"},

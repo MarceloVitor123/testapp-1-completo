@@ -1,12 +1,13 @@
-import { useMemo, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { Audio } from "expo-av";
 import { useRouter, type Href } from "expo-router";
+import { useMemo, useState } from "react";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useWorld } from "../../context/WorldContext";
 
 type Option = {
@@ -21,6 +22,7 @@ type MarkActivityProps = {
   nextRoute: string;
   wrongRoute: string;
   progress?: number;
+  audio?: any
 };
 
 export default function MarkActivity({
@@ -29,6 +31,7 @@ export default function MarkActivity({
   correctAnswers,
   nextRoute,
   wrongRoute,
+  audio,
   progress = 0,
 }: MarkActivityProps) {
   const router = useRouter();
@@ -88,12 +91,38 @@ export default function MarkActivity({
     router.push(href);
   };
 
+  const [audioPlaying, setAudioPlaying] = useState(false);
+
+const playAudio = async (audioFile: any) => {
+  if (!audioFile) return;           // sem áudio, não faz nada
+  if (audioPlaying) return;         // já tá tocando, ignora clique duplo
+
+  try {
+    setAudioPlaying(true);
+    const { sound } = await Audio.Sound.createAsync(audioFile); // carrega o arquivo
+    sound.setOnPlaybackStatusUpdate((status) => {
+      if (status.isLoaded && status.didJustFinish) {
+        setAudioPlaying(false);
+        sound.unloadAsync();        // libera da memória quando termina
+      }
+    });
+    await sound.playAsync();        // toca
+  } catch (error) {
+    console.log("Erro ao reproduzir áudio:", error);
+    setAudioPlaying(false);
+  }
+};
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topBar}>
         <Pressable onPress={() => router.back()} hitSlop={12}>
           <Text style={styles.closeIcon}>×</Text>
         </Pressable>
+
+        <Pressable onPress={() => playAudio(audio)}>
+      <Text style={styles.audioIcon}>🔊</Text>
+      </Pressable>
 
         <View style={styles.progressBar}>
           <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
@@ -275,5 +304,15 @@ const styles = StyleSheet.create({
     color: "#111111",
     fontSize: 22,
     fontWeight: "500",
+  },
+
+  audioIcon: {
+    fontSize: 25,
+  },
+
+  audioposition: {
+    marginTop: 14,
+    width: 21,
+    height: 41,
   },
 });
