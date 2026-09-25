@@ -16,7 +16,7 @@ export default function Atividade2Screen() {
   correctAnswers={["a","u","k"]}
   nextRoute="/fases/fase2/atividade5"
   wrongRoute="/fases/fase2/atividade5"
-  progress={0.6}
+  progress={0.7}
 />
   );
 }

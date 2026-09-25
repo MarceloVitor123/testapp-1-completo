@@ -53,9 +53,9 @@ export default function IndexScreen() {
   {/* Tópico 2 */}
   <Text style={styles.titulo}>2. CONSOANTES</Text>
   {"\n\n"}
-  <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
+  <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO, EXCETO AS LETRAS "A,E,I,O,U".
     {"\n"} 
-    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
+    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SÍLABAS E PALAVRAS.</Text>
     {"\n\n"}
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
   {"\n"}

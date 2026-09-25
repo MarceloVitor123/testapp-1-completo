@@ -4,7 +4,7 @@ import MarkActivity from "../../../components/templates/MarkActivity";
 export default function Atividade2Screen() {
   return (
    <MarkActivity
-  question='QUAIS SÍLABAS FORMAM A PALAVRA "PANELA"'
+  question='QUAIS SÍLABAS FORMAM A PALAVRA "PANELA" ?'
   options={[
     { label: "PA", value: "u" },
     { label: "NE", value: "e" },

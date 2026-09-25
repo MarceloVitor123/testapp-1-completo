@@ -4,15 +4,15 @@ import ImageMatchActivity from "../../../components/templates/TESTE";
 export default function ModalVerbActivityScreen() {
   return (
     <ImageMatchActivity
-      question="SELECIONE O NOME DO ITÉM COM A IMAGEM:"
+      question="SELECIONE O NOME DO ITEM COM A IMAGEM:"
       // Imagem exibida no card à direita
       targetImage={require("../../../assets/images/óculos2.png")}
       // Lista de botões da coluna esquerda
       options={[
         { label: "CARREGADOR", value: "carregador" },
-        { label: "ÓCULOS", value: "oculos" },
+        { label: "ÓCULOS", value: "óculos" },
         { label: "CARAMELO", value: "caramelo" },
-        { label: "MAÇA", value: "maça" },
+        { label: "MAÇÃ", value: "maçã" },
       ]}
       correctAnswer="oculos"
       // Rotas de destino (acerto ou erro)

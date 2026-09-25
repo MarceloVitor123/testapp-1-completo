@@ -39,7 +39,7 @@ export default function Layout() {
       <Tabs.Screen
         name="trilha"
         options={{
-          title: "fases",
+          title: "FRASES",
           tabBarIcon: () => (
   <Image
     source={require("../../assets/icons/home.png")}
@@ -56,7 +56,7 @@ export default function Layout() {
       <Tabs.Screen
         name="progresso"
         options={{
-          title: "Progresso",
+          title: "PROGRESSO",
           tabBarIcon: ({ color, size }) => (
             <Image
     source={require("../../assets/icons/fire.png")}
@@ -73,7 +73,7 @@ export default function Layout() {
       <Tabs.Screen
         name="perfil"
         options={{
-          title: "Perfil",
+          title: "PERFIL",
           tabBarIcon: ({ color, size }) => (
             <Image
     source={require("../../assets/icons/user.png")}

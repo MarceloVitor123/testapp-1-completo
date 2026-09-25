@@ -96,19 +96,19 @@ export default function ProfileScreen() {
         <Text style={styles.info}>⭐ XP: {profile.xp}</Text>
 
         <Text style={styles.info}>
-          🏆 Nível: {profile.level}
+          🏆 NÍVEL : {profile.level}
         </Text>
 
         <Text style={styles.info}>
-          🌎 Mundo Atual: {profile.currentWorld}
+          🌎 MUNDO ATUAL : {profile.currentWorld}
         </Text>
 
         <Text style={styles.info}>
-          🎯 Precisão: {profile.accuracy.toFixed(1)}%
+          🎯 PRECISÃO : {profile.accuracy.toFixed(1)}%
         </Text>
 
         <Text style={styles.info}>
-          ⏱ Tempo estudado: {profile.studyTime}s
+          ⏱ TEMPO ESTUDADO : {profile.studyTime}s
         </Text>
         <View>
         <Pressable
@@ -119,8 +119,7 @@ export default function ProfileScreen() {
           }}
         >
           <Text style={styles.delete}>
-           deletar perfil
-          </Text>
+          DELETAR PERFIL </Text>
         </Pressable>
          
         </View>

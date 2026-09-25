@@ -22,14 +22,14 @@ export default function Progresso() {
       <ScrollView
       showsVerticalScrollIndicator={false}
       style={styles.content}>
-      <Text style={styles.titulo}>Seu progresso</Text>
+      <Text style={styles.titulo}>SEU PROGRESSO</Text>
 
       <View style={styles.streakCard}>
         <Text style={styles.fire}>🔥</Text>
         <Text style={styles.streakNumber}>
           {streak.currentStreak}
         </Text>
-        <Text style={styles.streakLabel}>dias de ofensiva</Text>
+        <Text style={styles.streakLabel}>DIAS DE OFENSIVA</Text>
       </View>
 
       <View style={styles.statsContainer}>
@@ -38,7 +38,7 @@ export default function Progresso() {
           <Text style={styles.statNumber}>
             {streak.bestStreak}
           </Text>
-          <Text style={styles.statLabel}>Maior ofensiva</Text>
+          <Text style={styles.statLabel}>MAIOR OFENSIVA</Text>
         </View>
 
         <View style={styles.statCard}>
@@ -46,12 +46,12 @@ export default function Progresso() {
           <Text style={styles.statNumber}>
             {streak.studyDays.length}
           </Text>
-          <Text style={styles.statLabel}>Dias estudados</Text>
+          <Text style={styles.statLabel}>DIAS ESTUDADOS</Text>
         </View>
       </View>
 
       <View style={styles.infoCard}>
-        <Text style={styles.infoTitle}>Último estudo</Text>
+        <Text style={styles.infoTitle}>ÚLTIMO ESTUDO </Text>
         <Text style={styles.infoDate}>{time}</Text>
       </View>
     </ScrollView>
