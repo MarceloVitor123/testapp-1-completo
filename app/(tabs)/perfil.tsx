@@ -71,8 +71,8 @@ export default function ProfileScreen() {
   }
 
   return (
+  
     <ScrollView contentContainerStyle={styles.container}
-    
     showsVerticalScrollIndicator={false}
     >
 
@@ -126,6 +126,7 @@ export default function ProfileScreen() {
         </View>
       </View>
     </ScrollView>
+    
   );
 }
 
@@ -138,12 +139,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#5d5d5d",
   },
 
-  container: {
-    flex: 1,
-    backgroundColor: "#5d5d5d",
-    alignItems: "center",
-    paddingTop: 70,
-  },
+ container: {
+  backgroundColor: "#5d5d5d",
+  alignItems: "center",
+  paddingTop: 70,
+  paddingBottom: 100,
+  width: "100%",
+},
+
 
   avatar: {
     width: 130,
@@ -193,8 +196,5 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 15,
   },
-  content: {
-    padding: 80,
-    gap: 0,
-  },
+  
 });

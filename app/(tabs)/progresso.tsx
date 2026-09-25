@@ -21,7 +21,7 @@ export default function Progresso() {
     <View style={styles.container}>
       <ScrollView
       showsVerticalScrollIndicator={false}
-      style={styles.content}>
+    contentContainerStyle={styles.container}>
       <Text style={styles.titulo}>Seu progresso</Text>
 
       <View style={styles.streakCard}>
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#5d5d5d",
     paddingHorizontal: 20,
-    paddingTop: 55,
+    paddingTop: 0,
+    paddingBottom: 100,
   },
 
   titulo: {

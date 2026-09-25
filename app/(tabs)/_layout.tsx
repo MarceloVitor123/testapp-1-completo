@@ -39,7 +39,7 @@ export default function Layout() {
       <Tabs.Screen
         name="trilha"
         options={{
-          title: "fases",
+          title: "trilha",
           tabBarIcon: () => (
   <Image
     source={require("../../assets/icons/home.png")}

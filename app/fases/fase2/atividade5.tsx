@@ -18,5 +18,5 @@ export default function Atividade1Screen() {
   audio={require("@/components/audios/Silabas_mar.mp3")}
   progress={0.8}
 />
-  );
+  ); 
 }
