@@ -5,7 +5,9 @@ export default function Atividade1Screen() {
   return (
    <QuizActivity
   mode="text"
-  question="IDENIFIQUE QUA É A VOGAL"
+
+  question="IDENTIFIQUE QUAL É A VOGAL"
+
   options={[
     { label: "A", value: "a" },
     { label: "B", value: "b" },
@@ -15,6 +17,7 @@ export default function Atividade1Screen() {
   correctAnswer="a"
   nextRoute="/fases/fase1/atividade2"
   wrongRoute="/fases/fase1/atividade2"
+
 />
   );
 }

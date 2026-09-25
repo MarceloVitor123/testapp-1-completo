@@ -15,6 +15,7 @@ export default function Atividade1Screen() {
   correctAnswer="a"
   nextRoute="/fases/teste-resultado"
   wrongRoute="/fases/teste-resultado"
+  progress={0.8}
 />
   );
 }

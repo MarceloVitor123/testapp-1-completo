@@ -5,6 +5,7 @@ export default function Atividade2Screen() {
   return (
     <QuizActivity
  mode="text"
+
   question="IDENTIFIQUE QUAL É A CONSOANTE "
   options={[
     { label: "A", value: "a" },
