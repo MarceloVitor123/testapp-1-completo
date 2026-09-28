@@ -1,8 +1,8 @@
+import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
-import { Audio } from "expo-av"
 
 export default function IndexScreen() {
   const router = useRouter();
@@ -58,8 +58,6 @@ export default function IndexScreen() {
    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
     VOGAIS E CONSOANTES.</Text>
       </Text>
-<<<<<<< HEAD
-=======
     <View style={{ width: "100%" }}>
 
   {/* Tópico 1 */}
@@ -72,7 +70,6 @@ export default function IndexScreen() {
   <Text style={styles.subtitulo}>
     - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".
   </Text>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
 
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
@@ -89,23 +86,6 @@ export default function IndexScreen() {
   </View>
 
   {/* Tópico 2 */}
-<<<<<<< HEAD
-   <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
-    <Text style={{ flex: 1 }}></Text>
-    <Text>
-    <Text style={styles.titulo}>2. CONSOANTES</Text>
-    {"\n\n"}
-    <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
-    {"\n"} 
-    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
-    {"\n\n"}
-  <Text style={styles.subtitulo}>EXEMPLO:</Text>
-  {"\n"}
-  {"\n"}
-  <Text style={styles.subtitulo}> -NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L"</Text>
-    </Text>
-     {/* o botão do microfone vai entrar aqui depois */}
-=======
   <Text style={styles.titulo}>2. CONSOANTES</Text>
 
   <Text style={styles.subtitulo}>
@@ -123,28 +103,10 @@ export default function IndexScreen() {
   <Text style={styles.subtitulo}>
     - NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L".
   </Text>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
 
   </View>
 
   {/* Tópico 3 */}
-<<<<<<< HEAD
- <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
-  <Text style={{ flex: 1 }}></Text>
-  <Text>
-    <Text style={styles.titulo}>3.VAMOS PRATICAR!</Text>
-    {"\n\n"}
-    <Text style={styles.subtitulo}>APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É 
-    UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
-    {"\n\n"}
-  <Text style={styles.subtitulo}>AGORA É A SUA VEZ DE PRATICAR!</Text>
-
-  </Text>
-
-  {/* o botão do microfone vai entrar aqui depois */}
-
-  </View>
-=======
   <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
 
   <Text style={styles.subtitulo}>
@@ -155,9 +117,6 @@ export default function IndexScreen() {
   <Text style={styles.subtitulo}>
     AGORA É A SUA VEZ DE PRATICAR!
   </Text>
-
-</View>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
 
       <Pressable
         onPress={handleStart}
