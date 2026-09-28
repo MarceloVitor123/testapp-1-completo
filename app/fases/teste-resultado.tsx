@@ -1,20 +1,20 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  Pressable,
-} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import React from "react";
+import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
-import { useWorld } from "../../context/WorldContext";
-import { updatePhaseProgress } from "../../services/ProfileService";
 import { Profile } from "@/models/Profile";
 import ResultCard from "../../components/ResultCard";
 import { useStreak } from "../../context/StreakContext";
+import { useWorld } from "../../context/WorldContext";
+import { updatePhaseProgress } from "../../services/ProfileService";
 
 
 export default function TesteResultadoScreen() {
@@ -78,8 +78,7 @@ export default function TesteResultadoScreen() {
       {/* Título */}
 
       <Text style={styles.title}>
-        Prática Completa!
-      </Text>
+      PRÁTICA COMPLETA !   </Text>
 
       {/* Linha Superior */}
 
@@ -122,7 +121,6 @@ export default function TesteResultadoScreen() {
           color="#fff"
         />
       </Pressable>
-
     </ScrollView>
   );
 }
@@ -143,9 +141,9 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 140,
-    height: 140,
-    resizeMode: "contain",
+    width: 650,
+    height: 260,
+    resizeMode: "center",
   },
 
   title: {

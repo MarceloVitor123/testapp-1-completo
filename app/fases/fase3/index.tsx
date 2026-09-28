@@ -36,7 +36,7 @@ export default function IndexScreen() {
               fontWeight: "600",
               position: "absolute",
               top: -76,
-              left: -82,
+              left: -85,
             }}
           >
             x
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#111",
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 60,
+    fontWeight: "bold",
   },
   botaoX: {
     backgroundColor: "#757575",

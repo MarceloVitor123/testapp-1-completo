@@ -26,7 +26,7 @@ export default function IndexScreen() {
       </View>
       <View>
       <Image source={require("../../../assets/images/TALKPUP.png")} 
-     style={{ width: 400, height: 200, marginBottom: 0 }}>
+     style={{ width: 400, height: 300, marginBottom: 0 }}>
       </Image>
       </View>
       <Text style={styles.title}>ATIVIDADE 1</Text>
