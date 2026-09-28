@@ -10,7 +10,7 @@ export default function IsqueiroActivityScreen() {
       correctAnswer="ISQUEIRO"
       nextRoute="/fases/fase3/atividade5"
       wrongRoute="/fases/fase3/atividade5"
-      progress={1.0}
+      progress={0.7}
       writingItems={[
         {
           id: "isqueiro",

@@ -4,7 +4,9 @@ import MarkActivity from "../../../components/templates/MarkActivity";
 export default function Atividade2Screen() {
   return (
    <MarkActivity
-  question="MARQUE APENAS AS VOGAIS"
+
+  question="MARQUE SOMENTE AS VOGAIS :"
+
   options={[
     { label: "U", value: "u" },
     { label: "E", value: "e" },
@@ -16,7 +18,7 @@ export default function Atividade2Screen() {
   correctAnswers={["u", "e", "a"]}
   nextRoute="/fases/teste-resultado"
   wrongRoute="/fases/teste-resultado"
-  progress={0.8}
+  progress={1.0}
 />
   );
 }

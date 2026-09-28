@@ -5,7 +5,7 @@ export default function Atividade2Screen() {
   return (
     <QuizActivity
  mode="text"
-  question="IDENTIFIQUE QUAL É A VOGAL"
+  question="IDENTIFIQUE QUAL É A VOGAL :"
   options={[
     { label: "K", value: "k" },
     { label: "D", value: "d" },
@@ -16,7 +16,7 @@ export default function Atividade2Screen() {
   nextRoute="/fases/fase1/atividade5"
   wrongRoute="/fases/fase1/atividade5"
   audio={require("@/components/audios/Identifique_a_vogal.mp3")}
-  progress={0.6}
+  progress={0.7}
 />
   );
 }

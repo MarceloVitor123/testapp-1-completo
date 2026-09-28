@@ -5,7 +5,7 @@ export default function Atividade1Screen() {
   return (
    <QuizActivity
   mode="text"
-  question='QUANTAS SÍLABAS TÊM A PALAVRA "MAR"'
+  question='QUANTAS SÍLABAS TÊM A PALAVRA "MAR" ?'
   options={[
     { label: "1", value: "a" },
     { label: "2", value: "b" },
@@ -16,7 +16,7 @@ export default function Atividade1Screen() {
   nextRoute="/fases/teste-resultado"
   wrongRoute="/fases/teste-resultado"
   audio={require("@/components/audios/Silabas_mar.mp3")}
-  progress={0.8}
+  progress={1.0}
 />
   ); 
 }

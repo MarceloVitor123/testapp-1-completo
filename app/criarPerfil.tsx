@@ -26,21 +26,20 @@ export default function CriarPerfil() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao Alfatech</Text>
+      <Text style={styles.title}>BEM-VINDO AO ALFATECH</Text>
 
       <Text style={styles.subtitle}>
-        Como devemos te chamar?
-      </Text>
+  COMO DEVEMOS TE CHAMAR ?</Text>
 
       <TextInput
-        placeholder="Digite seu nome..."
+        placeholder="DIGITE SEU NOME..."
         value={name}
         onChangeText={setName}
         style={styles.input}
       />
 
       <Pressable style={styles.button} onPress={criarPerfil}>
-        <Text style={styles.buttonText}>Continuar</Text>
+        <Text style={styles.buttonText}>CONTINUAR</Text>
       </Pressable>
     </View>
   );
