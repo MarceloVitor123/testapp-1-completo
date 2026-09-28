@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Pressable,
@@ -9,11 +9,35 @@ import {
   View,
 } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
+import { Audio } from "expo-av"
 
 export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
-  // const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioIntro = require("@/components/audios/intro_vogais_consoantes.mp3");
+  const audioVogais = require("@/components/audios/topico_vogais.mp3");
+  const audioConsoantes = require("@/components/audios/topico_consoantes.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar.mp3");
+  const playAudio = async (audioFile: any) => {
+    if (!audioFile) return;
+    if (audioPlaying) return;
+  
+    try {
+      setAudioPlaying(true);
+      const { sound } = await Audio.Sound.createAsync(audioFile);
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          setAudioPlaying(false);
+          sound.unloadAsync();
+        }
+      });
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Erro ao reproduzir áudio:", error);
+      setAudioPlaying(false);
+    }
+  };
 
   const handleStart = () => {
     resetWorld();
@@ -50,31 +74,48 @@ export default function IndexScreen() {
         ></Image>
       </View>
       <Text style={styles.titulo}>ATIVIDADE 2</Text>
-      {"\n\n"}
-      <Text style={styles.subtitulo}>VOGAIS E CONSOANTES</Text>
+      <Text style={styles.subtitulo}>SÍLABAS</Text>
       <Text style={styles.subtitle}></Text>
       
-<Text>
+  {/* Introdução */}
+  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+    <Pressable onPress={() => playAudio(audioIntro)}
+      style={{ marginTop: 66 }}>
+        <Text style={styles.audioIcon}>🔊</Text>
+      </Pressable>
+        <Text style={{ flex: 1 }}></Text>
+        <Text style={styles.titulo}></Text>
+
+  </View>
   {/* Tópico 1 */}
-  <Text style={styles.titulo}>1. O QUE SÃO SÍLABAS?</Text>
+  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+    <Pressable onPress={() => playAudio(audioVogais)}>
+      <Text style={styles.audioIcon}>🔊</Text>
+    </Pressable>
+  <Text style={{ flex: 1}}>
+  <Text style={styles.titulo}>1. O QUE SÃO AS SÍLABAS?</Text>
   {"\n\n"}
-<text style={styles.subtitulo}>
-  TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.
-</text>
+<Text style={styles.subtitulo}>
+  TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.</Text>
   {"\n\n"}
-<text style={styles.subtitulo}>
-  AS SÍLABAS SÃO GRUPOS DE LETRAS QUE PRONUNCIAMOS JUNTOS EM UMA PALAVRA.
-</text>
+<Text style={styles.subtitulo}>
+  AS SÍLABAS SÃO GRUPOS DE LETRAS QUE PRONUNCIAMOS JUNTOS EM UMA PALAVRA.</Text>
   {"\n\n"}
+  </Text>
+  </View>
 
   {/* Tópico 2 */}
+  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+  <Pressable onPress={() => playAudio(audioConsoantes)}>
+  <Text style={styles.audioIcon}>🔊</Text>
+  </Pressable>
+  <Text style={{ flex: 1}}>
   <Text style={styles.titulo}>2. EXEMPLOS DE SÍLABAS</Text>
   {"\n\n"}
-<text style={styles.subtitulo}>
-  CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.
-</text>,
+<Text style={styles.subtitulo}>
+  CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.</Text>
   {"\n\n"}
-<text style={styles.subtitulo}>
+<Text style={styles.subtitulo}>
 POR EXEMPLO:
   {"\n\n"}
   2.1- A PALAVRA CASA PODE SER DIVIDIDA EM CA E SA.
@@ -82,26 +123,31 @@ POR EXEMPLO:
   2.2- A PALAVRA BOLA PODE SER DIVIDIDA EM BO E LA.
   {"\n"}
   2.3- JÁ A PALAVRA PÉ POSSUI APENAS UMA SÍLABA.
-</text>,
+</Text>
   {"\n\n"}
+  </Text>
+  </View>
 
   {/* Tópico 3 */}
+  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+  <Pressable onPress={() => playAudio(audioPraticar)}>
+    <Text style={styles.audioIcon}>🔊</Text>
+  </Pressable>
+  <Text style={{ flex: 1}}>
   <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
   {"\n\n"}
-<text style={styles.subtitulo}>
+<Text style={styles.subtitulo}>
   APRENDER A IDENTIFICAR E SEPARAR AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.
-
   {"\n\n"}
-
-  AGORA É A SUA VEZ DE PRATICAR! 
-  </text>
+  AGORA É A SUA VEZ DE PRATICAR!</Text>
   </Text>
+  </View>
 
-      <Pressable onPress={handleStart} style={styles.button}>
+  <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
       </Pressable>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -157,5 +203,9 @@ const styles = StyleSheet.create({
   fontWeight: "bold",
   fontSize: 17,
   color: "rgb(250, 252, 244)"
+  },
+  audioIcon: {
+    fontSize: 25,
+    marginRight: 8,
   },
 });

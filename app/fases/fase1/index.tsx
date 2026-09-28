@@ -8,6 +8,10 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioIntro = require("@/components/audios/intro_vogais_consoantes.mp3");
+  const audioVogais = require("@/components/audios/topico_vogais.mp3");
+  const audioConsoantes = require("@/components/audios/topico_consoantes.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar.mp3");
   const playAudio = async (audioFile: any) => {
   if (!audioFile) return;
   if (audioPlaying) return;
@@ -53,43 +57,35 @@ export default function IndexScreen() {
       <Text style={styles.subtitulo}>
         VOGAIS E CONSOANTES
       </Text>
-      <Text style={styles.subtitle}> 
-        {"\n"}
-   <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
-    VOGAIS E CONSOANTES.</Text>
-      </Text>
-<<<<<<< HEAD
-=======
     <View style={{ width: "100%" }}>
 
-  {/* Tópico 1 */}
-  <Text style={styles.titulo}>1. VOGAIS</Text>
-  {"\n\n"}
-  <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U. 
-      ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. </Text>
-  <Text style={styles.subtitulo}>EXEMPLO:</Text>
-
-  <Text style={styles.subtitulo}>
-    - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".
-  </Text>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
+  {/* Introdução */}
+  <View style={{ flexDirection: "row", alignItems: "center", width: "100%"}}>
+    <Text style={{ flex: 1 }}></Text>
+    <Text style={styles.titulo}></Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
+    VOGAIS E CONSOANTES.</Text>
+  <Pressable onPress={() => playAudio(audioIntro)}>
+    <Text style={styles.audioIcon}>🔊</Text>
+  </Pressable>
+    </View>
 
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
-    <Text style={{ flex: 1 }}></Text>
-  <Text>
+    <Text style={{ flex: 1 }}>
     <Text style={styles.titulo}>1. VOGAIS</Text>
     {"\n\n"}
     <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U.
     ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. 
     </Text>
   </Text>
-  {/* o botão do microfone vai entrar aqui depois */}
-
+  <Pressable onPress={() => playAudio(audioVogais)}>
+  <Text style={styles.audioIcon}>🔊</Text>
+    </Pressable>
   </View>
 
   {/* Tópico 2 */}
-<<<<<<< HEAD
    <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
     <Text style={{ flex: 1 }}></Text>
     <Text>
@@ -104,31 +100,13 @@ export default function IndexScreen() {
   {"\n"}
   <Text style={styles.subtitulo}> -NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L"</Text>
     </Text>
-     {/* o botão do microfone vai entrar aqui depois */}
-=======
-  <Text style={styles.titulo}>2. CONSOANTES</Text>
-
-  <Text style={styles.subtitulo}>
-    JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO,
-    EXCETO AS LETRAS "A, E, I, O, U".
-  </Text>
-
-  <Text style={styles.subtitulo}>
-    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL
-    PARA FORMAR SÍLABAS E PALAVRAS.
-  </Text>
-
-  <Text style={styles.subtitulo}>EXEMPLO:</Text>
-
-  <Text style={styles.subtitulo}>
-    - NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L".
-  </Text>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
-
+      <Pressable onPress={() => playAudio(audioConsoantes)}>
+        <Text style={styles.audioIcon}>🔊</Text>
+      </Pressable>
+  
   </View>
 
   {/* Tópico 3 */}
-<<<<<<< HEAD
  <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
   <Text style={{ flex: 1 }}></Text>
   <Text>
@@ -138,27 +116,13 @@ export default function IndexScreen() {
     UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
     {"\n\n"}
   <Text style={styles.subtitulo}>AGORA É A SUA VEZ DE PRATICAR!</Text>
-
   </Text>
-
-  {/* o botão do microfone vai entrar aqui depois */}
+  <Pressable onPress={() => playAudio(audioPraticar)}>
+  <Text style={styles.audioIcon}>🔊</Text>
+  </Pressable>
 
   </View>
-=======
-  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
-
-  <Text style={styles.subtitulo}>
-    APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É UM PASSO IMPORTANTE
-    PARA COMEÇAR A LER E ESCREVER.
-  </Text>
-
-  <Text style={styles.subtitulo}>
-    AGORA É A SUA VEZ DE PRATICAR!
-  </Text>
-
 </View>
->>>>>>> c47084b934aec14a0f721a75830385fe01245446
-
       <Pressable
         onPress={handleStart}
         style={styles.button}
@@ -225,5 +189,10 @@ const styles = StyleSheet.create({
   fontWeight: "bold",
   fontSize: 17,
   color: "rgb(250, 252, 244)"
+  },
+
+  audioIcon: {
+    fontSize: 25,
+    marginLeft: 8,
   },
 });
