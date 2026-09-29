@@ -57,7 +57,6 @@ export default function IndexScreen() {
       <Text style={styles.subtitulo}>
         VOGAIS E CONSOANTES
       </Text>
-<<<<<<< HEAD
     <View style={{ width: "100%" }}>
 
   {/* Introdução */}
@@ -71,7 +70,6 @@ export default function IndexScreen() {
     <Text style={styles.audioIcon}>🔊</Text>
   </Pressable>
     </View>
-=======
       <Text style={styles.subtitle}> 
         {"\n"}
    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
@@ -89,7 +87,6 @@ export default function IndexScreen() {
   <Text style={styles.subtitulo}>
     - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".
   </Text>
->>>>>>> 87ef260c069f7a220be28fabb3686ac2b8f31abc
 
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
@@ -106,7 +103,6 @@ export default function IndexScreen() {
   </View>
 
   {/* Tópico 2 */}
-<<<<<<< HEAD
    <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
     <Text style={{ flex: 1 }}></Text>
     <Text>
@@ -144,7 +140,6 @@ export default function IndexScreen() {
 
   </View>
 </View>
-=======
   <Text style={styles.titulo}>2. CONSOANTES</Text>
 
   <Text style={styles.subtitulo}>
@@ -177,7 +172,6 @@ export default function IndexScreen() {
     AGORA É A SUA VEZ DE PRATICAR!
   </Text>
 
->>>>>>> 87ef260c069f7a220be28fabb3686ac2b8f31abc
       <Pressable
         onPress={handleStart}
         style={styles.button}

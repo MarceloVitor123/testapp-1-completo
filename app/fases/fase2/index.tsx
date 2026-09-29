@@ -73,29 +73,25 @@ export default function IndexScreen() {
           style={{ width: 400, height: 300, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.titulo}>ATIVIDADE 2</Text>
-      <Text style={styles.subtitulo}>SÍLABAS</Text>
-      {"\n\n"}
-      <Text style={styles.titulo2}>SÍLABAS</Text>
-      <Text style={styles.subtitle}></Text>
       
-  {/* Introdução */}
-  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
-    <Pressable onPress={() => playAudio(audioIntro)}
-      style={{ marginTop: 66 }}>
-        <Text style={styles.audioIcon}>🔊</Text>
-      </Pressable>
-        <Text style={{ flex: 1 }}></Text>
-        <Text style={styles.titulo}></Text>
-
-  </View>
+     {/* Atividade 2 sílabas */} 
+      <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
+        <Pressable onPress={() => playAudio(audioIntro)}>
+          <Text style={styles.audioIcon0}>🔊</Text>
+        </Pressable>
+      </View>
+      <Text style={styles.tituloMain}>ATIVIDADE 2</Text>
+      {"\n\n"}
+      <Text style={styles.tituloMain}>SÍLABAS</Text>
+      {"\n\n"}
+      
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
     <Pressable onPress={() => playAudio(audioVogais)}>
-      <Text style={styles.audioIcon}>🔊</Text>
+      <Text style={styles.audioIcon1}>🔊</Text>
     </Pressable>
   <Text style={{ flex: 1}}>
-  <Text style={styles.titulo}>1. O QUE SÃO AS SÍLABAS?</Text>
+  <Text style={styles.titulo1}>1. O QUE SÃO AS SÍLABAS?</Text>
   {"\n\n"}
 <Text style={styles.subtitulo}>
   TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.</Text>
@@ -109,10 +105,10 @@ export default function IndexScreen() {
   {/* Tópico 2 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
   <Pressable onPress={() => playAudio(audioConsoantes)}>
-  <Text style={styles.audioIcon}>🔊</Text>
+  <Text style={styles.audioIcon2}>🔊</Text>
   </Pressable>
   <Text style={{ flex: 1}}>
-  <Text style={styles.titulo}>2. EXEMPLOS DE SÍLABAS</Text>
+  <Text style={styles.titulo2}>2. EXEMPLOS DE SÍLABAS</Text>
   {"\n\n"}
 <Text style={styles.subtitulo}>
   CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.</Text>
@@ -133,10 +129,10 @@ POR EXEMPLO:
   {/* Tópico 3 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
   <Pressable onPress={() => playAudio(audioPraticar)}>
-    <Text style={styles.audioIcon}>🔊</Text>
+    <Text style={styles.audioIcon3}>🔊</Text>
   </Pressable>
   <Text style={{ flex: 1}}>
-  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
+  <Text style={styles.titulo3}>3. VAMOS PRATICAR!</Text>
   {"\n\n"}
 <Text style={styles.subtitulo}>
   APRENDER A IDENTIFICAR E SEPARAR AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.
@@ -162,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 24,
-    paddingVertical: 40,
+    paddingVertical: 15,
   },
   title: {
     color: "#fff",
@@ -200,19 +196,57 @@ const styles = StyleSheet.create({
   fontSize: 28, 
   fontWeight: "bold",
   color: "#0ec0ec",
+  marginBottom: -23,
   },
   titulo2: { 
-  fontSize: 26, 
+  fontSize: 28, 
   fontWeight: "bold",
-  color: "#fefffa",
+  color: "#0ec0ec", //tópico 2
   },
   subtitulo: {
   fontWeight: "bold",
   fontSize: 18,
-  color: "rgb(250, 252, 244)"
+  color: "rgb(250, 252, 244)", //são as frases longas de cada título
   },
-  audioIcon: {
+  audioIcon0: {
+    fontSize: 25,
+    left: -110,
+    top: 35,
+  },
+  audioIcon1: {
     fontSize: 25,
     marginRight: 8,
+  },
+  audioIcon2: {
+    fontSize: 25,
+    marginRight: 8,
+  },
+  audioIcon3: {
+    fontSize: 25,
+    marginRight: 8,
+  },
+  tituloMain: {
+  fontSize: 28, 
+  fontWeight: "bold",
+  color: "#0ec0ec",
+  top:-10 //atividade 2 sílabas
+  },
+  subtitulo1: {
+  fontSize: 28, 
+  fontWeight: "bold",
+  color: "#0ec0ec",
+  marginBottom: -30,
+  },
+  titulo1: {
+  fontSize: 28,
+  fontWeight: "bold",
+  color: "#0ec0ec",
+  marginBottom: -23,
+  },
+  titulo3: {
+  fontSize: 28, 
+  fontWeight: "bold",
+  color: "#0ec0ec",
+  marginBottom: -23, //tópico 3
   },
 });
