@@ -70,11 +70,16 @@ export default function IndexScreen() {
       <View>
         <Image
           source={require("../../../assets/images/TALKPUP.png")}
-          style={{ width: 400, height: 200, marginBottom: 0 }}
+          style={{ width: 400, height: 300, marginBottom: 0 }}
         ></Image>
       </View>
       <Text style={styles.titulo}>ATIVIDADE 2</Text>
+<<<<<<< HEAD
       <Text style={styles.subtitulo}>SÍLABAS</Text>
+=======
+      {"\n\n"}
+      <Text style={styles.titulo2}>SÍLABAS</Text>
+>>>>>>> 87ef260c069f7a220be28fabb3686ac2b8f31abc
       <Text style={styles.subtitle}></Text>
       
   {/* Introdução */}
@@ -164,13 +169,13 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#fff",
-    fontSize: 34,
+    fontSize: 36,
     fontWeight: "700",
-    marginBottom: 12,
+    marginBottom: 15,
   },
   subtitle: {
     color: "#ffffff",
-    fontSize: 18,
+    fontSize: 90,
     textAlign: "center",
     marginBottom: 32,
   },
@@ -182,8 +187,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#111",
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 24,
+    fontWeight: "bold",
   },
   botaoX: {
     backgroundColor: "#757575",
@@ -199,9 +204,14 @@ const styles = StyleSheet.create({
   fontWeight: "bold",
   color: "#0ec0ec",
   },
+  titulo2: { 
+  fontSize: 26, 
+  fontWeight: "bold",
+  color: "#fefffa",
+  },
   subtitulo: {
   fontWeight: "bold",
-  fontSize: 17,
+  fontSize: 18,
   color: "rgb(250, 252, 244)"
   },
   audioIcon: {

@@ -4,7 +4,7 @@ export default function Atividade1() {
   return (
     <QuizActivity
       mode="text"
-      question="O PAI DE MARCOS TEM 4 GALINHAS E 2 BOIS."
+      question="O PAI DE MARCOS TEM 4 GALINHAS , 2 BOIS E 6 CABRAS."
       subQuestion="QUAL DOS ANIMAIS A SEGUIR O PAI DE MARCOS NÃO TEM ?"
       correctAnswer="PORCO"
       options={[
