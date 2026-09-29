@@ -74,12 +74,9 @@ export default function IndexScreen() {
         ></Image>
       </View>
       <Text style={styles.titulo}>ATIVIDADE 2</Text>
-<<<<<<< HEAD
       <Text style={styles.subtitulo}>SÍLABAS</Text>
-=======
       {"\n\n"}
       <Text style={styles.titulo2}>SÍLABAS</Text>
->>>>>>> 87ef260c069f7a220be28fabb3686ac2b8f31abc
       <Text style={styles.subtitle}></Text>
       
   {/* Introdução */}
