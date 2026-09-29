@@ -47,7 +47,9 @@ export default function IndexScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.container}
+     contentContainerStyle={styles.content}
+     showsVerticalScrollIndicator={false}>
       <View style={styles.botaoX}>
         <Pressable
           onPress={() => router.back()}

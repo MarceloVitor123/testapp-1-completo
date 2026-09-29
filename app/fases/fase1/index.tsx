@@ -8,7 +8,7 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
-  const audioIntro = require("@/components/audios/intro_vogais_consoantes.mp3");
+  const audioIntro = require("@/components/audios/Vogais_e_conso.mp3");
   const audioVogais = require("@/components/audios/topico_vogais.mp3");
   const audioConsoantes = require("@/components/audios/topico_consoantes.mp3");
   const audioPraticar = require("@/components/audios/topico_praticar.mp3");
@@ -40,7 +40,9 @@ export default function IndexScreen() {
 };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.container}
+     contentContainerStyle={styles.content} 
+     showsVerticalScrollIndicator={false}>
       <View style={styles.botaoX}>
         <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 60, left: 100 }}>
           <Text style={{ color: "#080808", fontSize: 40, fontWeight: "600", position: "absolute", top: -76, left: -82 }}>
@@ -54,7 +56,7 @@ export default function IndexScreen() {
       </Image>
       </View>
       <Text style={styles.title}>ATIVIDADE 1</Text>
-      <Text style={styles.subtitulo}>
+      <Text style={styles.subtitulo2}>
         VOGAIS E CONSOANTES
       </Text>
     <View style={{ width: "100%" }}>
@@ -62,12 +64,12 @@ export default function IndexScreen() {
   {/* Introdução */}
   <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
   <Pressable onPress={() => playAudio(audioIntro)}>
-    <Text style={styles.audioIcon}>🔊</Text>
+    <Text style={styles.audioIcon0}>🔊</Text>
   </Pressable>
     <Text style={{ flex: 1 }}></Text>
     <Text style={styles.titulo}></Text>
     {"\n\n"}
-    <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
+    <Text style={styles.subtitulo1}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
     VOGAIS E CONSOANTES.</Text>
     </View>
     <View style={{ width: "100%" }}>
@@ -75,7 +77,7 @@ export default function IndexScreen() {
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
     <Pressable onPress={() => playAudio(audioVogais)}>
-  <Text style={styles.audioIcon}>🔊</Text>
+  <Text style={styles.audioIcon1}>🔊</Text>
     </Pressable>
     <Text style={{ flex: 1 }}>
     <Text style={styles.titulo}>1. VOGAIS</Text>
@@ -89,7 +91,7 @@ export default function IndexScreen() {
   {/* Tópico 2 */}
    <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%" }}>
     <Pressable onPress={() => playAudio(audioConsoantes)}>
-        <Text style={styles.audioIcon}>🔊</Text>
+        <Text style={styles.audioIcon2}>🔊</Text>
       </Pressable>
     <Text style={{ flex: 1 }}></Text>
     <Text>
@@ -109,7 +111,7 @@ export default function IndexScreen() {
   {/* Tópico 3 */}
  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%" }}>
   <Pressable onPress={() => playAudio(audioPraticar)}>
-  <Text style={styles.audioIcon}>🔊</Text>
+  <Text style={styles.audioIcon3}>🔊</Text>
   </Pressable>
   <Text style={{ flex: 1 }}></Text>
   <Text>
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
     color: "#35c0f7",
     fontSize: 34,
     fontWeight: "700",
-    marginBottom: 12,
+    top: -44, //atividade 1
   },
   subtitle: {
     color: "#fff",
@@ -188,12 +190,43 @@ const styles = StyleSheet.create({
 
   subtitulo: {
   fontWeight: "bold",
-  fontSize: 17,
-  color: "rgb(250, 252, 244)"
+  fontSize: 20,
+  color: "rgb(250, 252, 244)",
   },
 
-  audioIcon: {
+  audioIcon0: {
+    fontSize: 25,
+    left: 8,
+    top: -18,
+  },
+
+  audioIcon1: {
     fontSize: 25,
     marginLeft: 8,
   },
+   
+  audioIcon2: {
+    fontSize: 25,
+    marginLeft: 8,
+  },
+
+  audioIcon3: {
+    fontSize: 25,
+    marginLeft: 8,
+  },
+
+  subtitulo1: {
+    color: "#35c0f7",
+    fontSize: 25,
+    fontWeight: "700", //essas letras podem ser divididas...
+    left: 14,
+  },
+
+  subtitulo2: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "rgb(250, 252, 244)",
+    top: -40,
+  }
+
 });
