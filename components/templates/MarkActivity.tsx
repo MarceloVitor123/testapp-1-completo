@@ -120,17 +120,18 @@ const playAudio = async (audioFile: any) => {
           <Text style={styles.closeIcon}>×</Text>
         </Pressable>
 
-        <Pressable onPress={() => playAudio(audio)}>
-      <Text style={styles.audioIcon}>🔊</Text>
-      </Pressable>
+        
 
         <View style={styles.progressBar}>
           <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
         </View>
       </View>
 
-      <View style={styles.content}>
+      <View style={{ flexDirection: "row", alignItems: "center"}}>
         <Text style={styles.question}>{question}</Text>
+        <Pressable onPress={() => playAudio(audio)}>
+      <Text style={styles.audioIcon}>🔊</Text>
+      </Pressable>
 
         <View style={styles.grid}>
           {options.map((item) => {

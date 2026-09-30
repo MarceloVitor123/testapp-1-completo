@@ -15,10 +15,10 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
-  const audioIntro = require("@/components/audios/intro_vogais_consoantes.mp3");
-  const audioVogais = require("@/components/audios/topico_vogais.mp3");
-  const audioConsoantes = require("@/components/audios/topico_consoantes.mp3");
-  const audioPraticar = require("@/components/audios/topico_praticar.mp3");
+  const audioIntro = require("@/components/audios/intro_silabas.mp3");
+  const audioSilabas1 = require("@/components/audios/o_que_sao_silabas.mp3");
+  const audioConsoantes = require("@/components/audios/exemplo_silabas.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar2.mp3");
   const playAudio = async (audioFile: any) => {
     if (!audioFile) return;
     if (audioPlaying) return;
@@ -89,7 +89,7 @@ export default function IndexScreen() {
       
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
-    <Pressable onPress={() => playAudio(audioVogais)}>
+    <Pressable onPress={() => playAudio(audioSilabas1)}>
       <Text style={styles.audioIcon1}>🔊</Text>
     </Pressable>
   <Text style={{ flex: 1}}>

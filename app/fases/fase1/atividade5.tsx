@@ -5,7 +5,7 @@ export default function Atividade2Screen() {
   return (
    <MarkActivity
 
-  question="MARQUE SOMENTE AS VOGAIS :"
+  question="MARQUE SOMENTE AS VOGAIS:"
 
   options={[
     { label: "U", value: "u" },
@@ -18,6 +18,7 @@ export default function Atividade2Screen() {
   correctAnswers={["u", "e", "a"]}
   nextRoute="/fases/teste-resultado"
   wrongRoute="/fases/teste-resultado"
+  audio={require("@/components/audios/marque_as_vogais.mp3")}
   progress={1.0}
 />
   );

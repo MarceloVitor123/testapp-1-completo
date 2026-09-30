@@ -9,9 +9,9 @@ export default function IndexScreen() {
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
   const audioIntro = require("@/components/audios/Vogais_e_conso.mp3");
-  const audioVogais = require("@/components/audios/topico_vogais.mp3");
-  const audioConsoantes = require("@/components/audios/topico_consoantes.mp3");
-  const audioPraticar = require("@/components/audios/topico_praticar.mp3");
+  const audioVogais = require("@/components/audios/Vogais.mp3");
+  const audioConsoantes = require("@/components/audios/Consoantes.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar1.mp3");
   const playAudio = async (audioFile: any) => {
   if (!audioFile) return;
   if (audioPlaying) return;
@@ -71,6 +71,7 @@ export default function IndexScreen() {
     {"\n\n"}
     <Text style={styles.subtitulo1}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
     VOGAIS E CONSOANTES.</Text>
+    {"\n\n"}
     </View>
     <View style={{ width: "100%" }}>
 
@@ -83,7 +84,12 @@ export default function IndexScreen() {
     <Text style={styles.titulo}>1. VOGAIS</Text>
     {"\n\n"}
     <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U.
-    ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. 
+    ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS.</Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo}>
+    EXEMPLO:
+    {"\n\n"}
+    -NA PALAVRA "CASA" AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S"
     </Text>
   </Text>
   </View>
@@ -97,7 +103,7 @@ export default function IndexScreen() {
     <Text>
     <Text style={styles.titulo}>2. CONSOANTES</Text>
     {"\n\n"}
-    <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALABETO, EXCETO AS LETRAS "A,E,I,O,U".
+    <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO, EXCETO AS LETRAS "A,E,I,O,U".
     {"\n"} 
     NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
     {"\n\n"}
