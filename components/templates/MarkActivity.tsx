@@ -127,11 +127,17 @@ const playAudio = async (audioFile: any) => {
         </View>
       </View>
 
-      <View style={{ flexDirection: "row", alignItems: "center"}}>
-        <Text style={styles.question}>{question}</Text>
-        <Pressable onPress={() => playAudio(audio)}>
-      <Text style={styles.audioIcon}>🔊</Text>
-      </Pressable>
+      <View style={styles.questionContainer}>
+  <Text style={styles.question}>{question}</Text>
+
+  <Pressable
+    onPress={() => playAudio(audio)}
+    disabled={audioPlaying}
+    style={styles.audioButton}
+  >
+    <Text style={styles.audioIcon}>🔊</Text>
+  </Pressable>
+</View>
 
         <View style={styles.grid}>
           {options.map((item) => {
@@ -184,7 +190,6 @@ const playAudio = async (audioFile: any) => {
             <Text style={styles.nextText}>PRÓXIMO</Text>
           </Pressable>
         )}
-      </View>
     </SafeAreaView>
   );
 }
@@ -225,7 +230,6 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 32,
     textAlign: "center",
-    marginBottom: 55,
   },
   grid: {
     width: "100%",
@@ -308,12 +312,23 @@ const styles = StyleSheet.create({
   },
 
   audioIcon: {
-    fontSize: 25,
+    fontSize: 28,
   },
 
-  audioposition: {
-    marginTop: 14,
-    width: 21,
-    height: 41,
-  },
+  questionContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: 20,
+  marginBottom: 55,
+  gap: 10,
+ },
+
+  audioButton: {
+  right: 510,
+  height: 45,
+  alignItems: "center",
+  justifyContent: "center",
+ },
+
 });
