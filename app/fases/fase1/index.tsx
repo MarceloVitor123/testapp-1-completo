@@ -8,6 +8,10 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioIntro = require("@/components/audios/Vogais_e_conso.mp3");
+  const audioVogais = require("@/components/audios/Vogais.mp3");
+  const audioConsoantes = require("@/components/audios/Consoantes.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar1.mp3");
   const playAudio = async (audioFile: any) => {
   if (!audioFile) return;
   if (audioPlaying) return;
@@ -36,7 +40,9 @@ export default function IndexScreen() {
 };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.container}
+     contentContainerStyle={styles.content} 
+     showsVerticalScrollIndicator={false}>
       <View style={styles.botaoX}>
         <Pressable onPress={() => router.back()} style={{ position: "absolute", top: 60, left: 100 }}>
           <Text style={{ color: "#080808", fontSize: 40, fontWeight: "600", position: "absolute", top: -76, left: -82 }}>
@@ -50,74 +56,82 @@ export default function IndexScreen() {
       </Image>
       </View>
       <Text style={styles.title}>ATIVIDADE 1</Text>
-      <Text style={styles.subtitulo}>
+      <Text style={styles.subtitulo2}>
         VOGAIS E CONSOANTES
-      </Text>
-      <Text style={styles.subtitle}> 
-        {"\n"}
-   <Text style={styles.subtitulo}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
-    VOGAIS E CONSOANTES.</Text>
       </Text>
     <View style={{ width: "100%" }}>
 
-  {/* Tópico 1 */}
-  <Text style={styles.titulo}>1. VOGAIS</Text>
-  {"\n\n"}
-  <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U. 
-      ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. </Text>
-  <Text style={styles.subtitulo}>EXEMPLO:</Text>
-
-  <Text style={styles.subtitulo}>
-    - NA PALAVRA "CASA", AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S".
-  </Text>
-
-  {/* Tópico 1 */}
-  <View style={{ flexDirection: "row", alignItems: "center", width: "100%" }}>
+  {/* Introdução */}
+  <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
+  <Pressable onPress={() => playAudio(audioIntro)}>
+    <Text style={styles.audioIcon0}>🔊</Text>
+  </Pressable>
     <Text style={{ flex: 1 }}></Text>
-  <Text>
+    <Text style={styles.titulo}></Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo1}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
+    VOGAIS E CONSOANTES.</Text>
+    {"\n\n"}
+    </View>
+    <View style={{ width: "100%" }}>
+
+  {/* Tópico 1 */}
+  <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+    <Pressable onPress={() => playAudio(audioVogais)}>
+  <Text style={styles.audioIcon1}>🔊</Text>
+    </Pressable>
+    <Text style={{ flex: 1 }}>
     <Text style={styles.titulo}>1. VOGAIS</Text>
     {"\n\n"}
     <Text style={styles.subtitulo}>AS VOGAIS SÃO AS LETRAS A,E,I,O,U.
-    ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS. 
+    ELAS PODEM SER PRONUNCIADAS SOZINHAS, SEM A AJUDA DE OUTRAS LETRAS.</Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo}>
+    EXEMPLO:
+    {"\n\n"}
+    -NA PALAVRA "CASA" AS VOGAIS SÃO "A" E "A", E AS CONSOANTES SÃO "C" E "S"
     </Text>
   </Text>
-  {/* o botão do microfone vai entrar aqui depois */}
-
   </View>
 
   {/* Tópico 2 */}
-  <Text style={styles.titulo}>2. CONSOANTES</Text>
-
-  <Text style={styles.subtitulo}>
-    JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO,
-    EXCETO AS LETRAS "A, E, I, O, U".
-  </Text>
-
-  <Text style={styles.subtitulo}>
-    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL
-    PARA FORMAR SÍLABAS E PALAVRAS.
-  </Text>
-
+   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%" }}>
+    <Pressable onPress={() => playAudio(audioConsoantes)}>
+        <Text style={styles.audioIcon2}>🔊</Text>
+      </Pressable>
+    <Text style={{ flex: 1 }}></Text>
+    <Text>
+    <Text style={styles.titulo}>2. CONSOANTES</Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo}>JÁ AS CONSOANTES SÃO TODAS AS OUTRAS LETRAS DO ALFABETO, EXCETO AS LETRAS "A,E,I,O,U".
+    {"\n"} 
+    NA MAIORIA DAS VEZES, ELAS PRECISAM ESTAR JUNTO DE UMA VOGAL PARA FORMAR SILABAS E PALAVRAS.</Text>
+    {"\n\n"}
   <Text style={styles.subtitulo}>EXEMPLO:</Text>
-
-  <Text style={styles.subtitulo}>
-    - NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L".
-  </Text>
-
+  {"\n"}
+  {"\n"}
+  <Text style={styles.subtitulo}> -NA PALAVRA "COLA", AS VOGAIS SÃO "O" E "A", E AS CONSOANTES SÃO "C" E "L"</Text>
+    </Text>
   </View>
 
   {/* Tópico 3 */}
-  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
-
-  <Text style={styles.subtitulo}>
-    APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É UM PASSO IMPORTANTE
-    PARA COMEÇAR A LER E ESCREVER.
+ <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%" }}>
+  <Pressable onPress={() => playAudio(audioPraticar)}>
+  <Text style={styles.audioIcon3}>🔊</Text>
+  </Pressable>
+  <Text style={{ flex: 1 }}></Text>
+  <Text>
+    <Text style={styles.titulo}>3.VAMOS PRATICAR!</Text>
+    {"\n\n"}
+    <Text style={styles.subtitulo}>APRENDER A IDENTIFICAR VOGAIS E CONSOANTES É 
+    UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.</Text>
+    {"\n\n"}
+  <Text style={styles.subtitulo}>AGORA É A SUA VEZ DE PRATICAR!</Text>
   </Text>
+  </View>
+</View>
 
-  <Text style={styles.subtitulo}>
-    AGORA É A SUA VEZ DE PRATICAR!
-  </Text>
-
+  </View>
       <Pressable
         onPress={handleStart}
         style={styles.button}
@@ -145,7 +159,7 @@ const styles = StyleSheet.create({
     color: "#35c0f7",
     fontSize: 34,
     fontWeight: "700",
-    marginBottom: 12,
+    top: -44, //atividade 1
   },
   subtitle: {
     color: "#fff",
@@ -182,7 +196,43 @@ const styles = StyleSheet.create({
 
   subtitulo: {
   fontWeight: "bold",
-  fontSize: 17,
-  color: "rgb(250, 252, 244)"
+  fontSize: 20,
+  color: "rgb(250, 252, 244)",
   },
+
+  audioIcon0: {
+    fontSize: 25,
+    left: 8,
+    top: -18,
+  },
+
+  audioIcon1: {
+    fontSize: 25,
+    marginLeft: 8,
+  },
+   
+  audioIcon2: {
+    fontSize: 25,
+    marginLeft: 8,
+  },
+
+  audioIcon3: {
+    fontSize: 25,
+    marginLeft: 8,
+  },
+
+  subtitulo1: {
+    color: "#35c0f7",
+    fontSize: 25,
+    fontWeight: "700", //essas letras podem ser divididas...
+    left: 14,
+  },
+
+  subtitulo2: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "rgb(250, 252, 244)",
+    top: -40,
+  }
+
 });
