@@ -31,63 +31,92 @@ export default function IndexScreen() {
         >
           <Text
             style={{
-              color: "#030303",
+              color: "#080101",
               fontSize: 40,
               fontWeight: "600",
               position: "absolute",
               top: -76,
-              left: -85,
+              left: -82,
             }}
           >
             x
           </Text>
         </Pressable>
       </View>
+
       <View>
         <Image
           source={require("../../../assets/images/TALKPUP.png")}
-          style={{ width: 400, height: 200, marginBottom: 0 }}
+          style={{ width: 400, height: 300, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.title}>ATIVIDADE 3</Text>
-        {"\n\n"}
-      <Text style={styles.subtitle}>SÍLABAS</Text>
-      
-      <Text style={styles.subtitle}>
+
+      <Text style={styles.titulo}>ATIVIDADE 3</Text>
+
+      {"\n\n"}
+
+      <Text style={styles.titulo2}>SÍLABAS</Text>
+
+      <Text style={styles.subtitle}></Text>
+
       <Text>
-  {/* Tópico 1 */}
-  <Text style={styles.titulo}>1. SÍLABAS</Text>
-  {"\n\n"}
-   <Text style={styles.subtitulo}>
-  NAS FASES 1 E 2, VOCÊ APRENDEU A RECONHECER LETRAS, SONS E SÍLABAS. AGORA, NA FASE 3, 
-  VAMOS USAR ESSES CONHECIMENTOS PARA DAR UM NOVO PASSO:
-  {"\n"}
-  COMEÇAR A ESCREVER PALAVRAS.
-  {"\n\n\n"}
-NESTA FASE, AS ATIVIDADES FICARÃO UM POUCO MAIS DESAFIADORAS. VOCÊ VAI PRATICAR 
-COMPLETANDO PALAVRAS E FRASES E, AOS POUCOS, APRENDERÁ A ESCREVER PALAVRAS SOZINHO.
-  {"\n\n"}
-</Text>
-  {/* Tópico 2 */}
-     <Text style={styles.subtitulo}>
-  O OBJETIVO É AUMENTAR O NÍVEL DE DIFICULDADE DE FORMA GRADUAL, UTILIZANDO O QUE VOCÊ JÁ 
-  APRENDEU PARA DESENVOLVER SUAS HABILIDADES DE LEITURA E ESCRITA.
-  {"\n\n"}
-APRENDER A IDENTIFICAR, SEPARAR E ESCREVER AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A 
-FORMAR PALAVRAS E FRASES.
-  {"\n"}
-</Text>
+        {/* Tópico 1 */}
+        <Text style={styles.titulo}>1. SÍLABAS</Text>
 
-  {"\n"}
-  {/* Tópico 3 */}
-  <Text style={styles.titulo2}>2. VAMOS PRATICAR !</Text>
-  {"\n\n"}
-    <Text style={styles.subtitulo}>
+        {"\n\n"}
 
-AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA! 
-</Text>
-  </Text>
+        <Text style={styles.subtitulo}>
+          NAS FASES 1 E 2, VOCÊ APRENDEU A RECONHECER LETRAS, SONS E SÍLABAS.
+          AGORA, NA FASE 3, VAMOS USAR ESSES CONHECIMENTOS PARA DAR UM NOVO
+          PASSO:
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          COMEÇAR A ESCREVER PALAVRAS.
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          NESTA FASE, AS ATIVIDADES FICARÃO UM POUCO MAIS DESAFIADORAS. VOCÊ
+          VAI PRATICAR COMPLETANDO PALAVRAS E FRASES E, AOS POUCOS, APRENDERÁ
+          A ESCREVER PALAVRAS SOZINHO.
+        </Text>
+
+        {"\n\n"}
+
+        {/* Tópico 2 */}
+        <Text style={styles.titulo}>2. OBJETIVO DA FASE</Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          O OBJETIVO É AUMENTAR O NÍVEL DE DIFICULDADE DE FORMA GRADUAL,
+          UTILIZANDO O QUE VOCÊ JÁ APRENDEU PARA DESENVOLVER SUAS HABILIDADES
+          DE LEITURA E ESCRITA.
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          APRENDER A IDENTIFICAR, SEPARAR E ESCREVER AS SÍLABAS É UM PASSO
+          IMPORTANTE PARA COMEÇAR A FORMAR PALAVRAS E FRASES.
+        </Text>
+
+        {"\n\n"}
+
+        {/* Tópico 3 */}
+        <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo }>
+          AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA!
+        </Text>
       </Text>
+
       <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
       </Pressable>
@@ -100,6 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#5B5B5B",
   },
+
   content: {
     flexGrow: 1,
     justifyContent: "center",
@@ -107,31 +137,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 40,
   },
-  title: {
-    color: "#0ec0ec",
-    fontSize: 34,
-    fontWeight: "700",
-    marginBottom: 12,
-  },
-  subtitle: {
-    color: "#fff",
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: "bold",
 
+  title: {
+    color: "#fff",
+    fontSize: 36,
+    fontWeight: "700",
+    marginBottom: 15,
+  },
+
+  subtitle: {
+    color: "#ffffff",
+    fontSize: 90,
+    textAlign: "center",
     marginBottom: 32,
   },
+
   button: {
     backgroundColor: "#1CC5D3",
     paddingHorizontal: 28,
     paddingVertical: 16,
     borderRadius: 24,
   },
+
   buttonText: {
     color: "#111",
-    fontSize: 60,
+    fontSize: 24,
     fontWeight: "bold",
   },
+
   botaoX: {
     backgroundColor: "#757575",
     paddingHorizontal: 28,
@@ -140,29 +173,24 @@ const styles = StyleSheet.create({
     top: 60,
     left: 100,
     borderRadius: 24,
+     
   },
+
   titulo: {
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: "bold",
-    color : "#0ec0ec",
-    position: "absolute",
-    top: 70,
-    left: -600,
+    color: "#0ec0ec",
   },
+
   titulo2: {
-    fontSize: 25,
+    fontSize: 26,
     fontWeight: "bold",
-    color : "#0ec0ec",
-    position: "absolute",
-    top: 320,
-    left: -600,
+    color: "#fefffa",
   },
-   subtitulo: {
-  fontWeight: "bold",
-  fontSize: 18,
-  color: "#fff",
-  top: -60,
-  left: 0,
-  marginBottom: 20,
-},
-})
+
+  subtitulo: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "rgb(250, 252, 244)",
+  },
+});
