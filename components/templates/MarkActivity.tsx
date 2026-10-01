@@ -159,6 +159,7 @@ const playAudio = async (audioFile: any) => {
           })}
         </View>
 
+        <View style={styles.verifyContainer}>
         {feedback === "correct" && (
           <Text style={styles.correctMessage}>Resposta correta!</Text>
         )}
@@ -166,8 +167,11 @@ const playAudio = async (audioFile: any) => {
         {feedback === "wrong" && (
           <Text style={styles.wrongMessage}>Resposta errada.</Text>
         )}
+        </View>
 
-        <Pressable
+        {feedback === null && ( 
+        <View style={styles.verifyContainer}> 
+        <Pressable                                //botão de verificar
           onPress={handleVerify}
           disabled={verifyDisabled || feedback !== null}
           style={({ pressed }) => [
@@ -178,8 +182,11 @@ const playAudio = async (audioFile: any) => {
         >
           <Text style={styles.verifyText}>VERIFICAR</Text>
         </Pressable>
+        </View>
+        )}
 
         {feedback !== null && (
+          <View style={styles.verifyContainer}>
           <Pressable
             onPress={handleNext}
             style={({ pressed }) => [
@@ -189,6 +196,7 @@ const playAudio = async (audioFile: any) => {
           >
             <Text style={styles.nextText}>PRÓXIMO</Text>
           </Pressable>
+          </View>
         )}
     </SafeAreaView>
   );
@@ -329,6 +337,11 @@ const styles = StyleSheet.create({
   height: 45,
   alignItems: "center",
   justifyContent: "center",
+ },
+
+ verifyContainer: {
+  width: "100%",
+  alignItems: "center",
  },
 
 });
