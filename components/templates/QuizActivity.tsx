@@ -326,7 +326,7 @@ export default function QuizActivity({
       return <Image source={questionImage} style={styles.questionImage} />;
     }
 
-    return <Text style={styles.question}>{question}</Text>;
+    return;
   };
 
   /*
@@ -443,11 +443,15 @@ export default function QuizActivity({
           />
         </View>
       </View>
-      <View style={styles.audioposition}>
+
+      <View style={styles.questionContainer}>
        <Pressable onPress={() => playAudio(audio)}>
-          <Text style={styles.audioIcon}>🔊
-          </Text>
+          <Text style={styles.audioIcon}>🔊</Text>
           </Pressable>
+
+          <Text style={styles.question}>
+            {question}
+            </Text>
           </View>
 
       <View style={styles.content}>
@@ -606,9 +610,8 @@ const styles = StyleSheet.create({
 
   question: {
     color: "#FFFFFF",
-    fontSize: 22,
+    fontSize: 32,
     textAlign: "center",
-    marginBottom: 25,
   },
 
   questionImage: {
@@ -829,11 +832,21 @@ writingItemImage: {
   audioIcon: {
     fontSize: 25,
   },
+
   audioposition: {
     marginTop: 14,
     width: 21,
     height: 41,
-  }
+  },
 
-  
+  questionContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100%",
+  marginTop: 70,
+  marginBottom: 30,
+  gap: 10,
+  },
+
 }); 
