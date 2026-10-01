@@ -10,7 +10,7 @@ export default function ModalVerbActivityScreen() {
       // Lista de botões da coluna esquerda
       options={[
         { label: "CARREGADOR", value: "carregador" },
-        { label: "ÓCULOS", value: "óculos" },
+        { label: "ÓCULOS", value: "oculos" },
         { label: "CARAMELO", value: "caramelo" },
         { label: "MAÇÃ", value: "maçã" },
       ]}
