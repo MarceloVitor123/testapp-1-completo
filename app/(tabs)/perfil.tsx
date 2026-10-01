@@ -1,4 +1,4 @@
-import { useFocusEffect } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
@@ -7,132 +7,207 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
-import { useRouter } from "expo-router";
+
 import { Profile } from "../../models/Profile";
 import { deleteProfile, loadProfile } from "../../services/ProfileService";
 
-
 export default function ProfileScreen() {
-  
-  
-  
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [carregando, setCarregando] = useState(true);
+
+  const router = useRouter();
+
+  useFocusEffect(
+    useCallback(() => {
+      async function carregarPerfil() {
+        setCarregando(true);
+
+        const data = await loadProfile();
+
+        setProfile(data);
+        setCarregando(false);
+      }
+
+      carregarPerfil();
+    }, [])
+  );
+
   const escolherFoto = async () => {
     if (!profile) return;
-    
+
     const resultado = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
       allowsEditing: true,
       aspect: [1, 1],
       quality: 0.8,
     });
-    
+
     if (!resultado.canceled) {
       const foto = resultado.assets[0].uri;
-      
+
       const novoProfile = {
         ...profile,
         photo: foto,
       };
-      
+
       setProfile(novoProfile);
-      
+
       await AsyncStorage.setItem(
         "@alfatech/profile",
         JSON.stringify(novoProfile)
       );
     }
   };
-  
-  
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const router = useRouter();
-  const [carregando, setCarregando] = useState(true);
 
-  useFocusEffect(
-  useCallback(() => {
-    async function carregarPerfil() {
-      setCarregando(true);
+  if (carregando) {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" color="#ffffff" />
+        <Text style={styles.loadingText}>CARREGANDO PERFIL...</Text>
+      </View>
+    );
+  }
 
-      const data = await loadProfile();
-
-      setProfile(data);
-      setCarregando(false);
-    }
-
-    carregarPerfil();
-  }, [])
-);
-
-   if (carregando) {
-  return null;
-}
-
-if (!profile) {
-  router.replace("/criarPerfil");
-  return null;
-}
+  if (!profile) {
+    router.replace("/criarPerfil");
+    return null;
+  }
 
   return (
-  
-    <ScrollView contentContainerStyle={styles.container}
-    showsVerticalScrollIndicator={false}
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
     >
 
-      <Image
-  source={
-    profile.photo
-      ? { uri: profile.photo }
-      : require("../../assets/icons/user.png")
-  }
-  style={styles.avatar}
-/>
-      <View style={{ position: "absolute", top: 150, right: 100 }}>
-      <Pressable onPress={escolherFoto} style={styles.fotoButton}>
-        <Text style={styles.textocamera}>📷</Text>
-      </Pressable>
+      {/* CABEÇALHO */}
+      <View style={styles.header}>
+        <Text style={styles.title}>MEU PERFIL</Text>
+        <Text style={styles.subtitle}>
+          ACOMPANHE SUA JORNADA NO ALFATECH
+        </Text>
       </View>
 
+      {/* AVATAR */}
+      <View style={styles.avatarContainer}>
+        <View style={styles.avatarBorder}>
+          <Image
+            source={
+              profile.photo
+                ? { uri: profile.photo }
+                : require("../../assets/icons/user.png")
+            }
+            style={styles.avatar}
+          />
+        </View>
+
+        <Pressable
+          onPress={escolherFoto}
+          style={styles.fotoButton}
+        >
+          <Text style={styles.camera}>📷</Text>
+        </Pressable>
+      </View>
+
+      {/* NOME */}
       <Text style={styles.name}>{profile.name}</Text>
 
-      <View style={styles.card}>
-        <Text style={styles.info}>⭐ XP: {profile.xp}</Text>
-
-        <Text style={styles.info}>
-          🏆 NÍVEL : {profile.level}
+      {/* NÍVEL */}
+      <View style={styles.levelContainer}>
+        <Text style={styles.levelText}>
+          🏆 NÍVEL {profile.level}
         </Text>
 
-        <Text style={styles.info}>
-          🌎 MUNDO ATUAL : {profile.currentWorld}
-        </Text>
+        <View style={styles.levelBarBackground}>
+          <View
+            style={[
+              styles.levelBar,
+              {
+                width: `${Math.min(
+                  (profile.xp % 100),
+                  100
+                )}%`,
+              },
+            ]}
+          />
+        </View>
 
-        <Text style={styles.info}>
-          🎯 PRECISÃO : {profile.accuracy.toFixed(1)}%
+        <Text style={styles.xpText}>
+          ⭐ {profile.xp} XP
         </Text>
+      </View>
 
-        <Text style={styles.info}>
-          ⏱ TEMPO ESTUDADO : {profile.studyTime}s
-        </Text>
+      {/* ESTATÍSTICAS */}
+      <Text style={styles.sectionTitle}>SEUS DADOS</Text>
+
+      <View style={styles.statsGrid}>
+
+        <View style={styles.statCard}>
+          <Text style={styles.statIcon}>⭐</Text>
+          <Text style={styles.statValue}>{profile.xp}</Text>
+          <Text style={styles.statLabel}>XP TOTAL</Text>
+        </View>
+
+        <View style={styles.statCard}>
+          <Text style={styles.statIcon}>🎯</Text>
+          <Text style={styles.statValue}>
+            {profile.accuracy.toFixed(1)}%
+          </Text>
+          <Text style={styles.statLabel}>PRECISÃO</Text>
+        </View>
+
+        <View style={styles.statCard}>
+          <Text style={styles.statIcon}>🌎</Text>
+          <Text style={styles.statValue}>
+            {profile.currentWorld}
+          </Text>
+          <Text style={styles.statLabel}>MUNDO ATUAL</Text>
+        </View>
+
+        <View style={styles.statCard}>
+          <Text style={styles.statIcon}>📚</Text>
+          <Text style={styles.statValue}>
+            {profile.completedLessons}
+          </Text>
+          <Text style={styles.statLabel}>ATIVIDADES</Text>
+        </View>
+
+      </View>
+
+      {/* TEMPO DE ESTUDO */}
+      <View style={styles.studyCard}>
         <View>
-        <Pressable
-          onPress={() => {
-           deleteProfile();
+          <Text style={styles.studyTitle}>
+            ⏱ TEMPO DE ESTUDO
+          </Text>
+
+          <Text style={styles.studyValue}>
+            {profile.studyTime}s
+          </Text>
+        </View>
+
+        <Text style={styles.studyEmoji}>📖</Text>
+      </View>
+
+      {/* BOTÃO EXCLUIR */}
+      <Pressable
+        style={styles.deleteButton}
+        onPress={() => {
+          deleteProfile();
           console.log("profile deletado");
           router.push("/criarPerfil");
-          }}
-        >
-          <Text style={styles.delete}>
-          DELETAR PERFIL </Text>
-        </Pressable>
-         
-        </View>
-      </View>
+        }}
+      >
+        <Text style={styles.deleteText}>
+          🗑️ DELETAR PERFIL
+        </Text>
+      </Pressable>
+
     </ScrollView>
-    
   );
 }
 
@@ -142,65 +217,266 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#5d5d5d",
+    backgroundColor: "#4B4B4B",
   },
 
- container: {
-  backgroundColor: "#5d5d5d",
-  alignItems: "center",
-  paddingTop: 70,
-  paddingBottom: 100,
-  width: "100%",
-},
-
-
-  avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 65,
-    marginBottom: 20,
-  },
-
-  name: {
-    fontSize: 28,
-    fontWeight: "bold",
+  loadingText: {
     color: "white",
+    marginTop: 15,
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+
+  container: {
+    flexGrow: 1,
+    alignItems: "center",
+    backgroundColor: "#4B4B4B",
+    paddingTop: 45,
+    paddingBottom: 60,
+  },
+
+  /* CABEÇALHO */
+
+  header: {
+    alignItems: "center",
     marginBottom: 25,
   },
 
-  card: { 
-    width: "90%",
-    backgroundColor: "#737373",
-    borderRadius: 15,
-    padding: 20,
+  title: {
+    color: "white",
+    fontSize: 28,
+    fontWeight: "900",
+    letterSpacing: 1,
   },
 
-  info: {
-    color: "white",
-    fontSize: 18,
+  subtitle: {
+    color: "#CFCFCF",
+    fontSize: 11,
+    marginTop: 5,
+    letterSpacing: 1,
+  },
+
+  /* AVATAR */
+
+  avatarContainer: {
+    position: "relative",
     marginBottom: 15,
   },
-   delete: {
-    color: "#111111",
-    fontSize: 22,
-    fontWeight: "500",
-    backgroundColor: "#c55e5e",
-    padding: 10,
-    borderRadius: 8,
-    textAlign: "center",
-    marginTop: 20,
+
+  avatarBorder: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    padding: 5,
+    backgroundColor: "#8D8D8D",
+    elevation: 8,
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
   },
+
+  avatar: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 75,
+  },
+
   fotoButton: {
-    backgroundColor: "#a1a2a2",
-    paddingHorizontal: 9,
-    paddingVertical: 7,
-    borderRadius: 100,
-    marginBottom: 10,
+    position: "absolute",
+    right: -3,
+    bottom: 3,
+
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+
+    backgroundColor: "#6F6F6F",
+
+    alignItems: "center",
+    justifyContent: "center",
+
+    borderWidth: 3,
+    borderColor: "#4B4B4B",
+
+    elevation: 5,
   },
-  textocamera: {
+
+  camera: {
+    fontSize: 22,
+  },
+
+  /* NOME */
+
+  name: {
     color: "white",
     fontSize: 30,
-    marginBottom: 15,
+    fontWeight: "900",
+    marginBottom: 20,
   },
-  
+
+  /* NÍVEL */
+
+  levelContainer: {
+    width: "88%",
+    backgroundColor: "#666666",
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 28,
+
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+  },
+
+  levelText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+
+  levelBarBackground: {
+    width: "100%",
+    height: 10,
+    backgroundColor: "#484848",
+    borderRadius: 10,
+    overflow: "hidden",
+  },
+
+  levelBar: {
+    height: "100%",
+    backgroundColor: "#BFBFBF",
+    borderRadius: 10,
+  },
+
+  xpText: {
+    color: "#DADADA",
+    marginTop: 8,
+    fontSize: 13,
+    fontWeight: "bold",
+  },
+
+  /* ESTATÍSTICAS */
+
+  sectionTitle: {
+    alignSelf: "flex-start",
+    marginLeft: "7%",
+    marginBottom: 12,
+
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "900",
+  },
+
+  statsGrid: {
+    width: "88%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+
+  statCard: {
+    width: "48%",
+    backgroundColor: "#666666",
+
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 12,
+
+    alignItems: "center",
+
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+  },
+
+  statIcon: {
+    fontSize: 25,
+    marginBottom: 8,
+  },
+
+  statValue: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "900",
+  },
+
+  statLabel: {
+    color: "#D0D0D0",
+    fontSize: 11,
+    fontWeight: "bold",
+    marginTop: 4,
+  },
+
+  /* TEMPO */
+
+  studyCard: {
+    width: "88%",
+    backgroundColor: "#666666",
+
+    borderRadius: 18,
+    padding: 20,
+    marginTop: 10,
+    marginBottom: 25,
+
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    elevation: 4,
+  },
+
+  studyTitle: {
+    color: "#D0D0D0",
+    fontSize: 13,
+    fontWeight: "bold",
+  },
+
+  studyValue: {
+    color: "white",
+    fontSize: 25,
+    fontWeight: "900",
+    marginTop: 5,
+  },
+
+  studyEmoji: {
+    fontSize: 42,
+  },
+
+  /* DELETAR */
+
+  deleteButton: {
+    width: "88%",
+    paddingVertical: 15,
+
+    borderRadius: 14,
+
+    backgroundColor: "#595959",
+
+    borderWidth: 1,
+    borderColor: "#777777",
+
+    alignItems: "center",
+  },
+
+  deleteText: {
+    color: "#E5A0A0",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+
 });
