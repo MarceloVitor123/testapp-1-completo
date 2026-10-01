@@ -62,7 +62,7 @@ export default function Progresso() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#5d5d5d",
+    backgroundColor: "#4B4B4B",
     paddingHorizontal: 20,
     paddingTop: 0,
     paddingBottom: 100,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
 
   streakCard: {
-    backgroundColor: "#737373",
+    backgroundColor: "#666666",
     borderRadius: 24,
     paddingVertical: 28,
     alignItems: "center",
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
 
   statCard: {
     flex: 1,
-    backgroundColor: "#737373",
+    backgroundColor: "#666666",
     borderRadius: 20,
     paddingVertical: 22,
     alignItems: "center",
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
 
   infoCard: {
-    backgroundColor: "#737373",
+    backgroundColor: "#666666",
     borderRadius: 20,
     padding: 20,
     marginTop: 18,

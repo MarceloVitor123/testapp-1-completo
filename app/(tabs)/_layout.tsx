@@ -1,91 +1,161 @@
 import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 export default function Layout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-       tabBarStyle: {
-  position: "absolute",
 
-  left: 25,
-  right: 25,
-  bottom: 0,
+        tabBarShowLabel: true,
 
-  height: 75,
+        tabBarActiveTintColor: "#FFFFFF",
+        tabBarInactiveTintColor: "#C8C8C8",
 
-  borderRadius: 10,
+        tabBarStyle: {
+          position: "absolute",
 
-  backgroundColor: "#6d6d6d",
+          left: 20,
+          right: 20,
+          bottom: 18,
 
-  borderTopWidth: 0,
+          height: 72,
 
-  elevation: 10,
+          borderRadius: 25,
 
-  shadowColor: "#000",
-  shadowOpacity: 0.25,
-  shadowRadius: 15,
-  shadowOffset: {
-    width: 0,
-    height: 6,
-  },
-},
-        tabBarActiveTintColor: "#ffffff",
-        tabBarInactiveTintColor: "#cfcfcf",
+          backgroundColor: "#666666",
+
+          borderTopWidth: 0,
+
+          elevation: 12,
+
+          shadowColor: "#000",
+          shadowOpacity: 0.3,
+          shadowRadius: 12,
+          shadowOffset: {
+            width: 0,
+            height: 5,
+          },
+
+          paddingTop: 6,
+          paddingBottom: 6,
+        },
+
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: "800",
+          marginBottom: 3,
+        },
+
+        tabBarItemStyle: {
+          borderRadius: 20,
+          marginHorizontal: 5,
+        },
       }}
     >
+
+      {/* TRILHA */}
       <Tabs.Screen
         name="trilha"
         options={{
-          title: "trilha",
-          tabBarIcon: () => (
-  <Image
-    source={require("../../assets/icons/home.png")}
-    style={{
-      width: 32,
-      height: 32,
-      resizeMode: "contain",
-    }}
-  />
-),
+          title: "TRILHA",
+
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                width: 45,
+                height: 35,
+                borderRadius: 18,
+                alignItems: "center",
+                justifyContent: "center",
+
+                backgroundColor: focused
+                  ? "#7D7D7D"
+                  : "transparent",
+              }}
+            >
+              <Image
+                source={require("../../assets/icons/home.png")}
+                style={{
+                  width: 27,
+                  height: 27,
+                  resizeMode: "contain",
+                  opacity: focused ? 1 : 0.65,
+                }}
+              />
+            </View>
+          ),
         }}
       />
 
+      {/* PROGRESSO */}
       <Tabs.Screen
         name="progresso"
         options={{
           title: "PROGRESSO",
-          tabBarIcon: ({ color, size }) => (
-            <Image
-    source={require("../../assets/icons/fire.png")}
-    style={{
-      width: 32,
-      height: 32,
-      resizeMode: "contain",
-    }}
-  />
+
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                width: 45,
+                height: 35,
+                borderRadius: 18,
+                alignItems: "center",
+                justifyContent: "center",
+
+                backgroundColor: focused
+                  ? "#7D7D7D"
+                  : "transparent",
+              }}
+            >
+              <Image
+                source={require("../../assets/icons/fire.png")}
+                style={{
+                  width: 29,
+                  height: 29,
+                  resizeMode: "contain",
+                  opacity: focused ? 1 : 0.65,
+                }}
+              />
+            </View>
           ),
         }}
       />
 
+      {/* PERFIL */}
       <Tabs.Screen
         name="perfil"
         options={{
           title: "PERFIL",
-          tabBarIcon: ({ color, size }) => (
-            <Image
-    source={require("../../assets/icons/user.png")}
-    style={{
-      width: 32,
-      height: 32,
-      resizeMode: "contain",
-    }}
-  />
+
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                width: 45,
+                height: 35,
+                borderRadius: 18,
+                alignItems: "center",
+                justifyContent: "center",
+
+                backgroundColor: focused
+                  ? "#7D7D7D"
+                  : "transparent",
+              }}
+            >
+              <Image
+                source={require("../../assets/icons/user.png")}
+                style={{
+                  width: 27,
+                  height: 27,
+                  resizeMode: "contain",
+                  opacity: focused ? 1 : 0.65,
+                }}
+              />
+            </View>
           ),
         }}
       />
+
     </Tabs>
   );
 }
