@@ -7,27 +7,36 @@ export async function loadProfile(): Promise<Profile | null> {
   try {
     const data = await AsyncStorage.getItem(PROFILE_KEY);
 
+    console.log("🔵 PERFIL LIDO DO STORAGE:", data);
+
     if (!data) {
+      console.log("🔴 NÃO EXISTE PERFIL NO STORAGE");
       return null;
     }
 
     return JSON.parse(data);
 
   } catch (error) {
-    console.log("Erro ao carregar perfil:", error);
+    console.log("🔴 ERRO AO CARREGAR PERFIL:", error);
     return null;
   }
 }//tenta pegar o perfil do AsyncStorage. Se não houver dados, retorna o perfil padrão. Em caso de erro, também retorna o perfil padrão.
 
 export async function saveProfile(profile: Profile) {
   try {
+    console.log("🟢 SALVANDO PERFIL:", profile);
+
     await AsyncStorage.setItem(
       PROFILE_KEY,
       JSON.stringify(profile)
     );
 
+    const teste = await AsyncStorage.getItem(PROFILE_KEY);
+
+    console.log("🟢 PERFIL DEPOIS DE SALVAR:", teste);
+
   } catch (error) {
-    console.log("Erro ao salvar perfil:", error);
+    console.log("🔴 ERRO AO SALVAR PERFIL:", error);
   }
 }//tenta salvar o perfil no AsyncStorage. Em caso de erro, loga o erro.
 

@@ -17,58 +17,65 @@ import { Profile } from "../../models/Profile";
 import { deleteProfile, loadProfile } from "../../services/ProfileService";
 
 
-
 export default function ProfileScreen() {
-
+  
+  
+  
   const escolherFoto = async () => {
-  if (!profile) return;
-
-  const resultado = await ImagePicker.launchImageLibraryAsync({
-    mediaTypes: ["images"],
-    allowsEditing: true,
-    aspect: [1, 1],
-    quality: 0.8,
-  });
-
-  if (!resultado.canceled) {
-    const foto = resultado.assets[0].uri;
-
-    const novoProfile = {
-      ...profile,
-      photo: foto,
-    };
-
-    setProfile(novoProfile);
-
-    await AsyncStorage.setItem(
-      "@alfatech/profile",
-      JSON.stringify(novoProfile)
-    );
-  }
-};
-
-
+    if (!profile) return;
+    
+    const resultado = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 0.8,
+    });
+    
+    if (!resultado.canceled) {
+      const foto = resultado.assets[0].uri;
+      
+      const novoProfile = {
+        ...profile,
+        photo: foto,
+      };
+      
+      setProfile(novoProfile);
+      
+      await AsyncStorage.setItem(
+        "@alfatech/profile",
+        JSON.stringify(novoProfile)
+      );
+    }
+  };
+  
+  
   const [profile, setProfile] = useState<Profile | null>(null);
   const router = useRouter();
+  const [carregando, setCarregando] = useState(true);
 
   useFocusEffect(
-    useCallback(() => {
-      async function carregarPerfil() {
-        const data = await loadProfile();
-        setProfile(data);
-      }
+  useCallback(() => {
+    async function carregarPerfil() {
+      setCarregando(true);
 
-      carregarPerfil();
-    }, [])
-  );
+      const data = await loadProfile();
 
-  if (!profile) {
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size="large" color="#78caf5" />
-      </View>
-    );
-  }
+      setProfile(data);
+      setCarregando(false);
+    }
+
+    carregarPerfil();
+  }, [])
+);
+
+   if (carregando) {
+  return null;
+}
+
+if (!profile) {
+  router.replace("/criarPerfil");
+  return null;
+}
 
   return (
     <ScrollView contentContainerStyle={styles.container}

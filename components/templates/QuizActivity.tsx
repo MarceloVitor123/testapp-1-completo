@@ -30,6 +30,9 @@ type WritingItem = {
   // Exemplo: "JANEIRO"
   answer: string;
     options?: string[];
+      image?: any;
+
+
 };
 
 type QuizActivityProps = {
@@ -340,8 +343,16 @@ export default function QuizActivity({
           const parts = item.text.split("");
 
           return (
-            <View key={item.id} style={styles.writingItem}>
-              <View style={styles.wordContainer}>
+           <View key={item.id} style={styles.writingItem}>
+
+  {item.image && (
+    <Image
+      source={item.image}
+      style={styles.writingItemImage}
+    />
+  )}
+
+  <View style={styles.wordContainer}>
                 {parts.map((character, index) => {
                   /*
                    * Se for "_", cria um
@@ -555,8 +566,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#5B5B5B",
+    
   },
-
+  
   topBar: {
     flexDirection: "row",
     alignItems: "center",
@@ -693,11 +705,18 @@ const styles = StyleSheet.create({
     rowGap: 12,
   },
 
-  writingItem: {
-    width: "48%",
-    alignItems: "flex-start",
-  },
+writingItem: {
+  width: "48%",
+  alignItems: "flex-start",
+},
 
+writingItemImage: {
+  alignSelf: "center",
+  width: 100,
+  height: 150,
+  resizeMode: "contain",
+  marginBottom: 8,
+},
   wordContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -747,6 +766,10 @@ const styles = StyleSheet.create({
     color: "#F28B82",
     fontSize: 18,
     fontWeight: "600",
+  },
+  imagemcentrada: {
+    width: 100,
+    height: 100,
   },
 
   verifyButton: {
@@ -811,4 +834,6 @@ const styles = StyleSheet.create({
     width: 21,
     height: 41,
   }
+
+  
 }); 

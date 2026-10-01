@@ -6,6 +6,7 @@ import { defaultProfile } from "../data/defaultProfile";
 import { saveProfile } from "../services/ProfileService";
 
 
+
 export default function CriarPerfil() {
   const router = useRouter();
 

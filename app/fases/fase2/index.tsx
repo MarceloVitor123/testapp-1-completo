@@ -51,52 +51,40 @@ export default function IndexScreen() {
       </View>
       <Text style={styles.titulo}>ATIVIDADE 2</Text>
       {"\n\n"}
-      <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
+      <Text style={styles.subtitle}>SÍLABAS</Text>
       <Text style={styles.subtitle}></Text>
-      
-<Text>
-  {/* Tópico 1 */}
-  <Text style={styles.titulo}>1. O QUE SÃO SÍLABAS?</Text>
-  {"\n\n"}
-<text style={styles.subtitle}>
-  TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.
-</text>
-  {"\n\n"}
-<text style={styles.subtitle}>
-  AS SÍLABAS SÃO GRUPOS DE LETRAS QUE PRONUNCIAMOS JUNTOS EM UMA PALAVRA.
-</text>
-  {"\n\n"}
 
-  {/* Tópico 2 */}
-  <Text style={styles.titulo}>2. EXEMPLOS DE SÍLABAS</Text>
-  {"\n\n"}
-
-  CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.
-
-  {"\n\n"}
-
-  POR EXEMPLO: A PALAVRA CASA PODE SER DIVIDIDA EM CA E SA.
-
-  {"\n"}
-
-  A PALAVRA BOLA PODE SER DIVIDIDA EM BO E LA.
-
-  {"\n"}
-
-  JÁ A PALAVRA PÉ POSSUI APENAS UMA SÍLABA.
-
-  {"\n\n"}
-
-  {/* Tópico 3 */}
-  <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
-  {"\n\n"}
-
-  APRENDER A IDENTIFICAR E SEPARAR AS SÍLABAS É UM PASSO IMPORTANTE PARA COMEÇAR A LER E ESCREVER.
-
-  {"\n\n"}
-
-  AGORA É A SUA VEZ DE PRATICAR! 🚀
-</Text>
+      <Text>
+        {/* Tópico 1 */}
+        <Text style={styles.titulo}>1. O QUE SÃO SÍLABAS?</Text>
+        {"\n\n"}
+        <text style={styles.subtitle}>
+          TODAS AS PALAVRAS SÃO FORMADAS POR PARTES MENORES CHAMADAS SÍLABAS.
+        </text>
+        {"\n\n"}
+        <text style={styles.subtitle}>
+          AS SÍLABAS SÃO GRUPOS DE LETRAS QUE PRONUNCIAMOS JUNTOS EM UMA
+          PALAVRA.
+        </text>
+        {"\n\n"}
+        {/* Tópico 2 */}
+        <Text style={styles.titulo}>2. EXEMPLOS DE SÍLABAS</Text>
+        {"\n\n"}
+        CADA PALAVRA PODE TER UMA OU MAIS SÍLABAS.
+        {"\n\n"}
+        POR EXEMPLO: A PALAVRA CASA PODE SER DIVIDIDA EM CA E SA.
+        {"\n"}A PALAVRA BOLA PODE SER DIVIDIDA EM BO E LA.
+        {"\n"}
+        JÁ A PALAVRA PÉ POSSUI APENAS UMA SÍLABA.
+        {"\n\n"}
+        {/* Tópico 3 */}
+        <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
+        {"\n\n"}
+        APRENDER A IDENTIFICAR E SEPARAR AS SÍLABAS É UM PASSO IMPORTANTE PARA
+        COMEÇAR A LER E ESCREVER.
+        {"\n\n"}
+        AGORA É A SUA VEZ DE PRATICAR! 🚀
+      </Text>
 
       <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
@@ -149,9 +137,9 @@ const styles = StyleSheet.create({
     left: 100,
     borderRadius: 24,
   },
-  titulo: { 
-  fontSize: 28, 
-  fontWeight: "bold",
-  color: "#0ec0ec",
+  titulo: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#0ec0ec",
   },
 });
