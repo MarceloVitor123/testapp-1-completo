@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   botaoX: {
-    backgroundColor: "#757575",
+    backgroundColor: "#fffdfdee",
     paddingHorizontal: 28,
     paddingVertical: 16,
     position: "absolute",
