@@ -127,17 +127,19 @@ const playAudio = async (audioFile: any) => {
         </View>
       </View>
 
-      <View style={styles.questionContainer}>
-  <Text style={styles.question}>{question}</Text>
-
-  <Pressable
+    <View style={styles.questionContainer}>
+      <Pressable
     onPress={() => playAudio(audio)}
     disabled={audioPlaying}
     style={styles.audioButton}
   >
     <Text style={styles.audioIcon}>🔊</Text>
   </Pressable>
-</View>
+
+  <Text style={styles.question}>
+    {question}
+  </Text>
+    </View>
 
         <View style={styles.grid}>
           {options.map((item) => {
@@ -149,7 +151,20 @@ const playAudio = async (audioFile: any) => {
                 onPress={() => toggleOption(item.value)}
                 style={({ pressed }) => [
                   styles.optionButton,
+
+                  feedback === null && //borda azul na resposta
                   isSelected && styles.optionSelected,
+
+                  feedback === "correct" && //quando acertar fica verde
+                  isSelected && styles.optionCorrect,
+
+                  feedback === "wrong" && //quando errar fica vermelha
+                  isSelected && styles.optionWrong,
+
+                  feedback === "wrong" && //se errou, mostra a resposta certa em verde
+                  correctAnswers.includes(item.value)
+                  && styles.optionCorrect,
+
                   pressed && styles.optionPressed,
                 ]}
               >
@@ -327,13 +342,14 @@ const styles = StyleSheet.create({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  marginTop: 20,
-  marginBottom: 55,
+  width: "100%",
+  marginTop: 70,
+  marginBottom: 30,
   gap: 10,
- },
+},
 
   audioButton: {
-  right: 510,
+  width: 45,
   height: 45,
   alignItems: "center",
   justifyContent: "center",
@@ -343,5 +359,17 @@ const styles = StyleSheet.create({
   width: "100%",
   alignItems: "center",
  },
+
+ optionCorrect: {
+  backgroundColor: "#7CDB8A",
+  borderWidth: 2,
+  borderColor: "#4CAF50",
+},
+
+optionWrong: {
+  backgroundColor: "#F28B82",
+  borderWidth: 2,
+  borderColor: "#E53935",
+},
 
 });
