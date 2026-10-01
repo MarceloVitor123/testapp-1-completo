@@ -78,8 +78,8 @@ if (!profile) {
 }
 
   return (
+  
     <ScrollView contentContainerStyle={styles.container}
-    
     showsVerticalScrollIndicator={false}
     >
 
@@ -103,19 +103,19 @@ if (!profile) {
         <Text style={styles.info}>⭐ XP: {profile.xp}</Text>
 
         <Text style={styles.info}>
-          🏆 Nível: {profile.level}
+          🏆 NÍVEL : {profile.level}
         </Text>
 
         <Text style={styles.info}>
-          🌎 Mundo Atual: {profile.currentWorld}
+          🌎 MUNDO ATUAL : {profile.currentWorld}
         </Text>
 
         <Text style={styles.info}>
-          🎯 Precisão: {profile.accuracy.toFixed(1)}%
+          🎯 PRECISÃO : {profile.accuracy.toFixed(1)}%
         </Text>
 
         <Text style={styles.info}>
-          ⏱ Tempo estudado: {profile.studyTime}s
+          ⏱ TEMPO ESTUDADO : {profile.studyTime}s
         </Text>
         <View>
         <Pressable
@@ -126,13 +126,13 @@ if (!profile) {
           }}
         >
           <Text style={styles.delete}>
-           deletar perfil
-          </Text>
+          DELETAR PERFIL </Text>
         </Pressable>
          
         </View>
       </View>
     </ScrollView>
+    
   );
 }
 
@@ -145,12 +145,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#5d5d5d",
   },
 
-  container: {
-    flex: 1,
-    backgroundColor: "#5d5d5d",
-    alignItems: "center",
-    paddingTop: 70,
-  },
+ container: {
+  backgroundColor: "#5d5d5d",
+  alignItems: "center",
+  paddingTop: 70,
+  paddingBottom: 100,
+  width: "100%",
+},
+
 
   avatar: {
     width: 130,
@@ -200,8 +202,5 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 15,
   },
-  content: {
-    padding: 80,
-    gap: 0,
-  },
+  
 });

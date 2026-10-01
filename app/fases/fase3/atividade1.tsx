@@ -2,11 +2,13 @@
 import React from "react";
 import QuizActivity from "../../../components/templates/QuizActivity";
 
-export default function MesesActivityScreen() {
+export default function MesesActivityScreen() 
+{
   return (
+ 
     <QuizActivity
       mode="writingMultiple"
-      question="Complete os nomes dos meses:"
+      question="COMPLETE OS NOMES DOS MESES ABAIXO COM CONSOANTES E VOGAIS :"
       correctAnswer=""
       nextRoute="/fases/fase3/atividade2"
       wrongRoute="/fases/fase3/atividade2"

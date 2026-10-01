@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Pressable,
@@ -9,11 +9,35 @@ import {
   View,
 } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
+import { Audio } from "expo-av"
 
 export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
-  // const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const audioIntro = require("@/components/audios/intro_silabas.mp3");
+  const audioSilabas1 = require("@/components/audios/o_que_sao_silabas.mp3");
+  const audioConsoantes = require("@/components/audios/exemplo_silabas.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar2.mp3");
+  const playAudio = async (audioFile: any) => {
+    if (!audioFile) return;
+    if (audioPlaying) return;
+  
+    try {
+      setAudioPlaying(true);
+      const { sound } = await Audio.Sound.createAsync(audioFile);
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          setAudioPlaying(false);
+          sound.unloadAsync();
+        }
+      });
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Erro ao reproduzir áudio:", error);
+      setAudioPlaying(false);
+    }
+  };
 
   const handleStart = () => {
     resetWorld();
@@ -23,7 +47,9 @@ export default function IndexScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.container}
+     contentContainerStyle={styles.content}
+     showsVerticalScrollIndicator={false}>
       <View style={styles.botaoX}>
         <Pressable
           onPress={() => router.back()}
@@ -31,12 +57,12 @@ export default function IndexScreen() {
         >
           <Text
             style={{
-              color: "#FFFFFF",
-              fontSize: 18,
+              color: "#080101",
+              fontSize: 40,
               fontWeight: "600",
               position: "absolute",
-              top: -55,
-              left: -76,
+              top: -76,
+              left: -82,
             }}
           >
             x
@@ -46,10 +72,19 @@ export default function IndexScreen() {
       <View>
         <Image
           source={require("../../../assets/images/TALKPUP.png")}
-          style={{ width: 400, height: 200, marginBottom: 0 }}
+          style={{ width: 400, height: 300, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.titulo}>ATIVIDADE 2</Text>
+      
+     {/* Atividade 2 sílabas */} 
+      <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
+        <Pressable onPress={() => playAudio(audioIntro)}>
+          <Text style={styles.audioIcon0}>🔊</Text>
+        </Pressable>
+      </View>
+      <Text style={styles.tituloMain}>ATIVIDADE 2</Text>
+      {"\n\n"}
+      <Text style={styles.tituloMain}>SÍLABAS</Text>
       {"\n\n"}
       <Text style={styles.subtitle}>SÍLABAS</Text>
       <Text style={styles.subtitle}></Text>
@@ -86,11 +121,11 @@ export default function IndexScreen() {
         AGORA É A SUA VEZ DE PRATICAR! 🚀
       </Text>
 
-      <Pressable onPress={handleStart} style={styles.button}>
+  <Pressable onPress={handleStart} style={styles.button}>
         <Text style={styles.buttonText}>COMEÇAR</Text>
       </Pressable>
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -103,17 +138,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 24,
-    paddingVertical: 40,
+    paddingVertical: 15,
   },
   title: {
     color: "#fff",
-    fontSize: 34,
+    fontSize: 36,
     fontWeight: "700",
-    marginBottom: 12,
+    marginBottom: 15,
   },
   subtitle: {
     color: "#ffffff",
-    fontSize: 18,
+    fontSize: 90,
     textAlign: "center",
     marginBottom: 32,
   },
@@ -125,8 +160,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#111",
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 24,
+    fontWeight: "bold",
   },
   botaoX: {
     backgroundColor: "#757575",

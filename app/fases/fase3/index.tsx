@@ -31,37 +31,90 @@ export default function IndexScreen() {
         >
           <Text
             style={{
-              color: "#FFFFFF",
-              fontSize: 18,
+              color: "#080101",
+              fontSize: 40,
               fontWeight: "600",
               position: "absolute",
-              top: -55,
-              left: -76,
+              top: -76,
+              left: -82,
             }}
           >
             x
           </Text>
         </Pressable>
       </View>
+
       <View>
         <Image
           source={require("../../../assets/images/TALKPUP.png")}
-          style={{ width: 400, height: 200, marginBottom: 0 }}
+          style={{ width: 400, height: 300, marginBottom: 0 }}
         ></Image>
       </View>
-      <Text style={styles.title}>ATIVIDADE 2</Text>
-      <Text style={styles.subtitle}>VOGAIS E CONSOANTES</Text>
-      <Text style={styles.subtitle}></Text>
-      <Text style={styles.subtitle}>
-        Todas as palavras são formadas por partes menores chamadas sílabas. 
-        As sílabas são grupos de letras que pronunciamos juntos em uma palavra. 
-        Cada palavra pode ter uma ou mais sílabas. 
-        Por exemplo: a palavra CASA pode ser dividida em CA e SA. 
-        A palavra BOLA pode ser dividida em BO e LA. 
-        Já a palavra PÉ possui apenas uma sílaba. 
-        Aprender a identificar e separar as sílabas é um passo importante para começar a ler e escrever. 
-        Agora é a sua vez de praticar! 🚀
 
+      <Text style={styles.titulo}>ATIVIDADE 3</Text>
+
+      {"\n\n"}
+
+      <Text style={styles.titulo2}>SÍLABAS</Text>
+
+      <Text style={styles.subtitle}></Text>
+
+      <Text>
+        {/* Tópico 1 */}
+        <Text style={styles.titulo}>1. SÍLABAS</Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          NAS FASES 1 E 2, VOCÊ APRENDEU A RECONHECER LETRAS, SONS E SÍLABAS.
+          AGORA, NA FASE 3, VAMOS USAR ESSES CONHECIMENTOS PARA DAR UM NOVO
+          PASSO:
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          COMEÇAR A ESCREVER PALAVRAS.
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          NESTA FASE, AS ATIVIDADES FICARÃO UM POUCO MAIS DESAFIADORAS. VOCÊ
+          VAI PRATICAR COMPLETANDO PALAVRAS E FRASES E, AOS POUCOS, APRENDERÁ
+          A ESCREVER PALAVRAS SOZINHO.
+        </Text>
+
+        {"\n\n"}
+
+        {/* Tópico 2 */}
+        <Text style={styles.titulo}>2. OBJETIVO DA FASE</Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          O OBJETIVO É AUMENTAR O NÍVEL DE DIFICULDADE DE FORMA GRADUAL,
+          UTILIZANDO O QUE VOCÊ JÁ APRENDEU PARA DESENVOLVER SUAS HABILIDADES
+          DE LEITURA E ESCRITA.
+        </Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo}>
+          APRENDER A IDENTIFICAR, SEPARAR E ESCREVER AS SÍLABAS É UM PASSO
+          IMPORTANTE PARA COMEÇAR A FORMAR PALAVRAS E FRASES.
+        </Text>
+
+        {"\n\n"}
+
+        {/* Tópico 3 */}
+        <Text style={styles.titulo}>3. VAMOS PRATICAR!</Text>
+
+        {"\n\n"}
+
+        <Text style={styles.subtitulo }>
+          AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA!
+        </Text>
       </Text>
 
       <Pressable onPress={handleStart} style={styles.button}>
@@ -76,6 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#5B5B5B",
   },
+
   content: {
     flexGrow: 1,
     justifyContent: "center",
@@ -83,29 +137,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 40,
   },
+
   title: {
     color: "#fff",
-    fontSize: 34,
+    fontSize: 36,
     fontWeight: "700",
-    marginBottom: 12,
+    marginBottom: 15,
   },
+
   subtitle: {
-    color: "#fff",
-    fontSize: 18,
+    color: "#ffffff",
+    fontSize: 90,
     textAlign: "center",
     marginBottom: 32,
   },
+
   button: {
     backgroundColor: "#1CC5D3",
     paddingHorizontal: 28,
     paddingVertical: 16,
     borderRadius: 24,
   },
+
   buttonText: {
     color: "#111",
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 24,
+    fontWeight: "bold",
   },
+
   botaoX: {
     backgroundColor: "#757575",
     paddingHorizontal: 28,
@@ -114,5 +173,24 @@ const styles = StyleSheet.create({
     top: 60,
     left: 100,
     borderRadius: 24,
+     
+  },
+
+  titulo: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#0ec0ec",
+  },
+
+  titulo2: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#fefffa",
+  },
+
+  subtitulo: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "rgb(250, 252, 244)",
   },
 });
