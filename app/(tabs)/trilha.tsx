@@ -45,6 +45,12 @@ const fases: Fase[] = [
 	rota: "/fases/fase5",
 	lado: "center",
   requiredXP: 80,
+  },
+    {
+	id: 6,
+	rota: "/fases/fase5",
+	lado: "left",
+  requiredXP: 100,
   }
 ];
 

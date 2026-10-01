@@ -14,31 +14,25 @@ export default function EscrevaNomeActivityScreen() {
       writingItems={[
         {
           id: "imagem1",
-          text: "________",
+          text: "______",
           answer: "ESCOVA",
           options: [],
         },
         {
           id: "imagem2",
-          text: "________",
-          answer: "PENTE",
-          options: [],
-        },
-        {
-          id: "imagem3",
-          text: "________",
+          text: "____",
           answer: "LAÇO",
           options: [],
         },
         {
-          id: "imagem4",
-          text: "________",
+          id: "imagem3",
+          text: "______",
           answer: "SAPATO",
           options: [],
         },
         {
-          id: "imagem5",
-          text: "________",
+          id: "imagem4",
+          text: "_____",
           answer: "COLAR",
           options: [],
         },
