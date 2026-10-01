@@ -48,6 +48,12 @@ const fases: Fase[] = [
     lado: "center",
     requiredXP: 80,
   },
+    {
+	id: 6,
+	rota: "/fases/fase5",
+	lado: "left",
+  requiredXP: 100,
+  },
 ];
 
 export default function Mundo() {
