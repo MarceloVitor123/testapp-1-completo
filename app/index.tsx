@@ -18,10 +18,7 @@ export default function Index() {
   async function enter() {
     const profile = await loadProfile();
 
-    if (!profile) {
-      router.replace("/criarPerfil");
-      return;
-    }
+    
 
     router.replace("/trilha");
   }
