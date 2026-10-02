@@ -81,8 +81,19 @@ export async function updatePhaseProgress(
       return;
     }
 
-    // Atualiza o XP e progresso da fase
-    profile.phases[phase] = progress;
+    const faseAnterior = profile.phases[phase] //soma todo o XP e tempo das fases
+    const tentativasAnteriores = faseAnterior?.attempts ?? 0
+    const mediaAnterior = faseAnterior?.accuracy ?? 0
+    const novasTentativas = tentativasAnteriores + 1
+    const novaMediaAccuracy = (mediaAnterior * tentativasAnteriores + progress.accuracy) / novasTentativas
+
+    profile.phases[phase] = {
+    ...progress,
+    xp: (faseAnterior?.xp ?? 0) + progress.xp,
+    time: (faseAnterior?.time ?? 0) + progress.time,
+    accuracy: novaMediaAccuracy,
+    attempts: novasTentativas,
+    };
 
     // Recalcula o XP total somando todas as fases
     profile.xp = Object.values(profile.phases).reduce(

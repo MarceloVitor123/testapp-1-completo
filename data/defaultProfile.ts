@@ -18,30 +18,45 @@ export const defaultProfile: Profile = {
       accuracy: 0,
       time: 0,
       completed: false,
+      attempts: 0,
     },
     fase2: {
       xp: 0,
       accuracy: 0,
       time: 0,
       completed: false,
+      attempts: 0,
     },
     fase3: {
       xp: 0,
       accuracy: 0,
       time: 0,
       completed: false,
+      attempts: 0,
     },
     fase4: {
       xp: 0,
       accuracy: 0,
       time: 0,
       completed: false,
+      attempts: 0,
     },
     fase5: {
       xp: 0,
       accuracy: 0,
       time: 0,
       completed: false,
+      attempts: 0,
+    },
+  }
+}
+    /*
+     fase6: {
+      xp: 0,
+      accuracy: 0,
+      time: 0,
+      completed: false,
+      attempts: 0,
     },
   },
 };

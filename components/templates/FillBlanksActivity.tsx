@@ -107,9 +107,6 @@ return (
         />
       </View>
     </View>
-<Text style={styles.question}>
-  {title}
-</Text>
 
     {/* Conteúdo da atividade */}
     <View style={styles.content}>
@@ -225,16 +222,15 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 24,
     alignItems: "center",
+    justifyContent: "center",
   },
   question: {
     color: "#FFFFFF",
     fontSize: 22,
     fontWeight: "600",
-    textAlign: "left",
-    alignSelf: "flex-start",
-    maxWidth: 240,
+    textAlign: "center",
+    alignSelf: "center",
     lineHeight: 28,
     marginBottom: 28,
   },
@@ -356,12 +352,13 @@ const styles = StyleSheet.create({
 
   blanksContainer: {
   width: "100%",
-  paddingHorizontal: 20,
+  alignItems: "center",
 },
 
 linha: {
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "center",
   flexWrap: "wrap",
   marginBottom: 18,
 },
