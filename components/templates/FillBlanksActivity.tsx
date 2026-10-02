@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 32,
     lineHeight: 32,
-    marginRight: 12,
+    marginRight: 12,   
     marginTop: -2,
   },
   progressBar: {

@@ -23,6 +23,7 @@ export default function IsqueiroActivityScreen() {
           image: require("../../../assets/images/isqueiro.png"),
         },
       ]}
+      audio={require("@/components/audios/monte_imagem.mp3")}
       />
   );
 }
