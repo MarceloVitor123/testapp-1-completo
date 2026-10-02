@@ -3,6 +3,7 @@ export interface PhaseProgress {
   accuracy: number;
   time: number;
   completed: boolean;
+  attempts: number; //quantas vezes uma fase já foi concluída
 }
 
 export interface Profile {

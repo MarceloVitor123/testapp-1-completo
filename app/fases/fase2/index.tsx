@@ -106,9 +106,9 @@ export default function IndexScreen() {
 
   {/* Tópico 2 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
-  <Pressable onPress={() => playAudio(audioConsoantes)}>
-  <Text style={styles.audioIcon2}>🔊</Text>
-  </Pressable>
+    <Pressable onPress={() => playAudio(audioConsoantes)}>
+      <Text style={styles.audioIcon2}>🔊</Text>
+    </Pressable>
   <Text style={{ flex: 1}}>
   <Text style={styles.titulo2}>2. EXEMPLOS DE SÍLABAS</Text>
   {"\n\n"}
