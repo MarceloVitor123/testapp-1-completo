@@ -1,5 +1,6 @@
+import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import {
   Image,
   Pressable,
@@ -9,16 +10,15 @@ import {
   View,
 } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
-import { Audio } from "expo-av"
 
 export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
-  const audioIntro = require("@/components/audios/intro_silabas.mp3");
-  const audioSilabas1 = require("@/components/audios/o_que_sao_silabas.mp3");
-  const audioConsoantes = require("@/components/audios/exemplo_silabas.mp3");
-  const audioPraticar = require("@/components/audios/topico_praticar2.mp3");
+  const audioIntro = require("@/components/audios/atividade3.mp3");
+  const audioSilabas1 = require("@/components/audios/silabas_atividade3.mp3");
+  const audioConsoantes = require("@/components/audios/objetivo_da_fase.mp3");
+  const audioPraticar = require("@/components/audios/topico_praticar3.mp3");
   const playAudio = async (audioFile: any) => {
     if (!audioFile) return;
     if (audioPlaying) return;
@@ -149,8 +149,7 @@ export default function IndexScreen() {
         {"\n\n"}
 
         <Text style={styles.subtitulo }>
-          AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA!
-        </Text>
+          AGORA É A SUA VEZ DE COLOCAR O QUE APRENDEU EM PRÁTICA!</Text>
         </Text>
           </View>
 
@@ -203,7 +202,7 @@ const styles = StyleSheet.create({
   },
 
   botaoX: {
-    backgroundColor: "#757575",
+    backgroundColor: "#fffdfdee",
     paddingHorizontal: 28,
     paddingVertical: 16,
     position: "absolute",

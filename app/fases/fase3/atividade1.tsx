@@ -12,7 +12,6 @@ export default function MesesActivityScreen()
       correctAnswer=""
       nextRoute="/fases/fase3/atividade2"
       wrongRoute="/fases/fase3/atividade2"
-      progress={0}
       writingItems={[
         {
           id: "janeiro",
@@ -45,6 +44,8 @@ export default function MesesActivityScreen()
           answer: "JUNHO",
         },
       ]}
+      progress={0}
+      audio={require("@/components/audios/meses.mp3")}
     />
   );
 }
