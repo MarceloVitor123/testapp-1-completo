@@ -15,8 +15,8 @@ type FillBlanksProps = {
   blanks: Blank[];
   nextRoute: string;
   progress?: number;
-  audio?:any;
-  question: string;
+  audio?: any;
+  question?: string;
 }
 
 export default function DigiteActivity({

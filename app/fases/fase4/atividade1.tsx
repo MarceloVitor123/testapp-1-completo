@@ -6,7 +6,7 @@ export default function ModalVerbActivityScreen() {
     <ImageMatchActivity
       question="SELECIONE O NOME DO ITEM COM A IMAGEM AO LADO."
       // Imagem exibida no card à direita
-      targetImage={require("@/assets/images/chinelo.jpeg")}
+      targetImage={require("@/assets/images/chinelo.png")}
       // Lista de botões da coluna esquerda
       options={[
         { label: "LÁPIS", value: "lápis" },
