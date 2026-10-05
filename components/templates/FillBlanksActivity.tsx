@@ -8,6 +8,7 @@ import { Audio } from "expo-av"
 type Blank = {
   before: string; //frases antes do espaço
   after?: string; //frases depois do espaço
+  audio?: any
 }
 
 type FillBlanksProps = {
@@ -16,6 +17,7 @@ type FillBlanksProps = {
   nextRoute: string;
   progress?: number;
   audio?: any;
+  subAudio?: any;
   question?: string;
 }
 
@@ -26,6 +28,7 @@ export default function DigiteActivity({
   progress = 0,
   audio,
   question,
+  subAudio,
 }: FillBlanksProps) {
   const router = useRouter();
   const { addActivityResult } = useWorld();
@@ -133,13 +136,12 @@ return (
       {/* Frases com os campos para escrever */}
       <View style={styles.blanksContainer}>
         {blanks.map((blank, index) => (
-          <View
-            key={index}
-            style={styles.linha}
-          >
-            <Text style={styles.texto}>
-              {blank.before}
-            </Text>
+          <View key={index} style={styles.linha}>
+            <Pressable onPress={() => playAudio(blank.audio)}>
+              <Text style={styles.audioIcon}>🔊</Text>
+            </Pressable>
+
+          <Text style={styles.texto}>{blank.before}</Text>
 
             <TextInput
               value={answers[index]}

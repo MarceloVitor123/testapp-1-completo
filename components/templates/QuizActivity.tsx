@@ -730,8 +730,8 @@ writingItemImage: {
 
   wordLetter: {
     color: "#FFFFFF",
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 22,
+    fontWeight: "500", //atividade de completar os nomes dos meses
   },
 
   letterInput: {
