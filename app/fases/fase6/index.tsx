@@ -19,7 +19,7 @@ export default function IndexScreen() {
     resetWorld();
     setCurrentWorld(1);
     setWorldStartTime(Date.now());
-    router.push("/fases/fase5/atividade1");
+    router.push("/fases/fase6/atividade1");
   };
 
   return (
@@ -65,10 +65,10 @@ export default function IndexScreen() {
         />
       </View>
 
-      <Text style={styles.title}>ATIVIDADE 5</Text>
+      <Text style={styles.title}>ATIVIDADE 6</Text>
 
       <Text style={styles.subtitulo2}>
-        NÚMEROS DE 0 A 9
+        DEZENAS E CENTENAS
       </Text>
 
       <View style={{ width: "100%" }}>
@@ -76,137 +76,122 @@ export default function IndexScreen() {
         {/* INTRODUÇÃO */}
         <View style={styles.bloco}>
           <Text style={styles.subtitulo1}>
-            OS NÚMEROS FAZEM PARTE DO NOSSO DIA A DIA.
+            OS NÚMEROS PODEM SER FORMADOS POR
+            UNIDADES, DEZENAS E CENTENAS.
             {"\n"}
-            ELES PODEM SER ESCRITOS COMO ALGARISMOS E TAMBÉM
-            PODEM SER REPRESENTADOS POR SEUS NOMES.
+            VAMOS APRENDER COMO IDENTIFICAR CADA UMA DELAS.
           </Text>
         </View>
 
         {/* TÓPICO 1 */}
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
-            1. CONHECENDO OS NÚMEROS
+            1. O QUE É UMA DEZENA?
           </Text>
 
           {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            OS NÚMEROS DE 0 A 9 SÃO:
+            UMA DEZENA É FORMADA POR 10 UNIDADES.
           </Text>
 
           {"\n\n"}
 
-          <Text style={styles.numeros}>
-            0   1   2   3   4
+          <Text style={styles.exemplo}>
+            10 = 1 DEZENA
           </Text>
 
-          <Text style={styles.numeros}>
-            5   6   7   8   9
+          {"\n"}
+
+          <Text style={styles.exemplo}>
+            20 = 2 DEZENAS
+          </Text>
+
+          {"\n"}
+
+          <Text style={styles.exemplo}>
+            30 = 3 DEZENAS
           </Text>
 
           {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            CADA NÚMERO POSSUI UM NOME.
+            ENTÃO, QUANDO TEMOS 10 UNIDADES,
+            TEMOS 1 DEZENA.
           </Text>
         </View>
 
         {/* TÓPICO 2 */}
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
-            2. NÚMEROS POR EXTENSO
+            2. O QUE É UMA CENTENA?
           </Text>
 
           {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            VEJA COMO ESCREVEMOS CADA NÚMERO POR EXTENSO:
+            UMA CENTENA É FORMADA POR 100 UNIDADES.
           </Text>
 
           {"\n\n"}
 
-          <View style={styles.listaNumeros}>
+          <Text style={styles.exemplo}>
+            100 = 1 CENTENA
+          </Text>
 
-            <Text style={styles.itemNumero}>
-              0 → ZERO
-            </Text>
+          {"\n"}
 
-            <Text style={styles.itemNumero}>
-              1 → UM
-            </Text>
+          <Text style={styles.exemplo}>
+            200 = 2 CENTENAS
+          </Text>
 
-            <Text style={styles.itemNumero}>
-              2 → DOIS
-            </Text>
+          {"\n"}
 
-            <Text style={styles.itemNumero}>
-              3 → TRÊS
-            </Text>
+          <Text style={styles.exemplo}>
+            300 = 3 CENTENAS
+          </Text>
 
-            <Text style={styles.itemNumero}>
-              4 → QUATRO
-            </Text>
+          {"\n\n"}
 
-            <Text style={styles.itemNumero}>
-              5 → CINCO
-            </Text>
-
-            <Text style={styles.itemNumero}>
-              6 → SEIS
-            </Text>
-
-            <Text style={styles.itemNumero}>
-              7 → SETE
-            </Text>
-
-            <Text style={styles.itemNumero}>
-              8 → OITO
-            </Text>
-
-            <Text style={styles.itemNumero}>
-              9 → NOVE
-            </Text>
-
-          </View>
+          <Text style={styles.subtitulo}>
+            ENTÃO, QUANDO TEMOS 100 UNIDADES,
+            TEMOS 1 CENTENA.
+          </Text>
         </View>
 
         {/* TÓPICO 3 */}
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
-            3. NÚMERO E SEU NOME
+            3. DEZENAS E CENTENAS
           </Text>
 
           {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            UM NÚMERO PODE APARECER ESCRITO COMO ALGARISMO
-            OU COMO SEU NOME POR EXTENSO.
+            UM NÚMERO PODE TER UNIDADES, DEZENAS
+            E CENTENAS AO MESMO TEMPO.
           </Text>
 
           {"\n\n"}
 
           <Text style={styles.exemplo}>
-            3 = TRÊS
+            125
           </Text>
 
           {"\n"}
-
-          <Text style={styles.exemplo}>
-            7 = SETE
-          </Text>
-
-          {"\n"}
-
-          <Text style={styles.exemplo}>
-            9 = NOVE
-          </Text>
-
-          {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            NAS PRÓXIMAS ATIVIDADES, VOCÊ VAI PRECISAR
-            IDENTIFICAR O NÚMERO E RECONHECER SEU NOME.
+            1 CENTENA
+            {"\n"}
+            2 DEZENAS
+            {"\n"}
+            5 UNIDADES
+          </Text>
+
+          {"\n\n"}
+
+          <Text style={styles.exemplo}>
+            125 = 100 + 20 + 5
           </Text>
         </View>
 
@@ -225,8 +210,9 @@ export default function IndexScreen() {
           {"\n\n"}
 
           <Text style={styles.subtitulo}>
-            LEIA COM ATENÇÃO AS QUESTÕES E IDENTIFIQUE
-            O NÚMERO OU O NOME CORRETO.
+            NAS PRÓXIMAS ATIVIDADES, VOCÊ VAI
+            IDENTIFICAR DEZENAS E CENTENAS
+            E APRENDER A DECOMPOR OS NÚMEROS.
           </Text>
 
           {"\n\n"}
@@ -303,25 +289,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  numeros: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#35c0f7",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-
-  listaNumeros: {
-    alignItems: "center",
-  },
-
-  itemNumero: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "rgb(250, 252, 244)",
-    marginBottom: 12,
-  },
-
   exemplo: {
     fontSize: 30,
     fontWeight: "bold",
@@ -354,4 +321,3 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
 });
-

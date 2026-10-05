@@ -64,7 +64,7 @@ export default function IndexScreen() {
         />
       </View>
 
-      <Text style={styles.title}>ATIVIDADE 5</Text>
+      <Text style={styles.title}>ATIVIDADE 4</Text>
 
       <Text style={styles.subtitulo2}>
         INTERPRETAÇÃO DE TEXTO
