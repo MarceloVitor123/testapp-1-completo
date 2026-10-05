@@ -445,6 +445,7 @@ export default function QuizActivity({
         </View>
       </View>
 
+      {/*áudio*/}
       <View style={styles.questionContainer}>
        <Pressable onPress={() => playAudio(audio)}>
           <Text style={styles.audioIcon}>🔊</Text>
@@ -734,14 +735,14 @@ writingItemImage: {
   },
 
   letterInput: {
-    width: 22,
-    height: 28,
-    backgroundColor: "#D9D9D9",
-    borderRadius: 3,
+    width: 45,
+    height: 45,
+    backgroundColor: "#D9D9D9", //barra da atividade para a pessoa escrever
+    borderRadius: 6,
     marginHorizontal: 1,
     padding: 0,
     color: "#111111",
-    fontSize: 16,
+    fontSize: 27,
     textAlign: "center",
     fontWeight: "600",
   },

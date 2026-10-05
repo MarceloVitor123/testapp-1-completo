@@ -13,6 +13,7 @@ export default function IndexScreen() {
   const audioVogais = require("@/components/audios/Vogais.mp3");
   const audioConsoantes = require("@/components/audios/Consoantes.mp3");
   const audioPraticar = require("@/components/audios/topico_praticar1.mp3");
+  
   const playAudio = async (audioFile: any) => {
   if (!audioFile) return;
   if (audioPlaying) return;
@@ -20,12 +21,17 @@ export default function IndexScreen() {
   try {
     setAudioPlaying(true);
     const { sound } = await Audio.Sound.createAsync(audioFile);
+
+    soundRef.current = sound //guarda a referencia
+
     sound.setOnPlaybackStatusUpdate((status) => {
       if (status.isLoaded && status.didJustFinish) {
         setAudioPlaying(false);
         sound.unloadAsync();
+        soundRef.current = null //limpa quando termina
       }
     });
+
     await sound.playAsync();
   } catch (error) {
     console.log("Erro ao reproduzir áudio:", error);
