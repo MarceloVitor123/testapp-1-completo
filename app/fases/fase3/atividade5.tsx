@@ -17,6 +17,7 @@ export default function EscrevaNomeActivityScreen() {
           text: "______",
           answer: "ESCOVA",
           options: [],
+          image: "@/assets/images/banana.jpeg"
         },
         {
           id: "imagem2",

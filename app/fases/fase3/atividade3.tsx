@@ -8,7 +8,7 @@ export default function Atividade3Fase3() {
             blanks={[
                 { before: "MEU NOME É ", audio: require("@/components/audios/Meu_nome.mp3") },
                 { before: "EU AMO ", audio: require("@/components/audios/Eu_amo.mp3") },
-                { before: "EU TENHO", after: "ANOS" },
+                { before: "EU TENHO", after: "ANOS", audio: require("@/components/audios/X_anos.mp3") },
                 { before: "EU GOSTO DE ", audio: require("@/components/audios/Eu_gosto.mp3") },
                 { before: "MINHA COMIDA FAVORITA É ", audio: require("@/components/audios/Minha_comida.mp3") },
             ]}
