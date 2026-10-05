@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   audioIcon0: {
     fontSize: 25,
     left: -110,
-    top: 35,
+    top: 24,
   },
   audioIcon1: {
     fontSize: 25,

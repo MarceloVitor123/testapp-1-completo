@@ -71,19 +71,16 @@ export default function IndexScreen() {
     <View style={{ width: "100%" }}>
 
   {/* Introdução */}
-  <View style={{ flexDirection: "row", alignItems: "center", width: "100%"}}>
+  <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
     <Pressable onPress={() => playAudio(audioIntro)}>
       <Text style={styles.audioIcon0}>🔊</Text>
     </Pressable>
-      <Text style={{ flex: 1 }}>
         <Text style={styles.titulo}></Text>
         {"\n\n"}
         <Text style={styles.subtitulo1}>ESSAS LETRAS PODEM SER DIVIDIDAS EM DOIS GRUPOS : 
         VOGAIS E CONSOANTES.</Text>
         {"\n\n"}
-      </Text>
     </View>
-    <View style={{ width: "100%" }}>
 
   {/* Tópico 1 */}
   <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
@@ -142,7 +139,6 @@ export default function IndexScreen() {
     </Text>
   </View>
 
-</View>
 
   </View>
       <Pressable
@@ -204,7 +200,7 @@ const styles = StyleSheet.create({
    titulo: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "#0ec0ec"
+    color: "#0ec0ec",
   },
 
   subtitulo: {
@@ -215,7 +211,7 @@ const styles = StyleSheet.create({
 
   audioIcon0: {
     fontSize: 25,
-    marginLeft: 8,
+    marginLeft: -55,
   },
 
   audioIcon1: {
@@ -237,7 +233,7 @@ const styles = StyleSheet.create({
     color: "#35c0f7",
     fontSize: 25,
     fontWeight: "700", //essas letras podem ser divididas...
-    left: 14,
+    left: -12,
   },
 
   subtitulo2: {
