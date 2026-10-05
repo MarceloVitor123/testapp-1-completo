@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { Image, View } from "react-native";
+import { Image, View, Text } from "react-native";
 
 export default function Layout() {
   return (
@@ -157,11 +157,11 @@ export default function Layout() {
       />
       {/* alfabeto */}
       <Tabs.Screen
-        name="alfabeto/alfabeto"
+        name="dicionario"
         options={{
           title: "DICIONÁRIO",
 
-          tabBarIcon: ({ focused }) => (
+tabBarIcon: ({ focused }) => (
             <View
               style={{
                 width: 45,

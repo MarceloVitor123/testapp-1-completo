@@ -55,7 +55,7 @@ export default function Layout() {
    >
       {/* alfabeto */}
       <Tabs.Screen
-        name="alfabeto/alfabeto"
+        name="alfabeto"
         options={{
           title: "ALFABETO",
 
@@ -87,6 +87,41 @@ export default function Layout() {
         }}
       />
 
+      {/* numeros */}
+      <Tabs.Screen
+        name="numeros"
+        options={{
+          title: "NUMEROS",
+
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                width: 45,
+                height: 35,
+                borderRadius: 18,
+                alignItems: "center",
+                justifyContent: "center",
+
+                backgroundColor: focused
+                  ? "#7D7D7D"
+                  : "transparent",
+              }}
+            >
+              <Image
+                source={require("../../../assets/icons/numero-10.png")}
+                style={{
+                  width: 27,
+                  height: 27,
+                  resizeMode: "contain",
+                  opacity: focused ? 1 : 0.65,
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+
     </Tabs>
+    
   );
 }
