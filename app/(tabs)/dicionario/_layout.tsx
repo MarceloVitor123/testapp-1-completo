@@ -17,7 +17,7 @@ export default function Layout() {
 
           left: 20,
           right: 20,
-          bottom: 600,
+          bottom: 650,
 
           height: 72,
 
@@ -64,7 +64,7 @@ export default function Layout() {
               style={{
                 width: 45,
                 height: 35,
-                borderRadius: 18,
+                borderRadius: 10,
                 alignItems: "center",
                 justifyContent: "center",
 

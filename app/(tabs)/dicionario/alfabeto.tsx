@@ -1,34 +1,36 @@
-import { Audio } from "expo-av";
+
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {audios} from "../../../components/alfabeto";
+import { Audio } from "expo-av";
+
 
 const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-export default function AlfabetoScreen() {
-  const tocarLetra = async (letra: string) => {
-    try {
-      const { sound } = await Audio.Sound.createAsync(
-        {
-          uri: `https://example.com/audios/${letra}.mp3`,
-        },
-        {
-          shouldPlay: true,
-        }
-      );
+const tocarLetra = async (letra: string) => {
+  try {
+    const { sound } = await Audio.Sound.createAsync(
+      audios[letra as keyof typeof audios],
+      {
+        shouldPlay: true,
+      }
+    );
 
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.isLoaded && status.didJustFinish) {
-          sound.unloadAsync();
-        }
-      });
-    } catch (error) {
-      console.log("Erro ao reproduzir áudio:", error);
-    }
-  };
+    sound.setOnPlaybackStatusUpdate((status) => {
+      if (status.isLoaded && status.didJustFinish) {
+        sound.unloadAsync();
+      }
+    });
+  } catch (error) {
+    console.error("Erro ao tocar áudio:", error);
+  }
+};
 
+export default function Alfabeto() {
   return (
-    <ScrollView contentContainerStyle={styles.container}
-         showsVerticalScrollIndicator={false}
-         >
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
+    >
       <Text style={styles.title}>ALFATECH</Text>
 
       <Text style={styles.subtitle}>
