@@ -335,24 +335,25 @@ export default function QuizActivity({
    * J [A] N [E] I [R] O
    */
   const renderWritingMultiple = () => {
+    const isSingleItem = writingItems.length === 1
+
     return (
-      <View style={styles.monthsGrid}>
+      <View style={[styles.monthsGrid, isSingleItem && styles.monthsGridSingle]}>
         {writingItems.map((item) => {
           let inputIndex = 0;
 
           const parts = item.text.split("");
 
           return (
-           <View key={item.id} style={styles.writingItem}>
-
+           <View key={item.id} style={[styles.writingItem, isSingleItem && styles.writingItemSingle]}>
   {item.image && (
     <Image
       source={item.image}
-      style={styles.writingItemImage}
+      style={[styles.writingItemImage, isSingleItem && styles.writingItemImageSingle]}
     />
   )}
 
-  <View style={styles.wordContainer}>
+  <View style={[styles.wordContainer, isSingleItem && styles.wordContainerSingle]}>
                 {parts.map((character, index) => {
                   /*
                    * Se for "_", cria um
@@ -716,7 +717,7 @@ writingItem: {
 writingItemImage: {
   alignSelf: "center",
   width: 100,
-  height: 150,
+  height: 170,
   resizeMode: "contain",
   marginBottom: 8,
 },
@@ -770,6 +771,7 @@ writingItemImage: {
     fontSize: 18,
     fontWeight: "600",
   },
+  
   imagemcentrada: {
     width: 100,
     height: 100,
@@ -849,4 +851,21 @@ writingItemImage: {
   gap: 10,
   },
 
+  monthsGridSingle: {
+  justifyContent: "center", //centraliza o item dentro da grade
+},
+
+writingItemSingle: {
+  width: "100%",
+  alignItems: "center", //o item ocupa a largura toda e centraliza seu próprio conteúdo
+},
+
+writingItemImageSingle: {
+  width: 220,     // imagem bem maior
+  height: 220,
+},
+
+wordContainerSingle: {
+  justifyContent: "center", //centraliza os quadrados de letra
+},
 }); 

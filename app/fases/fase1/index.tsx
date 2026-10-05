@@ -1,6 +1,6 @@
 import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useWorld } from "../../../context/WorldContext";
 
@@ -8,6 +8,7 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const soundRef = useRef<Audio.Sound | null>(null);
   const audioIntro = require("@/components/audios/Vogais_e_conso.mp3");
   const audioVogais = require("@/components/audios/Vogais.mp3");
   const audioConsoantes = require("@/components/audios/Consoantes.mp3");
@@ -32,7 +33,15 @@ export default function IndexScreen() {
   }
 };
 
-  const handleStart = () => {
+  const handleStart = async () => {
+  //se tiver algum áudio tocando, ele para e descarrega antes de sair
+  if (soundRef.current) {
+    await soundRef.current.stopAsync();
+    await soundRef.current.unloadAsync();
+    soundRef.current = null;
+    setAudioPlaying(false);
+  }
+
   resetWorld();
   setCurrentWorld(1);
   setWorldStartTime(Date.now());

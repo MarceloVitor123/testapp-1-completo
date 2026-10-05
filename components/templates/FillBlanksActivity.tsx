@@ -1,5 +1,5 @@
 import { useRouter, type Href } from "expo-router"
-import { useMemo, useState } from "react"
+import { useMemo, useState, useRef } from "react"
 import { useWorld } from "@/context/WorldContext"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native"
@@ -64,7 +64,8 @@ export default function DigiteActivity({
   router.push(href);
 };
 
-const [audioPlaying, setAudioPlaying] = useState(false);
+const [audioPlaying, setAudioPlaying] = useState(false)
+const soundRef = useRef<Audio.Sound | null>(null)
 
 const playAudio = async (audioFile: any) => {
   if (!audioFile) return;           // sem áudio, não faz nada
@@ -72,14 +73,19 @@ const playAudio = async (audioFile: any) => {
 
   try {
     setAudioPlaying(true);
-    const { sound } = await Audio.Sound.createAsync(audioFile); // carrega o arquivo
+    const { sound } = await Audio.Sound.createAsync(audioFile) // carrega o arquivo
+
+    soundRef.current = sound
+
     sound.setOnPlaybackStatusUpdate((status) => {
       if (status.isLoaded && status.didJustFinish) {
         setAudioPlaying(false);
-        sound.unloadAsync();        // libera da memória quando termina
+        sound.unloadAsync();// libera da memória quando termina
+        soundRef.current = null
       }
     });
-    await sound.playAsync();        // toca
+
+    await sound.playAsync(); // toca
   } catch (error) {
     console.log("Erro ao reproduzir áudio:", error);
     setAudioPlaying(false);
@@ -205,7 +211,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 32,
     lineHeight: 32,
-    marginRight: 12,
+    marginRight: 12,   
     marginTop: -2,
   },
   progressBar: {
