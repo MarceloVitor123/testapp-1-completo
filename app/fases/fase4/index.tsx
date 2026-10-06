@@ -61,7 +61,7 @@ export default function IndexScreen() {
     }
 
     resetWorld();
-    setCurrentWorld(1);
+    setCurrentWorld(4);
     setWorldStartTime(Date.now());
 
     router.push("/fases/fase4/atividade1");
@@ -221,10 +221,12 @@ export default function IndexScreen() {
         </View>
 
         {/* TÓPICO 4 */}
-        <View style={styles.bloco}>
+        <View style={styles.topico}>
             <Pressable onPress={() => playAudio(audioTopico4)}>
-            <Text style={styles.audioIcon}>🔊</Text>
-          </Pressable>
+              <Text style={styles.audioIcon}>🔊</Text>
+            </Pressable>
+
+            <View style={styles.textoTopico}>
           <Text style={styles.titulo}>4. VAMOS PRATICAR!</Text>
 
           {"\n\n"}
@@ -250,6 +252,7 @@ export default function IndexScreen() {
           {"\n\n"}
 
           <Text style={styles.subtitulo}>VAMOS COMEÇAR!</Text>
+        </View>
         </View>
       </View>
 
@@ -341,7 +344,7 @@ const styles = StyleSheet.create({
 
   audioIcon0: {
     fontSize: 25,
-    left: -110,
+    left: -149,
     top: 35,
   },
 
