@@ -8,6 +8,7 @@ import { Audio } from "expo-av"
 type Blank = {
   before: string; //frases antes do espaço
   after?: string; //frases depois do espaço
+  audio?: any
 }
 
 type FillBlanksProps = {
@@ -15,6 +16,9 @@ type FillBlanksProps = {
   blanks: Blank[];
   nextRoute: string;
   progress?: number;
+  audio?: any;
+  subAudio?: any;
+  question?: string;
 }
 
 export default function DigiteActivity({
@@ -22,6 +26,9 @@ export default function DigiteActivity({
   blanks,
   nextRoute,
   progress = 0,
+  audio,
+  question,
+  subAudio,
 }: FillBlanksProps) {
   const router = useRouter();
   const { addActivityResult } = useWorld();
@@ -117,21 +124,24 @@ return (
     {/* Conteúdo da atividade */}
     <View style={styles.content}>
 
-      {/* Título */}
-      <Text style={styles.question}>
-        {title}
-      </Text>
-
+      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginBottom: 28 }}>
+          <Pressable onPress={() => playAudio(audio)}>
+            <Text style={styles.audioIcon}>🔊</Text>
+          </Pressable>
+        <Text style={[styles.question, { marginBottom: 0, marginLeft: 8 }]}>
+          {title}
+        </Text>
+      </View>
+    
       {/* Frases com os campos para escrever */}
       <View style={styles.blanksContainer}>
         {blanks.map((blank, index) => (
-          <View
-            key={index}
-            style={styles.linha}
-          >
-            <Text style={styles.texto}>
-              {blank.before}
-            </Text>
+          <View key={index} style={styles.linha}>
+            <Pressable onPress={() => playAudio(blank.audio)}>
+              <Text style={styles.audioIcon}>🔊</Text>
+            </Pressable>
+
+          <Text style={styles.texto}>{blank.before}</Text>
 
             <TextInput
               value={answers[index]}
@@ -394,4 +404,15 @@ inputInline: {
     width: 21,
     height: 41,
   },
+
+  questionContainer: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100%",
+  marginTop: 70,
+  marginBottom: 30,
+  gap: 10,
+  },
+
 });

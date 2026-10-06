@@ -1,6 +1,6 @@
 import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Image,
   Pressable,
@@ -15,10 +15,12 @@ export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
   const [audioPlaying, setAudioPlaying] = useState(false);
+  const soundRef = useRef<Audio.Sound | null>(null);
   const audioIntro = require("@/components/audios/atividade3.mp3");
   const audioSilabas1 = require("@/components/audios/silabas_atividade3.mp3");
   const audioConsoantes = require("@/components/audios/objetivo_da_fase.mp3");
   const audioPraticar = require("@/components/audios/topico_praticar3.mp3");
+
   const playAudio = async (audioFile: any) => {
     if (!audioFile) return;
     if (audioPlaying) return;
@@ -26,12 +28,17 @@ export default function IndexScreen() {
     try {
         setAudioPlaying(true);
         const { sound } = await Audio.Sound.createAsync(audioFile);
+
+        soundRef.current = sound
+
         sound.setOnPlaybackStatusUpdate((status) => {
           if (status.isLoaded && status.didJustFinish) {
             setAudioPlaying(false);
             sound.unloadAsync();
+            soundRef.current = null
           }
         });
+
           await sound.playAsync();
         } catch (error) {
           console.log("Erro ao reproduzir áudio:", error);
@@ -40,7 +47,14 @@ export default function IndexScreen() {
   }
 
 
-  const handleStart = () => {
+  const handleStart = async () => {
+    if(soundRef.current){
+    await soundRef.current.stopAsync()
+    await soundRef.current.unloadAsync()
+    soundRef.current = null
+    setAudioPlaying(false)
+    }
+
     resetWorld();
     setCurrentWorld(3);
     setWorldStartTime(Date.now());
