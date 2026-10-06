@@ -17,6 +17,7 @@ export default function Atividade4Screen() {
             nextRoute="/fases/fase4/atividade5"
             wrongRoute="/fases/fase4/atividade5"
             progress={0.7}
+            audio={require("../../../components/audios/atividade 4 da 4.mp3")}
             />
     );
 }

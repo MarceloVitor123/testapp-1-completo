@@ -20,6 +20,7 @@ export default function ModalVerbActivityScreen() {
       wrongRoute="/fases/fase4/atividade2"
       // Progresso da barra superior (0.0 a 1.0)
       progress={0}
+      audio={require("../../../components/audios/atividade 1 da 4.mp3")}
     />
   );
 }

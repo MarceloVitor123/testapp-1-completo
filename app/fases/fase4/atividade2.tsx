@@ -27,8 +27,7 @@ export default function Atividade1() {
       ]}
       nextRoute="/fases/fase4/atividade3"
       wrongRoute="/fases/fase4/atividade3"
-      audio={require("../../../components/audios/o_pai_de_marcos.mp3")}
-      subAudio={require("@/components/audios/o_pai_de_marcos_1.mp3")}
+      audio={require("../../../components/audios/pai de Marcos.mp3")}
       progress={0.2}
     />
   );
