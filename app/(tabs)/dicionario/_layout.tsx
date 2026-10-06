@@ -1,7 +1,10 @@
 import { Tabs } from "expo-router";
 import { Image, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Layout() {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tabs
       screenOptions={{
@@ -17,7 +20,9 @@ export default function Layout() {
 
           left: 20,
           right: 20,
-          bottom: 650,
+
+          // 🔥 Barra no topo
+          top: insets.top + 18,
 
           height: 72,
 
@@ -52,8 +57,8 @@ export default function Layout() {
           marginHorizontal: 5,
         },
       }}
-   >
-      {/* alfabeto */}
+    >
+      {/* ALFABETO */}
       <Tabs.Screen
         name="alfabeto"
         options={{
@@ -87,7 +92,7 @@ export default function Layout() {
         }}
       />
 
-      {/* numeros */}
+      {/* NÚMEROS */}
       <Tabs.Screen
         name="numeros"
         options={{
@@ -120,8 +125,6 @@ export default function Layout() {
           ),
         }}
       />
-
     </Tabs>
-    
   );
 }

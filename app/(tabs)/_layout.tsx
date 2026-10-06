@@ -1,7 +1,11 @@
 import { Tabs } from "expo-router";
 import { Image, View, Text } from "react-native";
 
+
+
 export default function Layout() {
+
+
   return (
     <Tabs
       screenOptions={{
@@ -17,7 +21,7 @@ export default function Layout() {
 
           left: 20,
           right: 20,
-          bottom: 18,
+          bottom:18,
 
           height: 72,
 

@@ -17,24 +17,28 @@ export default function EscrevaNomeActivityScreen() {
           text: "______",
           answer: "ESCOVA",
           options: [],
+          image: require("../../../assets/images/escova.png"),
         },
         {
           id: "imagem2",
           text: "____",
           answer: "LAÇO",
           options: [],
+          image: require("../../../assets/images/chinelo.jpeg"),
         },
         {
           id: "imagem3",
           text: "______",
           answer: "SAPATO",
           options: [],
+          image: require("../../../assets/images/sapato.png"),
         },
         {
           id: "imagem4",
           text: "_____",
           answer: "COLAR",
           options: [],
+          image: require("../../../assets/images/chinelo.jpeg"),
         },
       ]}
     />

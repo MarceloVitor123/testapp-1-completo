@@ -36,16 +36,7 @@ export default function Index() {
           />
         </View>
 
-        {/* Texto */}
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>VAMOS COMEÇAR?</Text>
-
-          <Text style={styles.subtitle}>
-            APRENDA, PRATIQUE E AVANCE{"\n"}
-            NO SEU PRÓPRIO CAMINHO.
-          </Text>
-        </View>
-
+       
         {/* Botão */}
         <Pressable
           onPress={enter}
@@ -66,7 +57,7 @@ export default function Index() {
           <View style={styles.line} />
 
           <Text style={styles.bottomText}>
-            SUA JORNADA COMEÇA AQUI
+            ALFATECH™
           </Text>
         </View>
       </View>
