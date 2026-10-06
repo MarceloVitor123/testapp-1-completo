@@ -1,4 +1,4 @@
-
+import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
@@ -17,7 +17,7 @@ export default function IndexScreen() {
 
   const handleStart = () => {
     resetWorld();
-    setCurrentWorld(1);
+    setCurrentWorld(6);
     setWorldStartTime(Date.now());
     router.push("/fases/fase6/atividade1");
   };

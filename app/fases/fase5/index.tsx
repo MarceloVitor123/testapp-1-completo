@@ -63,7 +63,7 @@ export default function IndexScreen() {
     }
 
     resetWorld();
-    setCurrentWorld(1);
+    setCurrentWorld(5);
     setWorldStartTime(Date.now());
 
     router.push("/fases/fase5/atividade1");
