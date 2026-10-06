@@ -27,7 +27,7 @@ export default function Atividade1Screen() {
 
 
 
-      progress={0}
+      progress={0.7}
       audio={require("../../../components/audios/atividade 4 da 5.mp3")}
     />
 

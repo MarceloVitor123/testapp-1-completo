@@ -22,15 +22,10 @@ export default function Atividade1Screen() {
       correctAnswer="2"
 
       nextRoute="/fases/fase5/atividade3"
-
       wrongRoute="/fases/fase5/atividade3"
 
-
-      progress={0}
+      progress={0.2}
       audio={require("../../../components/audios/atividade 2 da 5.mp3")}
-
     />
-
-
   );
-} 
+}

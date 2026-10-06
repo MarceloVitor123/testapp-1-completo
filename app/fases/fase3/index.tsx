@@ -49,11 +49,11 @@ export default function IndexScreen() {
 
   const handleStart = async () => {
     if(soundRef.current){
-    await soundRef.current.stopAsync()
-    await soundRef.current.unloadAsync()
-    soundRef.current = null
-    setAudioPlaying(false)
-    }
+      await soundRef.current.stopAsync()
+      await soundRef.current.unloadAsync()
+      soundRef.current = null
+      setAudioPlaying(false)
+      }
 
     resetWorld();
     setCurrentWorld(3);
@@ -62,7 +62,9 @@ export default function IndexScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView style={styles.container}
+     contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.botaoX}>
         <Pressable
           onPress={() => router.back()}
@@ -83,6 +85,7 @@ export default function IndexScreen() {
         </Pressable>
       </View>
 
+      {/* TALKPUP */}
       <View>
         <Image
           source={require("../../../assets/images/TALKPUP.png")}

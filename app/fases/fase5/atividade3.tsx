@@ -26,7 +26,7 @@ export default function Atividade1Screen() {
       wrongRoute="/fases/fase5/atividade4"
 
 
-      progress={0}
+      progress={0.4}
       audio={require("../../../components/audios/atividade 3 da 5.mp3")}
 
     />

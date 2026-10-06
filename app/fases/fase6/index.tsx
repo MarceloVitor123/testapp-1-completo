@@ -1,6 +1,6 @@
 import { Audio } from "expo-av";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   Image,
   Pressable,
@@ -14,8 +14,47 @@ import { useWorld } from "../../../context/WorldContext";
 export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
+  const [audioPlaying, setAudioPlaying] = useState(false)
+  const soundRef = useRef<Audio.Sound | null>(null)
+  const audioIntro = require("@/components/audios/Fase_6.mp3")
+  const audioNumber = require("@/components/audios/Fase_6_1.mp3")
+  const audioNumber2 = require("@/components/audios/Fase_6_2.mp3")
+  const audioNumber3 = require("@/components/audios/Fase_6_3.mp3")
+  const audioNumber4 = require("@/components/audios/Fase_6_4.mp3")
 
-  const handleStart = () => {
+  const playAudio = async (audioFile: any) => {
+      if (!audioFile) return;
+      if (audioPlaying) return;
+      
+      try {
+          setAudioPlaying(true);
+          const { sound } = await Audio.Sound.createAsync(audioFile);
+  
+          soundRef.current = sound
+  
+          sound.setOnPlaybackStatusUpdate((status) => {
+            if (status.isLoaded && status.didJustFinish) {
+              setAudioPlaying(false);
+              sound.unloadAsync();
+              soundRef.current = null
+            }
+          });
+  
+            await sound.playAsync();
+          } catch (error) {
+            console.log("Erro ao reproduzir áudio:", error);
+            setAudioPlaying(false);
+          }
+    }
+
+  const handleStart = async () => {
+    if(soundRef.current){
+      await soundRef.current.stopAsync()
+      await soundRef.current.unloadAsync()
+      soundRef.current = null
+      setAudioPlaying(false)
+     }
+
     resetWorld();
     setCurrentWorld(6);
     setWorldStartTime(Date.now());
@@ -65,6 +104,7 @@ export default function IndexScreen() {
         />
       </View>
 
+      
       <Text style={styles.title}>ATIVIDADE 6</Text>
 
       <Text style={styles.subtitulo2}>
@@ -74,6 +114,11 @@ export default function IndexScreen() {
       <View style={{ width: "100%" }}>
 
         {/* INTRODUÇÃO */}
+        <View style={{ flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center"}}>
+          <Pressable onPress={() => playAudio(audioIntro)}>
+            <Text style={styles.audioIcon0}>🔊</Text>
+          </Pressable>
+        </View>
         <View style={styles.bloco}>
           <Text style={styles.subtitulo1}>
             OS NÚMEROS PODEM SER FORMADOS POR
@@ -84,44 +129,46 @@ export default function IndexScreen() {
         </View>
 
         {/* TÓPICO 1 */}
+        <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+          <Pressable onPress={() => playAudio(audioNumber)}>
+            <Text style={styles.audioIcon1}>🔊</Text>
+          </Pressable>
+      
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
             1. O QUE É UMA DEZENA?
           </Text>
-
           {"\n\n"}
-
           <Text style={styles.subtitulo}>
             UMA DEZENA É FORMADA POR 10 UNIDADES.
           </Text>
-
           {"\n\n"}
-
           <Text style={styles.exemplo}>
             10 = 1 DEZENA
           </Text>
-
           {"\n"}
-
           <Text style={styles.exemplo}>
             20 = 2 DEZENAS
           </Text>
-
           {"\n"}
-
           <Text style={styles.exemplo}>
             30 = 3 DEZENAS
           </Text>
-
           {"\n\n"}
 
-          <Text style={styles.subtitulo}>
+            <Text style={styles.subtitulo}>
             ENTÃO, QUANDO TEMOS 10 UNIDADES,
             TEMOS 1 DEZENA.
-          </Text>
+            </Text>
+          </View>
         </View>
 
         {/* TÓPICO 2 */}
+        <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+          <Pressable onPress={() => playAudio(audioNumber2)}>
+            <Text style={styles.audioIcon2}>🔊</Text>
+          </Pressable>
+
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
             2. O QUE É UMA CENTENA?
@@ -158,8 +205,14 @@ export default function IndexScreen() {
             TEMOS 1 CENTENA.
           </Text>
         </View>
+        </View>
 
         {/* TÓPICO 3 */}
+      <View style={{ flexDirection: "row", alignItems: "flex-start", width: "100%"}}>
+        <Pressable onPress={() => playAudio(audioNumber3)}>
+          <Text style={styles.audioIcon3}>🔊</Text>
+        </Pressable>
+
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
             3. DEZENAS E CENTENAS
@@ -194,6 +247,7 @@ export default function IndexScreen() {
             125 = 100 + 20 + 5
           </Text>
         </View>
+      </View>
 
         {/* TÓPICO 4 */}
         <View style={styles.bloco}>
@@ -319,5 +373,26 @@ const styles = StyleSheet.create({
     top: 60,
     left: 100,
     borderRadius: 24,
+  },
+
+  audioIcon0: {
+    fontSize: 25,
+    left: -488,
+    top: 32,
+  },
+
+  audioIcon1: {
+    fontSize: 25,
+    marginRight: 8,
+  },
+
+  audioIcon2: {
+    fontSize: 25,
+    marginRight: 8,
+  },
+
+  audioIcon3: {
+    fontSize: 25,
+    marginRight: 8,
   },
 });
