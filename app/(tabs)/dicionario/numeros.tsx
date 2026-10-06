@@ -1,23 +1,46 @@
 import { Audio } from "expo-av";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useState, useRef } from "react"
 
 const letras = "0123456789".split("");
 
-export default function AlfabetoScreen() {
+export default function NumerosScreen() {
+  const [audioPlaying, setAudioPlaying] = useState(false)
+  const soundRef = useRef<Audio.Sound | null>(null)
+
   const tocarLetra = async (letra: string) => {
+    if(audioPlaying) return //evita o problema de clique duplo
+
     try {
+      const audiosNumeros: Record<string, any> = {
+        "0": require("@/components/audios/0.number.mp3"),
+        "1": require("@/components/audios/1.number.mp3"),
+        "2": require("@/components/audios/2.number.mp3"),
+        "3": require("@/components/audios/3.number.mp3"),
+        "4": require("@/components/audios/4.number.mp3"),
+        "5": require("@/components/audios/5.number.mp3"),
+        "6": require("@/components/audios/6.number.mp3"),
+        "7": require("@/components/audios/7.number.mp3"),
+        "8": require("@/components/audios/8.number.mp3"),
+        "9": require("@/components/audios/9.number.mp3"),
+      }
+
+      setAudioPlaying(true)
+
       const { sound } = await Audio.Sound.createAsync(
+        audiosNumeros[letra],
         {
-          uri: `https://example.com/audios/${letra}.mp3`,
-        },
-        {
-          shouldPlay: true,
+          shouldPlay: true
         }
       );
 
+      soundRef.current = sound
+
       sound.setOnPlaybackStatusUpdate((status) => {
         if (status.isLoaded && status.didJustFinish) {
-          sound.unloadAsync();
+          setAudioPlaying(false)
+          sound.unloadAsync()
+          soundRef.current = null
         }
       });
     } catch (error) {

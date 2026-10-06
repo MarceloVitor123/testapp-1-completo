@@ -245,15 +245,15 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     fontSize: 28,
-    fontWeight: "900",
+    fontWeight: "900", //meu perfil
     letterSpacing: 1,
   },
 
   subtitle: {
     color: "#CFCFCF",
-    fontSize: 11,
+    fontSize: 20,
     marginTop: 5,
-    letterSpacing: 1,
+    letterSpacing: 1, //acompanhe sua jornada no alfatech
   },
 
   /* AVATAR */
@@ -442,8 +442,8 @@ const styles = StyleSheet.create({
 
   studyTitle: {
     color: "#D0D0D0",
-    fontSize: 13,
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "bold", //tempo de estudo
   },
 
   studyValue: {
