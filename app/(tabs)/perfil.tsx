@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#4B4B4B",
     paddingTop: 45,
-    paddingBottom: 60,
+    paddingBottom: 110,
   },
 
   /* CABEÇALHO */

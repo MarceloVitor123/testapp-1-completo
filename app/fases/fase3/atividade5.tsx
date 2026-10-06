@@ -24,7 +24,7 @@ export default function EscrevaNomeActivityScreen() {
           text: "____",
           answer: "LAÇO",
           options: [],
-          image: require("../../../assets/images/chinelo.jpeg"),
+          image: require("../../../assets/images/chinelo.png"),
         },
         {
           id: "imagem3",
@@ -38,7 +38,7 @@ export default function EscrevaNomeActivityScreen() {
           text: "_____",
           answer: "COLAR",
           options: [],
-          image: require("../../../assets/images/chinelo.jpeg"),
+          image: require("../../../assets/images/chinelo.png"),
         },
       ]}
     />
