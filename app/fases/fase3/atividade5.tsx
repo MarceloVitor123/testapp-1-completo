@@ -14,18 +14,18 @@ export default function EscrevaNomeActivityScreen() {
       writingItems={[
         {
           id: "imagem1",
-          text: "______ __ _____",
+          text: "______",
           
-          answer: "ESCOVA DE DENTE ",
+          answer: "ESCOVA",
           options: [],
-          image: require("../../../assets/images/escova de dente sem fundo.png"),
+          image: require("../../../assets/images/escova de dente.png"),
         },
         {
           id: "imagem2",
           text: "____",
           answer: "LAÇO",
           options: [],
-          image: require("../../../assets/images/laço sem fundo.png"),
+          image: require("../../../assets/images/laço.png"),
         },
         {
           id: "imagem3",
@@ -39,7 +39,7 @@ export default function EscrevaNomeActivityScreen() {
           text: "_____",
           answer: "COLAR",
           options: [],
-          image: require("../../../assets/images/pente sem fundo.png"),
+          image: require("../../../assets/images/pente.png"),
         },
       ]}
     />

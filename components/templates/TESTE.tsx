@@ -386,19 +386,20 @@ const styles = StyleSheet.create({
   },
 
   imageCard: {
-    width: 130,
-    height: 190,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 8,
-    padding: 8,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  width: 130,
+  height: 190,
+  justifyContent: "center",
+  alignItems: "center",
+  position: "absolute",
+  left: "50%",
+  transform: [{ translateX: -65 }],
+},
 
   itemImage: {
     width: "100%",
     height: "100%",
     resizeMode: "contain",
+    backgroundColor: "#83404000",
   },
 
   correctMessage: {
