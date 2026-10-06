@@ -19,7 +19,7 @@ export default function IndexScreen() {
   const soundRef = useRef<Audio.Sound | null>(null);
 
   // ÁUDIOS
-  const audioIntro = require("../../../components/audios/intro 5.mp3");
+  const audioIntro = require("../../../components/audios/intro_4.mp3");
   const audioTopico1 = require("../../../components/audios/1 da intro 4.mp3");
   const audioTopico2 = require("../../../components/audios/2 da intro 4.mp3");
   const audioTopico3 = require("../../../components/audios/3 da intro 4.mp3");
