@@ -17,12 +17,11 @@ export default function Atividade1Screen() {
       ]}
 
       correctAnswer="10"
-
       nextRoute="/fases/fase6/atividade4"
-
       wrongRoute="/fases/fase6/atividade4"
-
       progress={0}
+      audio={require("@/components/audios/4_dezenas.mp3")}
+
     />
   );
 }
