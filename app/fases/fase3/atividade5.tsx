@@ -8,23 +8,24 @@ export default function EscrevaNomeActivityScreen() {
       mode="writingMultiple"
       question="OLHE AS IMAGENS ABAIXO E ESCREVA O NOME DA IMAGEM NO QUADRADINHO AO LADO:"
       correctAnswer=""
-  nextRoute="/fases/teste-resultado"
-  wrongRoute="/fases/teste-resultado"
+      nextRoute="/fases/teste-resultado"
+      wrongRoute="/fases/teste-resultado"
       progress={1.0}
       writingItems={[
         {
           id: "imagem1",
-          text: "______",
-          answer: "ESCOVA",
+          text: "______ __ _____",
+          
+          answer: "ESCOVA DE DENTE ",
           options: [],
-          image: require("../../../assets/images/escova.png"),
+          image: require("../../../assets/images/escova de dente sem fundo.png"),
         },
         {
           id: "imagem2",
           text: "____",
           answer: "LAÇO",
           options: [],
-          image: require("../../../assets/images/chinelo.png"),
+          image: require("../../../assets/images/laço sem fundo.png"),
         },
         {
           id: "imagem3",
@@ -38,7 +39,7 @@ export default function EscrevaNomeActivityScreen() {
           text: "_____",
           answer: "COLAR",
           options: [],
-          image: require("../../../assets/images/chinelo.png"),
+          image: require("../../../assets/images/pente sem fundo.png"),
         },
       ]}
     />
