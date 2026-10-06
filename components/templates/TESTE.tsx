@@ -1,3 +1,5 @@
+
+import { Audio } from "expo-av";
 import { useRouter, type Href } from "expo-router";
 import { useMemo, useState } from "react";
 import {
@@ -23,6 +25,7 @@ type ImageMatchActivityProps = {
   nextRoute: string;
   wrongRoute: string;
   progress?: number;
+  audio?: any;
 };
 
 export default function ImageMatchActivity({
@@ -38,9 +41,11 @@ export default function ImageMatchActivity({
   nextRoute,
   wrongRoute,
   progress = 0.85,
+  audio,
 }: ImageMatchActivityProps) {
   const router = useRouter();
   const { addActivityResult } = useWorld();
+
   const [startTime] = useState(Date.now());
   const [selected, setSelected] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null);
@@ -48,10 +53,31 @@ export default function ImageMatchActivity({
 
   const verifyDisabled = useMemo(() => !selected, [selected]);
 
+  // 🔊 Toca o áudio
+  const playAudio = async (audioSource: any) => {
+    if (!audioSource) return;
+
+    try {
+      const { sound } = await Audio.Sound.createAsync(audioSource);
+
+      await sound.playAsync();
+
+      sound.setOnPlaybackStatusUpdate(async (status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          await sound.unloadAsync();
+        }
+      });
+    } catch (error) {
+      console.log("Erro ao reproduzir áudio:", error);
+    }
+  };
+
   const handleVerify = () => {
     if (!selected) return;
 
-    const correct = selected.toLowerCase() === correctAnswer.toLowerCase();
+    const correct =
+      selected.toLowerCase() === correctAnswer.toLowerCase();
+
     setIsCorrect(correct);
     setFeedback(correct ? "correct" : "wrong");
   };
@@ -60,7 +86,6 @@ export default function ImageMatchActivity({
     const endTime = Date.now();
     const timeSpentMs = endTime - startTime;
 
-    // Garante pelo menos 1 segundo
     const timeSeconds = Math.max(
       1,
       Math.floor(timeSpentMs / 1000)
@@ -68,7 +93,6 @@ export default function ImageMatchActivity({
 
     const xp = isCorrect ? 4 : 0;
 
-    // Registra TODAS as questões, inclusive as erradas.
     addActivityResult({
       id: Date.now().toString(),
       xp,
@@ -79,6 +103,7 @@ export default function ImageMatchActivity({
 
     const accuracy = isCorrect ? 100 : 0;
     const route = isCorrect ? nextRoute : wrongRoute;
+
     const href =
       `${route}?xp=${xp}&accuracy=${accuracy}&timeSpent=${timeSpentMs}` as Href;
 
@@ -93,44 +118,74 @@ export default function ImageMatchActivity({
         </Pressable>
 
         <View style={styles.progressBar}>
-          <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
+          <View
+            style={[
+              styles.progressFill,
+              { width: `${progress * 100}%` },
+            ]}
+          />
         </View>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.question}>{question}</Text>
+
+        {/* PERGUNTA + ÁUDIO */}
+        <View style={styles.questionRow}>
+          <Text style={styles.question}>{question}</Text>
+
+          {audio && (
+            <Pressable
+              onPress={() => playAudio(audio)}
+              style={({ pressed }) => [
+                styles.audioButton,
+                pressed && styles.audioButtonPressed,
+              ]}
+            >
+              <Text style={styles.audioIcon}>🔊</Text>
+            </Pressable>
+          )}
+        </View>
 
         <View style={styles.gameArea}>
           <View style={styles.optionsColumn}>
             {options.map((item) => {
               const isSelected = selected === item.value;
+
               const isCorrectOption =
                 feedback !== null &&
-                item.value.toLowerCase() === correctAnswer.toLowerCase();
+                item.value.toLowerCase() ===
+                  correctAnswer.toLowerCase();
+
               const isWrongOption =
                 feedback !== null &&
                 isSelected &&
-                item.value.toLowerCase() !== correctAnswer.toLowerCase();
+                item.value.toLowerCase() !==
+                  correctAnswer.toLowerCase();
 
               return (
                 <Pressable
                   key={item.value}
                   onPress={() => {
-                    if (feedback === null) setSelected(item.value);
+                    if (feedback === null) {
+                      setSelected(item.value);
+                    }
                   }}
                   style={({ pressed }) => [
                     styles.optionButton,
                     isSelected && styles.optionSelected,
                     isCorrectOption && styles.optionCorrect,
                     isWrongOption && styles.optionWrong,
-                    pressed && feedback === null && styles.optionPressed,
+                    pressed &&
+                      feedback === null &&
+                      styles.optionPressed,
                   ]}
                 >
                   <Text
                     style={[
                       styles.optionText,
                       isSelected && styles.optionTextSelected,
-                      isCorrectOption && styles.optionTextCorrect,
+                      isCorrectOption &&
+                        styles.optionTextCorrect,
                       isWrongOption && styles.optionTextWrong,
                     ]}
                   >
@@ -142,16 +197,23 @@ export default function ImageMatchActivity({
           </View>
 
           <View style={styles.imageCard}>
-            <Image source={targetImage} style={styles.itemImage} />
+            <Image
+              source={targetImage}
+              style={styles.itemImage}
+            />
           </View>
         </View>
 
         {feedback === "correct" && (
-          <Text style={styles.correctMessage}>Resposta correta!</Text>
+          <Text style={styles.correctMessage}>
+            Resposta correta!
+          </Text>
         )}
 
         {feedback === "wrong" && (
-          <Text style={styles.wrongMessage}>Resposta errada.</Text>
+          <Text style={styles.wrongMessage}>
+            Resposta errada.
+          </Text>
         )}
 
         <Pressable
@@ -190,12 +252,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#5B5B5B",
   },
+
   topBar: {
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 16,
     paddingTop: 8,
   },
+
   closeIcon: {
     color: "#FFFFFF",
     fontSize: 32,
@@ -203,6 +267,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
     marginTop: -2,
   },
+
   progressBar: {
     flex: 1,
     height: 8,
@@ -210,26 +275,55 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     overflow: "hidden",
   },
+
   progressFill: {
     height: "100%",
     backgroundColor: "#1CC5D3",
   },
+
   content: {
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 24,
     alignItems: "center",
   },
+
+  questionRow: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    marginBottom: 28,
+  },
+
   question: {
     color: "#FFFFFF",
     fontSize: 22,
     fontWeight: "600",
     textAlign: "left",
-    alignSelf: "flex-start",
     maxWidth: 240,
     lineHeight: 28,
-    marginBottom: 28,
   },
+
+  audioButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 10,
+  },
+
+  audioButtonPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.95 }],
+  },
+
+  audioIcon: {
+    fontSize: 25,
+  },
+
   gameArea: {
     width: "100%",
     flexDirection: "row",
@@ -237,9 +331,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 24,
   },
+
   optionsColumn: {
     gap: 14,
   },
+
   optionButton: {
     width: 140,
     height: 48,
@@ -248,38 +344,47 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   optionPressed: {
     opacity: 0.8,
     transform: [{ scale: 0.98 }],
   },
+
   optionSelected: {
     borderWidth: 2,
     borderColor: "#1CC5D3",
   },
+
   optionCorrect: {
     backgroundColor: "#7CDB8A",
     borderWidth: 2,
     borderColor: "#2E9E45",
   },
+
   optionWrong: {
     backgroundColor: "#F28B82",
     borderWidth: 2,
     borderColor: "#D64545",
   },
+
   optionText: {
     color: "#111111",
     fontSize: 18,
     fontWeight: "500",
   },
+
   optionTextSelected: {
     fontWeight: "700",
   },
+
   optionTextCorrect: {
     color: "#0F3D16",
   },
+
   optionTextWrong: {
     color: "#5A1414",
   },
+
   imageCard: {
     width: 130,
     height: 190,
@@ -289,23 +394,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   itemImage: {
     width: "100%",
     height: "100%",
     resizeMode: "contain",
   },
+
   correctMessage: {
     marginTop: 12,
     color: "#7CDB8A",
     fontSize: 18,
     fontWeight: "600",
   },
+
   wrongMessage: {
     marginTop: 12,
     color: "#F28B82",
     fontSize: 18,
     fontWeight: "600",
   },
+
   verifyButton: {
     marginTop: 24,
     width: 240,
@@ -315,18 +424,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   verifyButtonPressed: {
     opacity: 0.85,
     transform: [{ scale: 0.98 }],
   },
+
   verifyButtonDisabled: {
     opacity: 0.45,
   },
+
   verifyText: {
     color: "#111111",
     fontSize: 18,
     fontWeight: "700",
   },
+
   nextButton: {
     marginTop: 12,
     width: 240,
@@ -336,14 +449,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+
   nextButtonPressed: {
     opacity: 0.85,
     transform: [{ scale: 0.98 }],
   },
+
   nextText: {
     color: "#000000",
     fontSize: 18,
     fontWeight: "700",
   },
 });
- 
+

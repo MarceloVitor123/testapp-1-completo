@@ -87,9 +87,7 @@ export default function QuizActivity({
 
   const [typedAnswer, setTypedAnswer] = useState("");
 
-  const [feedback, setFeedback] = useState<
-    "correct" | "wrong" | null
-  >(null);
+  const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null);
 
   const [isCorrect, setIsCorrect] = useState(false);
 
@@ -113,61 +111,50 @@ export default function QuizActivity({
 
     if (!answer) return;
 
-    const correct =
-      answer === correctAnswer.toLowerCase();
+    const correct = answer === correctAnswer.toLowerCase();
 
     setIsCorrect(correct);
 
-    setFeedback(
-      correct ? "correct" : "wrong"
-    );
+    setFeedback(correct ? "correct" : "wrong");
   };
-// =========================
-// TOCAR ÁUDIO
-// =========================
+  // =========================
+  // TOCAR ÁUDIO
+  // =========================
 
   const [audioPlaying, setAudioPlaying] = useState(false);
 
   const playAudio = async (audioFile: any) => {
-  if (!audioFile) return;
+    if (!audioFile) return;
 
-  // Se já existe um áudio tocando, não faz nada
-  if (audioPlaying) return;
+    // Se já existe um áudio tocando, não faz nada
+    if (audioPlaying) return;
 
-  try {
-    // Bloqueia novos cliques
-    setAudioPlaying(true);
+    try {
+      // Bloqueia novos cliques
+      setAudioPlaying(true);
 
-    const { sound } =
-      await Audio.Sound.createAsync(audioFile);
+      const { sound } = await Audio.Sound.createAsync(audioFile);
 
-    // Detecta quando o áudio terminar
-    sound.setOnPlaybackStatusUpdate((status) => {
-      if (
-        status.isLoaded &&
-        status.didJustFinish
-      ) {
-        // Libera o botão novamente
-        setAudioPlaying(false);
+      // Detecta quando o áudio terminar
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish) {
+          // Libera o botão novamente
+          setAudioPlaying(false);
 
-        // Libera o áudio da memória
-        sound.unloadAsync();
-      }
-    });
+          // Libera o áudio da memória
+          sound.unloadAsync();
+        }
+      });
 
-    // Começa a reprodução
-    await sound.playAsync();
+      // Começa a reprodução
+      await sound.playAsync();
+    } catch (error) {
+      console.log("Erro ao reproduzir áudio:", error);
 
-  } catch (error) {
-    console.log(
-      "Erro ao reproduzir áudio:",
-      error
-    );
-
-    // Se der erro, libera o botão
-    setAudioPlaying(false);
-  }
-};
+      // Se der erro, libera o botão
+      setAudioPlaying(false);
+    }
+  };
 
   // =========================
   // PRÓXIMA QUESTÃO
@@ -176,16 +163,13 @@ export default function QuizActivity({
   const handleNext = () => {
     const endTime = Date.now();
 
-    const timeSpentMs =
-      endTime - startTime;
+    const timeSpentMs = endTime - startTime;
 
-    const timeSeconds =
-      Math.floor(timeSpentMs / 1000);
+    const timeSeconds = Math.floor(timeSpentMs / 1000);
 
     const xp = isCorrect ? 4 : 0;
 
-    const accuracy =
-      isCorrect ? 100 : 0;
+    const accuracy = isCorrect ? 100 : 0;
 
     if (xp > 0) {
       addActivityResult({
@@ -197,10 +181,7 @@ export default function QuizActivity({
       });
     }
 
-    const route =
-      isCorrect
-        ? nextRoute
-        : wrongRoute;
+    const route = isCorrect ? nextRoute : wrongRoute;
 
     const href =
       `${route}?xp=${xp}&accuracy=${accuracy}&timeSpent=${timeSpentMs}` as Href;
@@ -210,21 +191,14 @@ export default function QuizActivity({
 
   return (
     <SafeAreaView style={styles.container}>
-
       {/* ================================= */}
       {/* TOPO */}
       {/* ================================= */}
 
       <View style={styles.topBar}>
-
         {/* X */}
-        <Pressable
-          onPress={() => router.back()}
-          hitSlop={12}
-        >
-          <Text style={styles.closeIcon}>
-            ×
-          </Text>
+        <Pressable onPress={() => router.back()} hitSlop={12}>
+          <Text style={styles.closeIcon}>×</Text>
         </Pressable>
 
         {/* Barra de progresso */}
@@ -238,7 +212,6 @@ export default function QuizActivity({
             ]}
           />
         </View>
-
       </View>
 
       {/* ================================= */}
@@ -246,29 +219,21 @@ export default function QuizActivity({
       {/* ================================= */}
 
       <View style={styles.content}>
-
         {/* ================================= */}
         {/* PERSONAGEM + BALÃO */}
         {/* ================================= */}
 
         <View style={styles.characterArea}>
-
           {/* Personagem */}
           {characterImage && (
             <View style={styles.characterContainer}>
-              <Image
-                source={characterImage}
-                style={styles.characterImage}
-              />
+              <Image source={characterImage} style={styles.characterImage} />
             </View>
           )}
 
           {/* Balão */}
           <View style={styles.speechBubble}>
-
-            <Text style={styles.speechText}>
-              {question}
-            </Text>
+            <Text style={styles.speechText}>{question}</Text>
 
             {/* Áudio */}
             {showAudio && (
@@ -276,55 +241,31 @@ export default function QuizActivity({
                 style={styles.audioButton}
                 onPress={() => playAudio(audio)}
               >
-                <Text style={styles.audioIcon}>
-                  🔊
-                </Text>
+                <Text style={styles.audioIcon}>🔊</Text>
               </Pressable>
             )}
-
-            {/* Áudio secundário */}
-            <View style={styles.audioButton2}>
-            {showAudio && (
-            <Pressable
-                onPress={() => playAudio(subAudio)}
-              >
-                <Text style={styles.audioIcon}>
-                  🔊
-                </Text>
-                </Pressable>
-            )}
-            </View>
-
           </View>
-
         </View>
 
         {/* ================================= */}
         {/* PERGUNTA */}
         {/* ================================= */}
 
-        <Text style={styles.questionText}>
-          {subQuestion}
-        </Text>
+        <Text style={styles.questionText}>{subQuestion}</Text>
 
         {/* ================================= */}
         {/* IMAGEM DA QUESTÃO */}
         {/* ================================= */}
 
-        {mode === "image" &&
-          questionImage && (
-            <Image
-              source={questionImage}
-              style={styles.questionImage}
-            />
-          )}
+        {mode === "image" && questionImage && (
+          <Image source={questionImage} style={styles.questionImage} />
+        )}
 
         {/* ================================= */}
         {/* ALTERNATIVAS */}
         {/* ================================= */}
 
         {mode === "writing" ? (
-
           <TextInput
             value={typedAnswer}
             onChangeText={setTypedAnswer}
@@ -333,91 +274,57 @@ export default function QuizActivity({
             style={styles.input}
             autoCapitalize="none"
           />
-
         ) : (
-
           <View style={styles.optionsContainer}>
-
             {options.map((item) => {
-
-              const isSelected =
-                selected === item.value;
+              const isSelected = selected === item.value;
 
               const isCorrectOption =
-                feedback !== null &&
-                item.value === correctAnswer;
+                feedback !== null && item.value === correctAnswer;
 
               const isWrongOption =
-                feedback !== null &&
-                isSelected &&
-                item.value !== correctAnswer;
+                feedback !== null && isSelected && item.value !== correctAnswer;
 
               return (
                 <Pressable
                   key={item.value}
                   onPress={() => {
-
-                    if (
-                      feedback === null
-                    ) {
-                      setSelected(
-                        item.value
-                      );
+                    if (feedback === null) {
+                      setSelected(item.value);
                     }
-
                   }}
                   style={({ pressed }) => [
-
                     styles.optionButton,
 
-                    isSelected &&
-                      styles.optionSelected,
+                    isSelected && styles.optionSelected,
 
-                    isCorrectOption &&
-                      styles.optionCorrect,
+                    isCorrectOption && styles.optionCorrect,
 
-                    isWrongOption &&
-                      styles.optionWrong,
+                    isWrongOption && styles.optionWrong,
 
-                    pressed &&
-                      feedback === null &&
-                      styles.optionPressed,
-
+                    pressed && feedback === null && styles.optionPressed,
                   ]}
                 >
-
                   {item.image ? (
-
-                    <Image
-                      source={item.image}
-                      style={styles.optionImage}
-                    />
-
+                    <Image source={item.image} style={styles.optionImage} />
                   ) : (
-
                     <Text
                       style={[
                         styles.optionText,
 
-                        isSelected &&
-                          styles.optionTextSelected,
+                        isSelected && styles.optionTextSelected,
 
-                        isCorrectOption &&
-                          styles.optionTextCorrect,
+                        isCorrectOption && styles.optionTextCorrect,
 
-                        isWrongOption &&
-                          styles.optionTextWrong,
+                        isWrongOption && styles.optionTextWrong,
                       ]}
                     >
                       {item.label}
                     </Text>
-
                   )}
-
                 </Pressable>
               );
             })}
-
           </View>
         )}
 
@@ -426,19 +333,11 @@ export default function QuizActivity({
         {/* ================================= */}
 
         {feedback === "correct" && (
-          <Text
-            style={styles.correctMessage}
-          >
-            Resposta correta!
-          </Text>
+          <Text style={styles.correctMessage}>Resposta correta!</Text>
         )}
 
         {feedback === "wrong" && (
-          <Text
-            style={styles.wrongMessage}
-          >
-            Resposta errada.
-          </Text>
+          <Text style={styles.wrongMessage}>Resposta errada.</Text>
         )}
 
         {/* ================================= */}
@@ -447,29 +346,19 @@ export default function QuizActivity({
 
         <Pressable
           onPress={handleVerify}
-          disabled={
-            verifyDisabled ||
-            feedback !== null
-          }
+          disabled={verifyDisabled || feedback !== null}
           style={({ pressed }) => [
-
             styles.verifyButton,
 
-            verifyDisabled &&
-              styles.verifyButtonDisabled,
+            verifyDisabled && styles.verifyButtonDisabled,
 
             pressed &&
               !verifyDisabled &&
               feedback === null &&
               styles.verifyButtonPressed,
-
           ]}
         >
-
-          <Text style={styles.verifyText}>
-            VERIFICAR
-          </Text>
-
+          <Text style={styles.verifyText}>VERIFICAR</Text>
         </Pressable>
 
         {/* ================================= */}
@@ -477,40 +366,27 @@ export default function QuizActivity({
         {/* ================================= */}
 
         {feedback !== null && (
-
           <Pressable
             onPress={handleNext}
             style={({ pressed }) => [
-
               styles.nextButton,
 
-              pressed &&
-                styles.nextButtonPressed,
-
+              pressed && styles.nextButtonPressed,
             ]}
           >
-
-            <Text style={styles.nextText}>
-              PRÓXIMO
-            </Text>
-
+            <Text style={styles.nextText}>PRÓXIMO</Text>
           </Pressable>
-
         )}
-
       </View>
-
     </SafeAreaView>
   );
 }
-
 
 // ======================================================
 // ESTILOS
 // ======================================================
 
 const styles = StyleSheet.create({
-
   // --------------------------------------
   // TELA
   // --------------------------------------
@@ -673,8 +549,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
 
     marginBottom: 20,
-    right: -35
-  
+    right: -35,
   },
 
   // --------------------------------------
@@ -879,5 +754,4 @@ const styles = StyleSheet.create({
 
     fontWeight: "500",
   },
-
 });

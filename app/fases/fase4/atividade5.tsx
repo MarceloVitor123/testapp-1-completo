@@ -16,8 +16,7 @@ export default function Atividade5Screen() {
       correctAnswer="Gosta de literatura"
       nextRoute="/fases/teste-resultado"
       wrongRoute="/fases/teste-resultado"
-      audio={require("@/components/audios/A_Jessica.mp3")}
-      subAudio={require("@/components/audios/A_Jessica_1.mp3")}
+      audio={require("../../../components/audios/Jéssica.mp3")}
       progress={0.8}
     />
   );
