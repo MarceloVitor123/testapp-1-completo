@@ -261,9 +261,7 @@ export default function QuizActivity({
     }
 
     /*
-     * ==========================================
      * UMA RESPOSTA ESCRITA
-     * ==========================================
      */
     const answer = mode === "writing" ? typedAnswer.trim() : selected;
 
@@ -442,7 +440,7 @@ export default function QuizActivity({
       </View>
 
       {/*áudio*/}
-      <View style={styles.questionContainer}>
+      <View style={[styles.questionContainer, specialLayout && styles.questionContainerSpecial]}>
        <Pressable onPress={() => playAudio(audio)}>
           <Text style={styles.audioIcon}>🔊</Text>
           </Pressable>
@@ -452,7 +450,7 @@ export default function QuizActivity({
             </Text>
           </View>
 
-      <View style={[styles.content, specialLayout && styles.specialContent]}>
+      <View style={[styles.content && styles.specialContent]}>
         {renderQuestion()}
 
         {mode === "writing" && (
@@ -610,7 +608,12 @@ const styles = StyleSheet.create({
   flex: 1,
   alignItems: "center",
   justifyContent: "flex-start",
-  paddingTop: 0, //atividade 5 da fase 3
+  paddingTop: 10, //atividade 5 da fase 3
+  },
+
+  questionContainerSpecial: {
+  marginTop: 5,
+  marginBottom: 5,
   },
 
   question: {

@@ -5,7 +5,7 @@ export default function Atividade4Screen() {
     return (
         <ImageMatchActivity
             question="QUAL É NOME DESSE DOCE??"
-            targetImage={require("../../../assets/images/Bolo.jpeg")}
+            targetImage={require("../../../assets/images/bolo.png")}
             options={[
                 {label: "BALA", value: "bala"},
                 {label: "BOLO", value: "bolo"},
