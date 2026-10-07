@@ -19,7 +19,7 @@ export default function Atividade1Screen() {
       correctAnswer="10"
       nextRoute="/fases/fase6/atividade5"
       wrongRoute="/fases/fase6/atividade5"
-      progress={0}
+      progress={0.7}
       audio={require("@/components/audios/2_centenas.mp3")}
     />
   );

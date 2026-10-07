@@ -37,7 +37,7 @@ export default function EscrevaNomeActivityScreen() {
         {
           id: "imagem4",
           text: "_____",
-          answer: "COLAR",
+          answer: "PENTE",
           options: [],
           image: require("../../../assets/images/pente.png"),
         },

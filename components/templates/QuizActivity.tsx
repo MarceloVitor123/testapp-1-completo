@@ -610,7 +610,7 @@ const styles = StyleSheet.create({
   flex: 1,
   alignItems: "center",
   justifyContent: "flex-start",
-  paddingTop: 10, //atividade 5 da fase 3
+  paddingTop: 0, //atividade 5 da fase 3
   },
 
   question: {
