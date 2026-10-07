@@ -8,7 +8,7 @@ export default function NumerosScreen() {
   const [audioPlaying, setAudioPlaying] = useState(false)
   const soundRef = useRef<Audio.Sound | null>(null)
 
-  const tocarLetra = async (letra: string) => {
+  const tocarNumero = async (letra: string) => {
     if(audioPlaying) return //evita o problema de clique duplo
 
     try {
@@ -64,7 +64,7 @@ export default function NumerosScreen() {
 
             <Pressable
               style={styles.audioButton}
-              onPress={() => tocarLetra(letra)}
+              onPress={() => tocarNumero(letra)}
             >
               <Text style={styles.audioIcon}>🔊</Text>
               <Text style={styles.audioText}>OUVIR</Text>

@@ -2,12 +2,19 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import {audios} from "../../../components/alfabeto";
 import { Audio } from "expo-av";
-
+import { useState, useRef } from "react"
 
 const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-const tocarLetra = async (letra: string) => {
+export default function Alfabeto() {
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const soundRef = useRef<Audio.Sound | null>(null);
+
+  const tocarLetra = async (letra: string) => {
+    if (audioPlaying) return //Evita double clique
+
   try {
+    setAudioPlaying(true)
     const { sound } = await Audio.Sound.createAsync(
       audios[letra as keyof typeof audios],
       {
@@ -15,17 +22,21 @@ const tocarLetra = async (letra: string) => {
       }
     );
 
+    soundRef.current = sound
+
     sound.setOnPlaybackStatusUpdate((status) => {
       if (status.isLoaded && status.didJustFinish) {
-        sound.unloadAsync();
+        setAudioPlaying(false)
+        sound.unloadAsync()
+        soundRef.current = null
       }
     });
   } catch (error) {
-    console.error("Erro ao tocar áudio:", error);
+    console.error("Erro ao tocar áudio:", error)
+    setAudioPlaying(false)
   }
 };
 
-export default function Alfabeto() {
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -55,6 +66,7 @@ export default function Alfabeto() {
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
