@@ -29,13 +29,10 @@ const fases: Fase[] = [
   { id: 3, rota: "/fases/fase3", requiredXP: 40 },
   { id: 4, rota: "/fases/fase4", requiredXP: 60 },
   { id: 5, rota: "/fases/fase5", requiredXP: 80 },
-  // TODO: trocar para "/fases/fase6" quando a fase 6 existir
-  { id: 6, rota: "/fases/fase5", requiredXP: 100 },
+  { id: 6, rota: "/fases/fase6", requiredXP: 100 },
 ];
 
-/* ------------------------------------------------------------------ */
-/* CONFIGURAÇÃO VISUAL (ajuste aqui)                                   */
-/* ------------------------------------------------------------------ */
+/* CONFIGURAÇÃO VISUAL */
 
 const COLORS = {
   fundo: "#4B4B4B",
@@ -159,7 +156,7 @@ function BalaoComecar() {
   );
 }
 
-/** Anel que pulsa ao redor da fase atual */
+/* Anel que pulsa ao redor da fase atual */
 function AnelPulsante() {
   const pulso = useRef(new Animated.Value(0)).current;
 
@@ -200,9 +197,7 @@ function AnelPulsante() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* TELA                                                                */
-/* ------------------------------------------------------------------ */
+/* TELA */
 
 export default function Mundo() {
   const [xp, setXp] = useState(0);

@@ -250,6 +250,10 @@ export default function IndexScreen() {
       </View>
 
         {/* TÓPICO 4 */}
+        <View style={{ flexDirection:"row", alignItems: "flex-start", width: "100%"}}>
+          <Pressable onPress={() => playAudio(audioNumber4)}>
+            <Text style={styles.audioIcon4}>🔊</Text>
+          </Pressable>
         <View style={styles.bloco}>
           <Text style={styles.titulo}>
             4. VAMOS PRATICAR!
@@ -275,17 +279,13 @@ export default function IndexScreen() {
             VAMOS COMEÇAR!
           </Text>
         </View>
-
       </View>
+    </View>
 
       {/* BOTÃO COMEÇAR */}
       <Pressable
-        onPress={handleStart}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>
-          COMEÇAR
-        </Text>
+        onPress={handleStart} style={styles.button}>
+        <Text style={styles.buttonText}>COMEÇAR</Text>
       </Pressable>
     </ScrollView>
   );
@@ -392,6 +392,11 @@ const styles = StyleSheet.create({
   },
 
   audioIcon3: {
+    fontSize: 25,
+    marginRight: 8,
+  },
+
+  audioIcon4: {
     fontSize: 25,
     marginRight: 8,
   },

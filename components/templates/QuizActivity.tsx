@@ -31,8 +31,6 @@ type WritingItem = {
   answer: string;
     options?: string[];
       image?: any;
-
-
 };
 
 type QuizActivityProps = {

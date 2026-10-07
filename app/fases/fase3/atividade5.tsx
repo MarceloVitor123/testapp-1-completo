@@ -10,12 +10,12 @@ export default function EscrevaNomeActivityScreen() {
       correctAnswer=""
       nextRoute="/fases/teste-resultado"
       wrongRoute="/fases/teste-resultado"
+      audio={require("@/components/audios/quadradinho.mp3")}
       progress={1.0}
       writingItems={[
         {
           id: "imagem1",
           text: "______",
-          
           answer: "ESCOVA",
           options: [],
           image: require("../../../assets/images/escova de dente.png"),
