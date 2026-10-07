@@ -56,6 +56,8 @@ type QuizActivityProps = {
 
   // Usado somente no writingMultiple
   writingItems?: WritingItem[];
+
+  specialLayout?: boolean;
 };
 
 export default function QuizActivity({
@@ -70,6 +72,7 @@ export default function QuizActivity({
   placeholder = "digite sua resposta",
   progress = 0,
   writingItems = [],
+  specialLayout,
 }: QuizActivityProps) {
   const router = useRouter();
 
@@ -449,7 +452,7 @@ export default function QuizActivity({
             </Text>
           </View>
 
-      <View style={styles.content}>
+      <View style={[styles.content, specialLayout && styles.specialContent]}>
         {renderQuestion()}
 
         {mode === "writing" && (
@@ -601,6 +604,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingTop: 10,
+  },
+
+  specialContent: {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "flex-start",
+  paddingTop: 10, //atividade 5 da fase 3
   },
 
   question: {

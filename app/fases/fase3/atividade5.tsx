@@ -42,6 +42,7 @@ export default function EscrevaNomeActivityScreen() {
           image: require("../../../assets/images/pente.png"),
         },
       ]}
+      specialLayout
     />
   );
 }
