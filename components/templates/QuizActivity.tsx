@@ -239,11 +239,6 @@ export default function QuizActivity({
    * Verifica a resposta.
    */
   const handleVerify = () => {
-    /*
-     * ==========================================
-     * VÁRIAS RESPOSTAS
-     * ==========================================
-     */
     if (mode === "writingMultiple") {
       if (writingItems.length === 0) {
         return;
@@ -605,12 +600,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: 35,
+    paddingTop: 10,
   },
 
   question: {
     color: "#FFFFFF",
-    fontSize: 32,
+    fontSize: 28,
     textAlign: "center",
   },
 
@@ -710,20 +705,21 @@ const styles = StyleSheet.create({
 
 writingItem: {
   width: "48%",
-  alignItems: "flex-start",
+  alignItems: "center", //atividades de escrita
 },
 
 writingItemImage: {
   alignSelf: "center",
-  width: 100,
+  width: 105,
   height: 170,
   resizeMode: "contain",
-  marginBottom: 8,
+  marginBottom: 10,
 },
   wordContainer: {
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    minHeight: 36,
+    justifyContent: "center",
   },
 
   wordLetter: {

@@ -17,7 +17,7 @@ export default function Atividade5Screen() {
       nextRoute="/fases/teste-resultado"
       wrongRoute="/fases/teste-resultado"
       audio={require("../../../components/audios/Jéssica.mp3")}
-      progress={0.8}
+      progress={1}
     />
   );
 }

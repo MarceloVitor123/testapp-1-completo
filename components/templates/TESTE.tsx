@@ -215,6 +215,7 @@ export default function ImageMatchActivity({
           </Text>
         )}
 
+      {feedback === null && (
         <Pressable
           onPress={handleVerify}
           disabled={verifyDisabled || feedback !== null}
@@ -229,7 +230,8 @@ export default function ImageMatchActivity({
         >
           <Text style={styles.verifyText}>VERIFICAR</Text>
         </Pressable>
-
+        )}
+        
         {feedback !== null && (
           <Pressable
             onPress={handleNext}

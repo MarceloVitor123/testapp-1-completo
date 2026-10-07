@@ -6,7 +6,7 @@ export default function EscrevaNomeActivityScreen() {
   return (
     <QuizActivity
       mode="writingMultiple"
-      question="OLHE AS IMAGENS ABAIXO E ESCREVA O NOME DA IMAGEM NO QUADRADINHO AO LADO:"
+      question="OLHE AS IMAGENS ABAIXO E ESCREVA O NOME DA IMAGEM NOS QUADRADINHOS:"
       correctAnswer=""
       nextRoute="/fases/teste-resultado"
       wrongRoute="/fases/teste-resultado"

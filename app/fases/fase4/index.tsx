@@ -14,10 +14,8 @@ import { useWorld } from "../../../context/WorldContext";
 export default function IndexScreen() {
   const router = useRouter();
   const { setCurrentWorld, resetWorld, setWorldStartTime } = useWorld();
-
   const [audioPlaying, setAudioPlaying] = useState(false);
   const soundRef = useRef<Audio.Sound | null>(null);
-
   // ÁUDIOS
   const audioIntro = require("../../../components/audios/intro_4.mp3");
   const audioTopico1 = require("../../../components/audios/1 da intro 4.mp3");

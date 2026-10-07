@@ -344,6 +344,7 @@ export default function QuizActivity({
         {/* VERIFICAR */}
         {/* ================================= */}
 
+       {feedback === null && ( //retira o botão verificar depois que a pessoa já respondeu
         <Pressable
           onPress={handleVerify}
           disabled={verifyDisabled || feedback !== null}
@@ -360,6 +361,7 @@ export default function QuizActivity({
         >
           <Text style={styles.verifyText}>VERIFICAR</Text>
         </Pressable>
+        )}
 
         {/* ================================= */}
         {/* PRÓXIMO */}
